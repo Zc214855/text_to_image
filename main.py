@@ -9,14 +9,12 @@ from config import (
     IMAGE_SIZE,
     LLM_MODEL,
     OUTPUT_DIR,
-    ALL_MODELS,
-    HF_MODELS,
-    SF_MODELS,
+    MODEL_DEFAULTS,
     get_model_config,
     validate_config,
 )
 from story_parser import parse_story
-from image_generator import generate_and_save, _is_hf_model
+from image_generator import generate_and_save
 
 
 def generate(story_text, image_model, image_size, progress=gr.Progress()):
@@ -24,17 +22,10 @@ def generate(story_text, image_model, image_size, progress=gr.Progress()):
         yield "请输入童话故事文本", None
         return
 
-    # Check API credentials
-    if _is_hf_model(image_model):
-        if not os.getenv("HF_TOKEN"):
-            yield "错误：未配置 HF_TOKEN，请在 .env 文件中设置\n获取地址：https://huggingface.co/settings/tokens", None
-            return
-    else:
-        if not SILICONFLOW_API_KEY:
-            yield "错误：未配置 SILICONFLOW_API_KEY，请在 .env 文件中设置", None
-            return
+    if not SILICONFLOW_API_KEY:
+        yield "错误：未配置 SILICONFLOW_API_KEY，请在 .env 文件中设置", None
+        return
 
-    # Override model settings
     import config
     config.IMAGE_MODEL = image_model
     config.IMAGE_SIZE = image_size
@@ -56,14 +47,14 @@ def generate(story_text, image_model, image_size, progress=gr.Progress()):
     scenes = result["scenes"]
 
     # Build scene info text
-    provider = "HuggingFace (免费)" if _is_hf_model(image_model) else "SiliconFlow"
     info_lines = [f"标题：{title}"]
     info_lines.append(f"场景数量：{len(scenes)}")
-    info_lines.append(f"图像模型：{image_model} [{provider}]")
+    info_lines.append(f"LLM模型：{LLM_MODEL}")
+    info_lines.append(f"图像模型：{image_model}")
     info_lines.append("")
     for s in scenes:
         info_lines.append(f"【场景 {s['scene_number']}】{s['story_text']}")
-        info_lines.append(f"  Prompt: {s['prompt']}")
+        info_lines.append(f"  Prompt: {s['prompt'][:100]}...")
         info_lines.append("")
 
     scene_info = "\n".join(info_lines)
@@ -105,7 +96,7 @@ def generate(story_text, image_model, image_size, progress=gr.Progress()):
 
 
 def on_model_change(model_name):
-    sizes = ALL_MODELS.get(model_name, ALL_MODELS["black-forest-labs/FLUX.1-schnell"])["image_sizes"]
+    sizes = MODEL_DEFAULTS.get(model_name, MODEL_DEFAULTS["Kwai-Kolors/Kolors"])["image_sizes"]
     return gr.Dropdown(choices=sizes, value=sizes[0])
 
 
@@ -125,12 +116,12 @@ def build_ui():
                 with gr.Row():
                     model_dropdown = gr.Dropdown(
                         label="图像模型",
-                        choices=list(ALL_MODELS.keys()),
+                        choices=list(MODEL_DEFAULTS.keys()),
                         value=IMAGE_MODEL,
                     )
                     size_dropdown = gr.Dropdown(
                         label="图片尺寸",
-                        choices=ALL_MODELS[IMAGE_MODEL]["image_sizes"],
+                        choices=MODEL_DEFAULTS[IMAGE_MODEL]["image_sizes"],
                         value=IMAGE_SIZE,
                     )
                 model_dropdown.change(
@@ -159,13 +150,14 @@ def build_ui():
         gr.Markdown("---")
         gr.Markdown(
             "### 模型说明\n"
-            "| 模型 | 渠道 | 费用 | 效果 |\n"
-            "|------|------|------|------|\n"
-            "| FLUX.1-schnell | HuggingFace | **免费** | 最好 |\n"
-            "| SD3-medium | HuggingFace | **免费** | 中等 |\n"
-            "| Kwai-Kolors/Kolors | SiliconFlow | **免费** | 一般 |\n"
-            "| Z-Image-Turbo | SiliconFlow | ¥0.10/张 | 较好 |\n\n"
-            "使用 HuggingFace 模型需配置 `HF_TOKEN`，获取：https://huggingface.co/settings/tokens"
+            "| 模型 | 费用 | 效果 |\n"
+            "|------|------|------|\n"
+            "| **Kwai-Kolors/Kolors** | 免费 | 一般 |\n"
+            "| Tongyi-MAI/Z-Image-Turbo | ¥0.10/张 | 较好 |\n"
+            "| Tongyi-MAI/Z-Image | ¥0.30/张 | 较好 |\n"
+            "| Qwen/Qwen-Image | ¥0.30/张 | 较好 |\n"
+            "| baidu/ERNIE-Image-Turbo | ¥0.11/张 | 中等 |\n\n"
+            "首次使用请在 .env 文件中配置 `SILICONFLOW_API_KEY`"
         )
 
     return app
