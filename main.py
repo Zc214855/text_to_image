@@ -5,11 +5,13 @@ import time
 
 from config import (
     SILICONFLOW_API_KEY,
+    DASHSCOPE_API_KEY,
     IMAGE_MODEL,
     IMAGE_SIZE,
     LLM_MODEL,
     OUTPUT_DIR,
-    MODEL_DEFAULTS,
+    ALL_MODELS,
+    get_provider,
     get_model_config,
     validate_config,
 )
@@ -22,18 +24,19 @@ def generate(story_text, image_model, image_size, progress=gr.Progress()):
         yield "请输入童话故事文本", None
         return
 
-    if not SILICONFLOW_API_KEY:
-        yield "错误：未配置 SILICONFLOW_API_KEY，请在 .env 文件中设置", None
+    # Check credentials
+    provider = get_provider(image_model)
+    if provider == "dashscope" and not DASHSCOPE_API_KEY:
+        yield "错误：使用阿里云百炼模型需配置 DASHSCOPE_API_KEY\n获取：https://bailian.console.aliyun.com/", None
+        return
+    if provider == "siliconflow" and not SILICONFLOW_API_KEY:
+        yield "错误：使用硅基流动模型需配置 SILICONFLOW_API_KEY\n获取：https://cloud.siliconflow.cn/account/ak", None
         return
 
+    # Override model settings
     import config
     config.IMAGE_MODEL = image_model
     config.IMAGE_SIZE = image_size
-
-    model_config = get_model_config()
-    if image_size not in model_config["image_sizes"]:
-        yield f"错误：{image_model} 不支持尺寸 {image_size}，请选择: {model_config['image_sizes']}", None
-        return
 
     # Step 1: Parse story
     progress(0, desc="正在分析故事、生成场景描述...")
@@ -47,10 +50,11 @@ def generate(story_text, image_model, image_size, progress=gr.Progress()):
     scenes = result["scenes"]
 
     # Build scene info text
+    cfg = get_model_config()
+    provider_label = "阿里云百炼" if provider == "dashscope" else "硅基流动"
     info_lines = [f"标题：{title}"]
     info_lines.append(f"场景数量：{len(scenes)}")
-    info_lines.append(f"LLM模型：{LLM_MODEL}")
-    info_lines.append(f"图像模型：{image_model}")
+    info_lines.append(f"图像模型：{image_model} [{provider_label}]")
     info_lines.append("")
     for s in scenes:
         info_lines.append(f"【场景 {s['scene_number']}】{s['story_text']}")
@@ -96,8 +100,12 @@ def generate(story_text, image_model, image_size, progress=gr.Progress()):
 
 
 def on_model_change(model_name):
-    sizes = MODEL_DEFAULTS.get(model_name, MODEL_DEFAULTS["Kwai-Kolors/Kolors"])["image_sizes"]
-    return gr.Dropdown(choices=sizes, value=sizes[0])
+    cfg = ALL_MODELS.get(model_name, ALL_MODELS["Kwai-Kolors/Kolors"])
+    # DashScope uses * separator, SiliconFlow uses x
+    sizes = cfg.get("image_sizes", ["1024x1024"])
+    # Normalize display: always show with x in UI, convert internally
+    display_sizes = [s.replace("*", "x") for s in sizes]
+    return gr.Dropdown(choices=display_sizes, value=display_sizes[0])
 
 
 def build_ui():
@@ -116,12 +124,12 @@ def build_ui():
                 with gr.Row():
                     model_dropdown = gr.Dropdown(
                         label="图像模型",
-                        choices=list(MODEL_DEFAULTS.keys()),
+                        choices=list(ALL_MODELS.keys()),
                         value=IMAGE_MODEL,
                     )
                     size_dropdown = gr.Dropdown(
                         label="图片尺寸",
-                        choices=MODEL_DEFAULTS[IMAGE_MODEL]["image_sizes"],
+                        choices=[s.replace("*", "x") for s in ALL_MODELS[IMAGE_MODEL].get("image_sizes", ["1024x1024"])],
                         value=IMAGE_SIZE,
                     )
                 model_dropdown.change(
@@ -150,14 +158,18 @@ def build_ui():
         gr.Markdown("---")
         gr.Markdown(
             "### 模型说明\n"
-            "| 模型 | 费用 | 效果 |\n"
-            "|------|------|------|\n"
-            "| **Kwai-Kolors/Kolors** | 免费 | 一般 |\n"
-            "| Tongyi-MAI/Z-Image-Turbo | ¥0.10/张 | 较好 |\n"
-            "| Tongyi-MAI/Z-Image | ¥0.30/张 | 较好 |\n"
-            "| Qwen/Qwen-Image | ¥0.30/张 | 较好 |\n"
-            "| baidu/ERNIE-Image-Turbo | ¥0.11/张 | 中等 |\n\n"
-            "首次使用请在 .env 文件中配置 `SILICONFLOW_API_KEY`"
+            "| 模型 | 渠道 | 费用 | 效果 |\n"
+            "|------|------|------|------|\n"
+            "| **wanx2.1-t2i-turbo** | 阿里云百炼 | 新用户免费送额度 | 较好 |\n"
+            "| **wanx2.1-t2i-plus** | 阿里云百炼 | 新用户免费送额度 | 较好 |\n"
+            "| **qwen-image-plus** | 阿里云百炼 | 新用户免费送额度 | 最好 |\n"
+            "| Kwai-Kolors/Kolors | 硅基流动 | 免费 | 一般 |\n"
+            "| Z-Image-Turbo | 硅基流动 | ¥0.10/张 | 较好 |\n"
+            "| Z-Image | 硅基流动 | ¥0.30/张 | 较好 |\n"
+            "| Qwen-Image | 硅基流动 | ¥0.30/张 | 较好 |\n"
+            "| ERNIE-Image-Turbo | 硅基流动 | ¥0.11/张 | 中等 |\n\n"
+            "**推荐**：先用阿里云百炼的免费额度（效果最好），用完切硅基流动 Kolors（持久免费）\n\n"
+            "配置方法：在 `.env` 文件中设置 `DASHSCOPE_API_KEY` 和/或 `SILICONFLOW_API_KEY`"
         )
 
     return app

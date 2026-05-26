@@ -4,9 +4,9 @@ from config import SILICONFLOW_API_KEY, BASE_URL, LLM_MODEL
 
 SYSTEM_PROMPT = """You are a fairy tale illustration assistant. Your job is to:
 1. Read the given fairy tale text
-2. Split it into detailed scenes — approximately one scene per 80-120 Chinese characters of story text (more scenes = more detailed illustrations)
+2. Split it into VERY detailed scenes — approximately ONE scene per 30-50 Chinese characters. Generate as many scenes as possible so that nearly every sentence gets its own illustration. DO NOT skip or merge story content.
 3. First define ALL recurring characters with consistent visual descriptions
-4. For each scene, write an English image generation prompt that MUST reuse the exact same character descriptions
+4. For each scene, write an English image generation prompt that MUST reuse the exact same character descriptions and MUST closely match the specific story content of that scene
 
 ## Character Definition Rules:
 - List every character that appears more than once
@@ -15,6 +15,7 @@ SYSTEM_PROMPT = """You are a fairy tale illustration assistant. Your job is to:
 - Example: if "小女孩" is defined as "a little girl with red hood, brown curly hair, blue dress, white socks", EVERY scene with her MUST include "a little girl with red hood, brown curly hair, blue dress, white socks"
 
 ## Prompt Rules:
+- Each scene's prompt MUST closely reflect the EXACT content of that scene's story_text — if the text says the girl picks flowers, show her picking flowers; if the wolf knocks on the door, show the wolf knocking on the door
 - Describe the scene visually: character poses, actions, facial expressions, environment, lighting, mood
 - Always START each prompt with the full character description(s) from the character list
 - Always END each prompt with: "children's book illustration, watercolor style, soft colors, whimsical, no text, no letters, no words"
@@ -47,13 +48,13 @@ def parse_story(story_text: str) -> dict:
     """Use LLM to split story into scenes and generate image prompts."""
     client = OpenAI(api_key=SILICONFLOW_API_KEY, base_url=BASE_URL)
 
-    # Estimate desired scene count based on text length
+    # Estimate desired scene count: ~1 scene per 40 chars, more illustrations
     char_count = len(story_text)
-    target_scenes = max(4, min(20, char_count // 100))
+    target_scenes = max(6, min(50, char_count // 40))
 
     user_message = (
         f"请将以下童话故事拆分为约 {target_scenes} 个场景"
-        f"（故事约{char_count}字，平均每场景约100字）。\n\n"
+        f"（故事约{char_count}字，平均每场景约40字，尽量每句话一个场景，不要遗漏任何内容）。\n\n"
         f"---\n{story_text}"
     )
 
@@ -64,7 +65,7 @@ def parse_story(story_text: str) -> dict:
             {"role": "user", "content": user_message},
         ],
         temperature=0.7,
-        max_tokens=8192,
+        max_tokens=16384,
     )
 
     content = response.choices[0].message.content.strip()
