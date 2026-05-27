@@ -5,6 +5,7 @@ load_dotenv()
 
 SILICONFLOW_API_KEY = os.getenv("SILICONFLOW_API_KEY", "")
 DASHSCOPE_API_KEY = os.getenv("DASHSCOPE_API_KEY", "")
+BASE_URL = "https://api.siliconflow.cn/v1"
 
 # LLM model for splitting story into scenes and generating prompts
 LLM_MODEL = os.getenv("LLM_MODEL", "Qwen/Qwen3-8B")

@@ -5,8 +5,6 @@ from config import (
     SILICONFLOW_API_KEY,
     DASHSCOPE_API_KEY,
     BASE_URL,
-    IMAGE_MODEL,
-    IMAGE_SIZE,
     OUTPUT_DIR,
     get_provider,
     get_model_config,
@@ -17,7 +15,17 @@ DS_ASYNC_URL = "https://dashscope.aliyuncs.com/api/v1/services/aigc/text2image/i
 DS_TASK_URL = "https://dashscope.aliyuncs.com/api/v1/tasks"
 
 
-def _sf_generate(prompt: str, seed: int | None = None) -> str:
+def _get_model():
+    import config
+    return config.IMAGE_MODEL
+
+
+def _get_size():
+    import config
+    return config.IMAGE_SIZE
+
+
+def _sf_generate(prompt: str, model: str, size: str, seed: int | None = None) -> str:
     """SiliconFlow image generation, returns image URL."""
     headers = {
         "Authorization": f"Bearer {SILICONFLOW_API_KEY}",
@@ -25,9 +33,9 @@ def _sf_generate(prompt: str, seed: int | None = None) -> str:
     }
     model_config = get_model_config()
     payload = {
-        "model": IMAGE_MODEL,
+        "model": model,
         "prompt": prompt,
-        "image_size": IMAGE_SIZE,
+        "image_size": size,
         "num_inference_steps": model_config["num_inference_steps"],
     }
     if model_config.get("guidance_scale") is not None:
@@ -45,18 +53,20 @@ def _sf_generate(prompt: str, seed: int | None = None) -> str:
     return images[0]["url"]
 
 
-def _ds_generate(prompt: str, seed: int | None = None) -> str:
+def _ds_generate(prompt: str, model: str, size: str, seed: int | None = None) -> str:
     """DashScope async image generation, returns image URL."""
     headers = {
         "Authorization": f"Bearer {DASHSCOPE_API_KEY}",
         "Content-Type": "application/json",
         "X-DashScope-Async": "enable",
     }
+    # DashScope uses * as size separator, convert x to *
+    ds_size = size.replace("x", "*")
     payload: dict = {
-        "model": IMAGE_MODEL,
+        "model": model,
         "input": {"prompt": prompt},
         "parameters": {
-            "size": IMAGE_SIZE,
+            "size": ds_size,
             "n": 1,
         },
     }
@@ -95,9 +105,11 @@ def _ds_generate(prompt: str, seed: int | None = None) -> str:
 
 def generate_image(prompt: str, seed: int | None = None) -> str:
     """Generate image, returns image URL."""
-    if get_provider(IMAGE_MODEL) == "dashscope":
-        return _ds_generate(prompt, seed)
-    return _sf_generate(prompt, seed)
+    model = _get_model()
+    size = _get_size()
+    if get_provider(model) == "dashscope":
+        return _ds_generate(prompt, model, size, seed)
+    return _sf_generate(prompt, model, size, seed)
 
 
 def download_image(url: str, save_path: str) -> str:
