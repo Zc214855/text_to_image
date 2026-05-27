@@ -1,0 +1,163 @@
+{
+  "title": "小红帽",
+  "characters": [
+    {
+      "name": "小红帽",
+      "visual": "a little girl with a red hood, brown curly hair, pink dress with white ruffles, carrying a basket"
+    },
+    {
+      "name": "大灰狼",
+      "visual": "a large grey wolf with sharp teeth, glowing yellow eyes, scruffy fur, standing on hind legs"
+    }
+  ],
+  "style": "children's book illustration, watercolor style, soft colors, whimsical, no text, no letters, no words",
+  "scenes": [
+    {
+      "scene_number": 1,
+      "story_text": "从前，在一个小村庄里，住着一个可爱的小女孩。",
+      "characters_in_scene": [
+        "小红帽"
+      ],
+      "prompt": "a little girl with a red hood, brown curly hair, pink dress with white ruffles, carrying a basket, a little girl with a red hood, brown curly hair, pink dress with white ruffles, standing in a thatched cottage village, sunlight filtering through trees, soft watercolor background, whimsical, no text, no letters, no words, children's book illustration, watercolor style, soft colors, whimsical, no text, no letters, no words"
+    },
+    {
+      "scene_number": 2,
+      "story_text": "她总是戴着奶奶送给她的红色小帽子，所以大家都叫她小红帽。",
+      "characters_in_scene": [
+        "小红帽"
+      ],
+      "prompt": "a little girl with a red hood, brown curly hair, pink dress with white ruffles, carrying a basket, a little girl with a red hood, brown curly hair, pink dress with white ruffles, wearing a red cap, smiling at villagers in a forest clearing, watercolor style, soft colors, whimsical, no text, no letters, no words, children's book illustration, watercolor style, soft colors, whimsical, no text, no letters, no words"
+    },
+    {
+      "scene_number": 3,
+      "story_text": "一天，妈妈对小红帽说：奶奶生病了，你能把这篮蛋糕和红酒送去给奶奶吗？",
+      "characters_in_scene": [
+        "小红帽",
+        "妈妈"
+      ],
+      "prompt": "a little girl with a red hood, brown curly hair, pink dress with white ruffles, carrying a basket, a little girl with a red hood, brown curly hair, pink dress with white ruffles, and a woman in a blue dress with braided hair, standing in a kitchen, basket in hand, warm golden lighting, watercolor style, soft colors, whimsical, no text, no letters, no words, children's book illustration, watercolor style, soft colors, whimsical, no text, no letters, no words"
+    },
+    {
+      "scene_number": 4,
+      "story_text": "记住，不要离开大路，不要和陌生人说话。",
+      "characters_in_scene": [
+        "小红帽",
+        "妈妈"
+      ],
+      "prompt": "a little girl with a red hood, brown curly hair, pink dress with white ruffles, carrying a basket, a little girl with a red hood, brown curly hair, pink dress with white ruffles, and a woman in a blue dress with braided hair, holding hands in a forest path, soft sunlight through trees, watercolor style, soft colors, whimsical, no text, no letters, no words, children's book illustration, watercolor style, soft colors, whimsical, no text, no letters, no words"
+    },
+    {
+      "scene_number": 5,
+      "story_text": "小红帽提着篮子出发了。",
+      "characters_in_scene": [
+        "小红帽"
+      ],
+      "prompt": "a little girl with a red hood, brown curly hair, pink dress with white ruffles, carrying a basket, a little girl with a red hood, brown curly hair, pink dress with white ruffles, walking alone with a basket, forest path under golden light, watercolor style, soft colors, whimsical, no text, no letters, no words, children's book illustration, watercolor style, soft colors, whimsical, no text, no letters, no words"
+    },
+    {
+      "scene_number": 6,
+      "story_text": "走进森林后，她遇到了一只大灰狼。",
+      "characters_in_scene": [
+        "小红帽",
+        "大灰狼"
+      ],
+      "prompt": "a large grey wolf with sharp teeth, glowing yellow eyes, scruffy fur, standing on hind legs, a little girl with a red hood, brown curly hair, pink dress with white ruffles, carrying a basket, a little girl with a red hood, brown curly hair, pink dress with white ruffles, and a large grey wolf with sharp teeth, glowing yellow eyes, scruffy fur, standing in a forest clearing, watercolor style, soft colors, whimsical, no text, no letters, no words, children's book illustration, watercolor style, soft colors, whimsical, no text, no letters, no words"
+    },
+    {
+      "scene_number": 7,
+      "story_text": "大灰狼假装关心地问：小红帽，你要去哪里呀？",
+      "characters_in_scene": [
+        "小红帽",
+        "大灰狼"
+      ],
+      "prompt": "a large grey wolf with sharp teeth, glowing yellow eyes, scruffy fur, standing on hind legs, a little girl with a red hood, brown curly hair, pink dress with white ruffles, carrying a basket, a little girl with a red hood, brown curly hair, pink dress with white ruffles, and a large grey wolf with sharp teeth, glowing yellow eyes, scruffy fur, sitting on a log, wolf tilting head with fake concern, watercolor style, soft colors, whimsical, no text, no letters, no words, children's book illustration, watercolor style, soft colors, whimsical, no text, no letters, no words"
+    },
+    {
+      "scene_number": 8,
+      "story_text": "小红帽忘记了妈妈的嘱咐，告诉了狼奶奶家的地址。",
+      "characters_in_scene": [
+        "小红帽",
+        "大灰狼"
+      ],
+      "prompt": "a large grey wolf with sharp teeth, glowing yellow eyes, scruffy fur, standing on hind legs, a little girl with a red hood, brown curly hair, pink dress with white ruffles, carrying a basket, a little girl with a red hood, brown curly hair, pink dress with white ruffles, and a large grey wolf with sharp teeth, glowing yellow eyes, scruffy fur, facing each other in a forest glade, wolf listening with paw raised, watercolor style, soft colors, whimsical, no text, no letters, no words, children's book illustration, watercolor style, soft colors, whimsical, no text, no letters, no words"
+    },
+    {
+      "scene_number": 9,
+      "story_text": "大灰狼抄近路先跑到了奶奶家，把奶奶吞进了肚子。",
+      "characters_in_scene": [
+        "大灰狼"
+      ],
+      "prompt": "a large grey wolf with sharp teeth, glowing yellow eyes, scruffy fur, standing on hind legs, a large grey wolf with sharp teeth, glowing yellow eyes, scruffy fur, standing in a cottage yard with a small house in background, wolf's mouth open wide, watercolor style, soft colors, whimsical, no text, no letters, no words, children's book illustration, watercolor style, soft colors, whimsical, no text, no letters, no words"
+    },
+    {
+      "scene_number": 10,
+      "story_text": "然后穿上奶奶的衣服，戴上奶奶的帽子，躺在床上假装奶奶。",
+      "characters_in_scene": [
+        "大灰狼"
+      ],
+      "prompt": "a large grey wolf with sharp teeth, glowing yellow eyes, scruffy fur, standing on hind legs, a large grey wolf with sharp teeth, glowing yellow eyes, scruffy fur, wearing an old lady's dress and hat, lying in a bed with lace curtains, watercolor style, soft colors, whimsical, no text, no letters, no words, children's book illustration, watercolor style, soft colors, whimsical, no text, no letters, no words"
+    },
+    {
+      "scene_number": 11,
+      "story_text": "小红帽来到奶奶家，觉得奶奶看起来很奇怪。",
+      "characters_in_scene": [
+        "小红帽",
+        "大灰狼"
+      ],
+      "prompt": "a large grey wolf with sharp teeth, glowing yellow eyes, scruffy fur, standing on hind legs, a little girl with a red hood, brown curly hair, pink dress with white ruffles, carrying a basket, a little girl with a red hood, brown curly hair, pink dress with white ruffles, and a large grey wolf with sharp teeth, glowing yellow eyes, scruffy fur, standing in a cottage room with suspicious expression, watercolor style, soft colors, whimsical, no text, no letters, no words, children's book illustration, watercolor style, soft colors, whimsical, no text, no letters, no words"
+    },
+    {
+      "scene_number": 12,
+      "story_text": "幸运的是，一个猎人路过奶奶家，听到了鼾声。",
+      "characters_in_scene": [
+        "小红帽",
+        "大灰狼",
+        "猎人"
+      ],
+      "prompt": "a large grey wolf with sharp teeth, glowing yellow eyes, scruffy fur, standing on hind legs, a little girl with a red hood, brown curly hair, pink dress with white ruffles, carrying a basket, a little girl with a red hood, brown curly hair, pink dress with white ruffles, and a large grey wolf with sharp teeth, glowing yellow eyes, scruffy fur, and a man in a green coat, standing in a forest with a bow, listening intently, watercolor style, soft colors, whimsical, no text, no letters, no words, children's book illustration, watercolor style, soft colors, whimsical, no text, no letters, no words"
+    },
+    {
+      "scene_number": 13,
+      "story_text": "他剪开了大灰狼的肚皮，救出了小红帽和奶奶。",
+      "characters_in_scene": [
+        "大灰狼",
+        "猎人"
+      ],
+      "prompt": "a large grey wolf with sharp teeth, glowing yellow eyes, scruffy fur, standing on hind legs, a large grey wolf with sharp teeth, glowing yellow eyes, scruffy fur, and a man in a green coat, standing over a wolf with open belly, small girl and old lady emerging, watercolor style, soft colors, whimsical, no text, no letters, no words, children's book illustration, watercolor style, soft colors, whimsical, no text, no letters, no words"
+    },
+    {
+      "scene_number": 14,
+      "story_text": "他们在狼的肚子里塞满了石头，大灰狼醒来后想逃跑，却被石头重重地摔倒在地。",
+      "characters_in_scene": [
+        "大灰狼",
+        "猎人"
+      ],
+      "prompt": "a large grey wolf with sharp teeth, glowing yellow eyes, scruffy fur, standing on hind legs, a large grey wolf with sharp teeth, glowing yellow eyes, scruffy fur, lying on the ground with stones in its belly, man in green coat holding a rock, watercolor style, soft colors, whimsical, no text, no letters, no words, children's book illustration, watercolor style, soft colors, whimsical, no text, no letters, no words"
+    },
+    {
+      "scene_number": 15,
+      "story_text": "再也没有起来。",
+      "characters_in_scene": [
+        "大灰狼"
+      ],
+      "prompt": "a large grey wolf with sharp teeth, glowing yellow eyes, scruffy fur, standing on hind legs, a large grey wolf with sharp teeth, glowing yellow eyes, scruffy fur, lying motionless on forest floor, surrounded by fallen leaves, watercolor style, soft colors, whimsical, no text, no letters, no words, children's book illustration, watercolor style, soft colors, whimsical, no text, no letters, no words"
+    },
+    {
+      "scene_number": 16,
+      "story_text": "从此，小红帽再也不敢离开大路，也不敢和陌生人说话了。",
+      "characters_in_scene": [
+        "小红帽"
+      ],
+      "prompt": "a little girl with a red hood, brown curly hair, pink dress with white ruffles, carrying a basket, a little girl with a red hood, brown curly hair, pink dress with white ruffles, walking carefully along a forest path with a basket, cautious expression, watercolor style, soft colors, whimsical, no text, no letters, no words, children's book illustration, watercolor style, soft colors, whimsical, no text, no letters, no words"
+    },
+    {
+      "scene_number": 17,
+      "story_text": "她和奶奶幸福地生活在一起。",
+      "characters_in_scene": [
+        "小红帽",
+        "奶奶"
+      ],
+      "prompt": "a little girl with a red hood, brown curly hair, pink dress with white ruffles, carrying a basket, a little girl with a red hood, brown curly hair, pink dress with white ruffles, and an old lady in a floral dress, sitting in a cottage garden with flowers, smiling at each other, watercolor style, soft colors, whimsical, no text, no letters, no words, children's book illustration, watercolor style, soft colors, whimsical, no text, no letters, no words"
+    }
+  ]
+}
