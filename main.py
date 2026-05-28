@@ -2,6 +2,7 @@ import gradio as gr
 import json
 import os
 import time
+import httpx
 
 from config import (
     SILICONFLOW_API_KEY,
@@ -11,6 +12,7 @@ from config import (
     LLM_MODEL,
     LLM_PROVIDER,
     LLM_BASE_URL,
+    LLM_API_KEY,
     OUTPUT_DIR,
     ALL_MODELS,
     get_provider,
@@ -19,6 +21,35 @@ from config import (
 )
 from story_parser import parse_story
 from image_generator import generate_and_save
+
+
+def check_llm_status():
+    """检测 LLM 服务是否可用，返回状态文本"""
+    if LLM_PROVIDER == "freellmapi":
+        try:
+            resp = httpx.post(
+                f"{LLM_BASE_URL}/chat/completions",
+                headers={"Authorization": f"Bearer {LLM_API_KEY}"},
+                json={
+                    "model": "auto",
+                    "messages": [{"role": "user", "content": "hi"}],
+                    "max_tokens": 5,
+                },
+                timeout=10,
+            )
+            data = resp.json()
+            if "choices" in data:
+                routed = resp.headers.get("X-Routed-Via", "unknown")
+                return f"FreeLLMAPI 连接正常 (路由: {routed})"
+            else:
+                msg = data.get("error", {}).get("message", str(data))
+                return f"FreeLLMAPI 连接失败: {msg}"
+        except Exception as e:
+            return f"FreeLLMAPI 连接失败: {e}"
+    else:
+        if SILICONFLOW_API_KEY:
+            return "SiliconFlow 直连 - 已配置 API Key"
+        return "SiliconFlow 直连 - 未配置 API Key"
 
 
 def generate(story_text, image_model, image_size, progress=gr.Progress()):
@@ -41,11 +72,12 @@ def generate(story_text, image_model, image_size, progress=gr.Progress()):
     config.IMAGE_SIZE = image_size
 
     # Step 1: Parse story
+    llm_status = check_llm_status()
     progress(0, desc="正在分析故事、生成场景描述...")
     try:
         result = parse_story(story_text)
     except Exception as e:
-        yield f"故事分析失败：{e}", None
+        yield f"故事分析失败（{llm_status}）\n\n错误：{e}", None
         return
 
     title = result.get("title", "未命名")
@@ -53,10 +85,14 @@ def generate(story_text, image_model, image_size, progress=gr.Progress()):
 
     # Build scene info text
     provider_label = "阿里云百炼" if provider == "dashscope" else "硅基流动"
-    llm_label = "FreeLLMAPI(免费)" if LLM_PROVIDER == "freellmapi" else "SiliconFlow"
+    if LLM_PROVIDER == "freellmapi":
+        llm_label = "FreeLLMAPI(免费)"
+    else:
+        llm_label = "SiliconFlow"
     info_lines = [f"标题：{title}"]
     info_lines.append(f"场景数量：{len(scenes)}")
     info_lines.append(f"LLM：{LLM_MODEL} [{llm_label}]")
+    info_lines.append(f"LLM状态：{llm_status}")
     info_lines.append(f"图像模型：{image_model} [{provider_label}]")
     info_lines.append("")
     for s in scenes:
@@ -110,9 +146,27 @@ def on_model_change(model_name):
 
 
 def build_ui():
+    llm_status = check_llm_status()
+
     with gr.Blocks(title="童话插图生成器") as app:
         gr.Markdown("# 童话插图生成器")
         gr.Markdown("输入童话故事文本，自动拆分场景并生成对应插图")
+
+        # LLM 状态栏
+        llm_status_display = gr.Textbox(
+            label="LLM 状态",
+            value=llm_status,
+            interactive=False,
+            show_copy_button=False,
+        )
+
+        # 刷新按钮
+        refresh_btn = gr.Button("刷新 LLM 状态", size="sm")
+
+        def refresh_llm_status():
+            return check_llm_status()
+
+        refresh_btn.click(fn=refresh_llm_status, outputs=llm_status_display)
 
         with gr.Row():
             # Left: input
@@ -158,6 +212,10 @@ def build_ui():
 
         gr.Markdown("---")
         gr.Markdown(
+            "### 界面说明\n"
+            "- **LLM 状态栏**：顶部显示当前 LLM 连接状态，点击「刷新」可重新检测\n"
+            "- **绿色=正常**：FreeLLMAPI 连接正常 或 SiliconFlow Key 已配置\n"
+            "- **红色=异常**：连接失败或未配置，需要修复后才能拆分故事\n\n"
             "### 模型说明\n"
             "| 模型 | 渠道 | 费用 | 效果 |\n"
             "|------|------|------|------|\n"
@@ -165,17 +223,21 @@ def build_ui():
             "| **wanx2.1-t2i-plus** | 阿里云百炼 | 新用户免费送额度 | 较好 |\n"
             "| **qwen-image-plus** | 阿里云百炼 | 新用户免费送额度 | 最好 |\n"
             "| Kwai-Kolors/Kolors | 硅基流动 | 免费 | 一般 |\n"
-            "| Z-Image-Turbo | 硅基流动 | ¥0.10/张 | 较好 |\n"
-            "| Z-Image | 硅基流动 | ¥0.30/张 | 较好 |\n"
-            "| Qwen-Image | 硅基流动 | ¥0.30/张 | 较好 |\n"
-            "| ERNIE-Image-Turbo | 硅基流动 | ¥0.11/张 | 中等 |\n\n"
-            "### 省钱技巧\n"
-            "- LLM调用可通过 [FreeLLMAPI](https://github.com/tashfeenahmed/freellmapi) 完全免费，配置方式：\n"
-            "  1. `git clone` 并启动 FreeLLMAPI（`npm install && npm run dev`）\n"
-            "  2. 在 `.env` 中设置:\\n```\\nLLM_PROVIDER=freellmapi\\n"
-            "LLM_BASE_URL=http://localhost:3001/v1\\nLLM_API_KEY=freellmapi-你的key\\n"
-            "LLM_MODEL=auto\\n```\\n\n"
-            "- 图片先用阿里云百炼免费额度，用完切硅基流动 Kolors（持久免费）"
+            "| Z-Image-Turbo | 硅基流动 | ¥0.10/张 | 较好 |\n\n"
+            "### FreeLLMAPI 配置（让 LLM 调用完全免费）\n"
+            "1. 去以下平台注册免费 API Key（只需邮箱）：\n"
+            "   - Google AI Studio: https://aistudio.google.com/apikey → 创建 Gemini Key\n"
+            "   - Groq: https://console.groq.com/keys → 创建 Key\n"
+            "2. 启动 FreeLLMAPI：`cd f:/MyTool/freellmapi && npm run dev`\n"
+            "3. 打开管理面板 http://localhost:3001 → Keys 页面 → 添加你的免费 Key\n"
+            "4. 在本项目 `.env` 中设置：\n"
+            "```\n"
+            "LLM_PROVIDER=freellmapi\n"
+            "LLM_BASE_URL=http://localhost:3001/v1\n"
+            "LLM_API_KEY=freellmapi-你的key\n"
+            "LLM_MODEL=auto\n"
+            "```\n"
+            "5. 回到这里点「刷新 LLM 状态」，确认显示连接正常"
         )
 
     return app
