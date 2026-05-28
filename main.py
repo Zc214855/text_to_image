@@ -157,7 +157,6 @@ def build_ui():
             label="LLM 状态",
             value=llm_status,
             interactive=False,
-            show_copy_button=False,
         )
 
         # 刷新按钮
