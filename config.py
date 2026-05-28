@@ -7,18 +7,21 @@ SILICONFLOW_API_KEY = os.getenv("SILICONFLOW_API_KEY", "")
 DASHSCOPE_API_KEY = os.getenv("DASHSCOPE_API_KEY", "")
 BASE_URL = "https://api.siliconflow.cn/v1"
 
-# LLM model for splitting story into scenes and generating prompts
+# ---------- LLM 配置 ----------
+# 支持 FreeLLMAPI 代理（免费）或 SiliconFlow 直连
+# FreeLLMAPI: 设 LLM_PROVIDER=freellmapi, LLM_BASE_URL=http://localhost:3001/v1, LLM_API_KEY=freellmapi-xxx
+# SiliconFlow: 设 LLM_PROVIDER=siliconflow (默认)
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "siliconflow")
+LLM_BASE_URL = os.getenv("LLM_BASE_URL", BASE_URL)
+LLM_API_KEY = os.getenv("LLM_API_KEY", "")
 LLM_MODEL = os.getenv("LLM_MODEL", "Qwen/Qwen3-8B")
 
-# Image generation model (default: free)
+# ---------- 图片生成模型 ----------
 IMAGE_MODEL = os.getenv("IMAGE_MODEL", "Kwai-Kolors/Kolors")
-
-# Default image size
 IMAGE_SIZE = os.getenv("IMAGE_SIZE", "1024x1024")
-
 OUTPUT_DIR = os.getenv("OUTPUT_DIR", "output")
 
-# ---------- SiliconFlow models ----------
+# ---------- SiliconFlow 图片模型 ----------
 SF_MODELS = {
     "Kwai-Kolors/Kolors": {
         "provider": "siliconflow",
@@ -57,8 +60,7 @@ SF_MODELS = {
     },
 }
 
-# ---------- 阿里云百炼(DashScope) models ----------
-# 新用户送免费额度，质量比Kolors好很多
+# ---------- 阿里云百炼(DashScope) 图片模型 ----------
 DS_MODELS = {
     "wanx2.1-t2i-turbo": {
         "provider": "dashscope",
@@ -87,6 +89,17 @@ def get_provider(model: str) -> str:
 
 def get_model_config():
     return ALL_MODELS.get(IMAGE_MODEL, SF_MODELS["Kwai-Kolors/Kolors"])
+
+
+def get_llm_client_config():
+    """返回 LLM 调用所需的 base_url 和 api_key。"""
+    if LLM_PROVIDER == "freellmapi":
+        base_url = LLM_BASE_URL
+        api_key = LLM_API_KEY or "freellmapi-placeholder"
+    else:
+        base_url = LLM_BASE_URL
+        api_key = LLM_API_KEY or SILICONFLOW_API_KEY
+    return base_url, api_key
 
 
 def validate_config():

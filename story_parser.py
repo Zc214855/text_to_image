@@ -1,6 +1,6 @@
 import json
 from openai import OpenAI
-from config import SILICONFLOW_API_KEY, BASE_URL, LLM_MODEL
+from config import get_llm_client_config, LLM_MODEL
 
 SYSTEM_PROMPT = """You are a fairy tale illustration assistant. Your job is to:
 1. Read the given fairy tale text
@@ -46,7 +46,8 @@ You MUST respond in the following JSON format only, no other text:
 
 def parse_story(story_text: str) -> dict:
     """Use LLM to split story into scenes and generate image prompts."""
-    client = OpenAI(api_key=SILICONFLOW_API_KEY, base_url=BASE_URL)
+    base_url, api_key = get_llm_client_config()
+    client = OpenAI(api_key=api_key, base_url=base_url)
 
     # Estimate desired scene count: ~1 scene per 40 chars, more illustrations
     char_count = len(story_text)

@@ -9,6 +9,8 @@ from config import (
     IMAGE_MODEL,
     IMAGE_SIZE,
     LLM_MODEL,
+    LLM_PROVIDER,
+    LLM_BASE_URL,
     OUTPUT_DIR,
     ALL_MODELS,
     get_provider,
@@ -24,7 +26,7 @@ def generate(story_text, image_model, image_size, progress=gr.Progress()):
         yield "请输入童话故事文本", None
         return
 
-    # Check credentials
+    # Check credentials for image generation
     provider = get_provider(image_model)
     if provider == "dashscope" and not DASHSCOPE_API_KEY:
         yield "错误：使用阿里云百炼模型需配置 DASHSCOPE_API_KEY\n获取：https://bailian.console.aliyun.com/", None
@@ -50,10 +52,11 @@ def generate(story_text, image_model, image_size, progress=gr.Progress()):
     scenes = result["scenes"]
 
     # Build scene info text
-    cfg = get_model_config()
     provider_label = "阿里云百炼" if provider == "dashscope" else "硅基流动"
+    llm_label = "FreeLLMAPI(免费)" if LLM_PROVIDER == "freellmapi" else "SiliconFlow"
     info_lines = [f"标题：{title}"]
     info_lines.append(f"场景数量：{len(scenes)}")
+    info_lines.append(f"LLM：{LLM_MODEL} [{llm_label}]")
     info_lines.append(f"图像模型：{image_model} [{provider_label}]")
     info_lines.append("")
     for s in scenes:
@@ -101,9 +104,7 @@ def generate(story_text, image_model, image_size, progress=gr.Progress()):
 
 def on_model_change(model_name):
     cfg = ALL_MODELS.get(model_name, ALL_MODELS["Kwai-Kolors/Kolors"])
-    # DashScope uses * separator, SiliconFlow uses x
     sizes = cfg.get("image_sizes", ["1024x1024"])
-    # Normalize display: always show with x in UI, convert internally
     display_sizes = [s.replace("*", "x") for s in sizes]
     return gr.Dropdown(choices=display_sizes, value=display_sizes[0])
 
@@ -168,8 +169,13 @@ def build_ui():
             "| Z-Image | 硅基流动 | ¥0.30/张 | 较好 |\n"
             "| Qwen-Image | 硅基流动 | ¥0.30/张 | 较好 |\n"
             "| ERNIE-Image-Turbo | 硅基流动 | ¥0.11/张 | 中等 |\n\n"
-            "**推荐**：先用阿里云百炼的免费额度（效果最好），用完切硅基流动 Kolors（持久免费）\n\n"
-            "配置方法：在 `.env` 文件中设置 `DASHSCOPE_API_KEY` 和/或 `SILICONFLOW_API_KEY`"
+            "### 省钱技巧\n"
+            "- LLM调用可通过 [FreeLLMAPI](https://github.com/tashfeenahmed/freellmapi) 完全免费，配置方式：\n"
+            "  1. `git clone` 并启动 FreeLLMAPI（`npm install && npm run dev`）\n"
+            "  2. 在 `.env` 中设置:\\n```\\nLLM_PROVIDER=freellmapi\\n"
+            "LLM_BASE_URL=http://localhost:3001/v1\\nLLM_API_KEY=freellmapi-你的key\\n"
+            "LLM_MODEL=auto\\n```\\n\n"
+            "- 图片先用阿里云百炼免费额度，用完切硅基流动 Kolors（持久免费）"
         )
 
     return app
