@@ -5,7 +5,6 @@ from config import (
     SILICONFLOW_API_KEY,
     DASHSCOPE_API_KEY,
     BASE_URL,
-    OUTPUT_DIR,
     get_provider,
     get_model_config,
 )
@@ -14,19 +13,12 @@ SF_API_URL = f"{BASE_URL}/images/generations"
 DS_ASYNC_URL = "https://dashscope.aliyuncs.com/api/v1/services/aigc/text2image/image-synthesis"
 DS_TASK_URL = "https://dashscope.aliyuncs.com/api/v1/tasks"
 
-
-def _get_model():
-    import config
-    return config.IMAGE_MODEL
-
-
-def _get_size():
-    import config
-    return config.IMAGE_SIZE
+MAX_RETRIES = 5
+RETRY_DELAYS = [5, 10, 20, 40, 60]
 
 
 def _sf_generate(prompt: str, model: str, size: str, seed: int | None = None) -> str:
-    """SiliconFlow image generation, returns image URL."""
+    """SiliconFlow image generation with retry."""
     headers = {
         "Authorization": f"Bearer {SILICONFLOW_API_KEY}",
         "Content-Type": "application/json",
@@ -43,24 +35,42 @@ def _sf_generate(prompt: str, model: str, size: str, seed: int | None = None) ->
     if seed is not None:
         payload["seed"] = seed
 
-    resp = httpx.post(SF_API_URL, json=payload, headers=headers, timeout=120)
-    resp.raise_for_status()
-    data = resp.json()
+    for attempt in range(MAX_RETRIES):
+        resp = httpx.post(SF_API_URL, json=payload, headers=headers, timeout=120)
 
-    images = data.get("images", [])
-    if not images or not images[0].get("url"):
-        raise ValueError(f"No image URL in response: {data}")
-    return images[0]["url"]
+        if resp.status_code == 429:
+            wait = RETRY_DELAYS[attempt] if attempt < len(RETRY_DELAYS) else 60
+            time.sleep(wait)
+            continue
+
+        if resp.status_code == 403:
+            data = resp.json()
+            code = data.get("code", "")
+            msg = data.get("message", "")
+            if "insufficient" in msg.lower() or code == 30001:
+                raise RuntimeError(
+                    "SiliconFlow balance insufficient! "
+                    "Top up at https://cloud.siliconflow.cn/account/balance"
+                )
+            raise RuntimeError(f"SiliconFlow 403: {msg}")
+
+        resp.raise_for_status()
+        data = resp.json()
+        images = data.get("images", [])
+        if not images or not images[0].get("url"):
+            raise ValueError(f"No image URL in response: {data}")
+        return images[0]["url"]
+
+    raise RuntimeError(f"Rate limited after {MAX_RETRIES} retries")
 
 
 def _ds_generate(prompt: str, model: str, size: str, seed: int | None = None) -> str:
-    """DashScope async image generation, returns image URL."""
+    """DashScope async image generation."""
     headers = {
         "Authorization": f"Bearer {DASHSCOPE_API_KEY}",
         "Content-Type": "application/json",
         "X-DashScope-Async": "enable",
     }
-    # DashScope uses * as size separator, convert x to *
     ds_size = size.replace("x", "*")
     payload: dict = {
         "model": model,
@@ -73,8 +83,9 @@ def _ds_generate(prompt: str, model: str, size: str, seed: int | None = None) ->
     if seed is not None:
         payload["parameters"]["seed"] = seed
 
-    # Step 1: submit task
     resp = httpx.post(DS_ASYNC_URL, json=payload, headers=headers, timeout=60)
+    if resp.status_code == 403:
+        raise RuntimeError("DashScope 403 - check API key at https://bailian.console.aliyun.com/")
     resp.raise_for_status()
     data = resp.json()
 
@@ -82,9 +93,8 @@ def _ds_generate(prompt: str, model: str, size: str, seed: int | None = None) ->
     if not task_id:
         raise ValueError(f"DashScope submit failed: {data}")
 
-    # Step 2: poll for result
     poll_headers = {"Authorization": f"Bearer {DASHSCOPE_API_KEY}"}
-    for _ in range(60):  # max 5 min
+    for _ in range(60):
         time.sleep(5)
         resp = httpx.get(f"{DS_TASK_URL}/{task_id}", headers=poll_headers, timeout=30)
         resp.raise_for_status()
@@ -98,15 +108,12 @@ def _ds_generate(prompt: str, model: str, size: str, seed: int | None = None) ->
             raise ValueError(f"DashScope succeeded but no URL: {data}")
         if status == "FAILED":
             raise ValueError(f"DashScope task failed: {data}")
-        # PENDING / RUNNING -> continue polling
 
     raise TimeoutError("DashScope task timed out")
 
 
-def generate_image(prompt: str, seed: int | None = None) -> str:
+def generate_image(prompt: str, model: str, size: str, seed: int | None = None) -> str:
     """Generate image, returns image URL."""
-    model = _get_model()
-    size = _get_size()
     if get_provider(model) == "dashscope":
         return _ds_generate(prompt, model, size, seed)
     return _sf_generate(prompt, model, size, seed)
@@ -123,9 +130,8 @@ def download_image(url: str, save_path: str) -> str:
     return save_path
 
 
-def generate_and_save(prompt: str, filename: str, seed: int | None = None) -> str:
-    """Generate an image and save it locally. Returns the local file path."""
-    image_url = generate_image(prompt, seed)
-    save_path = os.path.join(OUTPUT_DIR, filename)
+def generate_and_save(prompt: str, save_path: str, model: str, size: str, seed: int | None = None) -> str:
+    """Generate an image and save it to the given full path. Returns the local file path."""
+    image_url = generate_image(prompt, model, size, seed)
     download_image(image_url, save_path)
     return save_path
