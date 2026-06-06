@@ -47,6 +47,17 @@ class ConfigTests(unittest.TestCase):
 
 
 class StoryParserTests(unittest.TestCase):
+    def test_parse_llm_json_repairs_unescaped_dialogue_quotes(self):
+        malformed_json = (
+            '{"title":"月亮灯笼","scenes":[{"story_text":'
+            '"阿圆问奶奶："月亮是不是迷路了？"奶奶回答。"}]}'
+        )
+
+        result = story_parser.parse_llm_json(malformed_json)
+
+        self.assertEqual("月亮灯笼", result["title"])
+        self.assertIn("月亮是不是迷路了", result["scenes"][0]["story_text"])
+
     def test_scene_count_merges_short_sentences(self):
         story = "。".join(f"第{i}句话" for i in range(1, 23)) + "。"
 

@@ -1,0 +1,279 @@
+{
+  "title": "月亮灯笼",
+  "characters": [
+    {
+      "name": "阿圆",
+      "visual": "A 7-year-old girl with a round face, black hair in two small buns, wearing a red padded jacket and dark trousers, distinctive round bright eyes"
+    },
+    {
+      "name": "奶奶",
+      "visual": "An elderly woman with silver hair in a low bun, wearing a dark blue quilted coat, gentle wrinkled face, distinctive warm smile lines around her eyes"
+    },
+    {
+      "name": "小石头",
+      "visual": "A 6-year-old boy with a buzz cut, wearing a brown padded vest over a grey shirt, round cheeks, distinctive missing front tooth"
+    },
+    {
+      "name": "小莲",
+      "visual": "A 7-year-old girl with twin braids, wearing a pink floral padded jacket, delicate features, distinctive dimpled cheeks"
+    },
+    {
+      "name": "村里的孩子们",
+      "visual": "A group of 5 to 8-year-old village children in colorful winter padded clothing, various hairstyles, carrying diverse handmade lanterns"
+    }
+  ],
+  "style": "Watercolor and ink wash illustration, soft brushwork with delicate linework, muted warm palette with red and gold accents, gentle ambient lighting from lanterns and moonlight, traditional Jiangnan winter setting, suitable for ages 4-8",
+  "scenes": [
+    {
+      "scene_number": 1,
+      "story_text": "很久很久以前，江南有一个小村子。村子的东边有竹林，西边有荷塘，到了晚上，风吹过竹叶，会发出轻轻的沙沙声，像有人在给睡着的孩子唱歌。",
+      "characters_in_scene": [],
+      "shot": "Establishing wide shot, slightly elevated angle",
+      "visual_action": "Bamboo grove sways gently on the left, lotus pond reflects faint light on the right, soft wind rustles through bamboo leaves, small village houses with warm window lights nestled between",
+      "environment": "Jiangnan village with bamboo grove to the east, lotus pond to the west, small stone bridge over a stream, traditional whitewashed houses with dark tile roofs",
+      "composition": "Bamboo grove in foreground left, lotus pond in middle ground right, village houses in background, crescent moon visible in sky",
+      "lighting": "Soft moonlight, cool blue-silver tones, warm yellow window glows, tranquil evening atmosphere",
+      "prompt": "Watercolor and ink wash illustration, soft brushwork with delicate linework, muted warm palette with red and gold accents, gentle ambient lighting from lanterns and moonlight, traditional Jiangnan winter setting, suitable for ages 4-8. Establishing wide shot, slightly elevated angle. Bamboo grove sways gently on the left, lotus pond reflects faint light on the right, soft wind rustles through bamboo leaves, small village houses with warm window lights nestled between. Jiangnan village with bamboo grove to the east, lotus pond to the west, small stone bridge over a stream, traditional whitewashed houses with dark tile roofs. Bamboo grove in foreground left, lotus pond in middle ground right, village houses in background, crescent moon visible in sky. Soft moonlight, cool blue-silver tones, warm yellow window glows, tranquil evening atmosphere. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 2,
+      "story_text": "村里有个叫阿圆的小女孩。阿圆最喜欢听奶奶讲故事，也最喜欢看月亮。每到十五，月亮又大又圆，挂在天上，像一盏不灭的灯。",
+      "characters_in_scene": [
+        "阿圆",
+        "奶奶"
+      ],
+      "shot": "Medium shot, eye level",
+      "visual_action": "Grandma sits on a wooden stool telling a story with gesturing hands, 阿圆 sits beside her looking up at the large full moon with wonder, her face illuminated by moonlight",
+      "environment": "Courtyard of a traditional Jiangnan house, wooden stool, stone pavement, full moon in sky",
+      "composition": "Grandma on the left telling story, 阿圆 on the right looking up, large full moon dominant in upper portion",
+      "lighting": "Bright silver moonlight, warm ambient glow from nearby window, peaceful evening",
+      "prompt": "Watercolor and ink wash illustration, soft brushwork with delicate linework, muted warm palette with red and gold accents, gentle ambient lighting from lanterns and moonlight, traditional Jiangnan winter setting, suitable for ages 4-8. Medium shot, eye level. A 7-year-old girl with a round face, black hair in two small buns, wearing a red padded jacket and dark trousers, distinctive round bright eyes; An elderly woman with silver hair in a low bun, wearing a dark blue quilted coat, gentle wrinkled face, distinctive warm smile lines around her eyes. Grandma sits on a wooden stool telling a story with gesturing hands, 阿圆 sits beside her looking up at the large full moon with wonder, her face illuminated by moonlight. Courtyard of a traditional Jiangnan house, wooden stool, stone pavement, full moon in sky. Grandma on the left telling story, 阿圆 on the right looking up, large full moon dominant in upper portion. Bright silver moonlight, warm ambient glow from nearby window, peaceful evening. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 3,
+      "story_text": "可是有一年冬天，村子里下了很久的雪。厚厚的云遮住天空，月亮一连七天都没有出来。夜里黑得很，孩子们不敢一个人走路，连荷塘边的小石桥也像藏进了墨水里。",
+      "characters_in_scene": [],
+      "shot": "Wide shot, low angle looking up",
+      "visual_action": "Heavy snow falling, thick dark clouds covering the sky, no moon visible, the small stone bridge barely visible as a dark shape over black water, snow accumulating on surfaces",
+      "environment": "Snow-covered village, frozen lotus pond, small stone bridge, bare trees weighted with snow",
+      "composition": "Dark sky dominates upper two-thirds, snow-covered bridge in middle ground, frozen pond in foreground, everything in deep shadow",
+      "lighting": "Very dark, almost no light source, faint ambient glow from distant house windows muffled by snow, oppressive darkness",
+      "prompt": "Watercolor and ink wash illustration, soft brushwork with delicate linework, muted warm palette with red and gold accents, gentle ambient lighting from lanterns and moonlight, traditional Jiangnan winter setting, suitable for ages 4-8. Wide shot, low angle looking up. Heavy snow falling, thick dark clouds covering the sky, no moon visible, the small stone bridge barely visible as a dark shape over black water, snow accumulating on surfaces. Snow-covered village, frozen lotus pond, small stone bridge, bare trees weighted with snow. Dark sky dominates upper two-thirds, snow-covered bridge in middle ground, frozen pond in foreground, everything in deep shadow. Very dark, almost no light source, faint ambient glow from distant house windows muffled by snow, oppressive darkness. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 4,
+      "story_text": "阿圆问奶奶：「月亮是不是迷路了？」奶奶摸摸她的头，说：「月亮不会迷路。只是云太厚，它的光暂时照不到我们。」阿圆想了想，认真地说：「那我做一盏灯，帮月亮照一照路。」",
+      "characters_in_scene": [
+        "阿圆",
+        "奶奶"
+      ],
+      "shot": "Close-up, slightly low angle",
+      "visual_action": "Grandma gently pats 阿圆's head with a reassuring expression, 阿圆 looks up with determined bright eyes and clenched fists, speaking earnestly",
+      "environment": "Interior of traditional house, dim room with a small oil lamp on a wooden table, window showing dark snowy night outside",
+      "composition": "Grandma's hand on 阿圆's head in foreground, 阿圆's determined face as focal point, dark window in background",
+      "lighting": "Warm dim oil lamp light casting soft shadows, cold blue light from window, intimate interior",
+      "prompt": "Watercolor and ink wash illustration, soft brushwork with delicate linework, muted warm palette with red and gold accents, gentle ambient lighting from lanterns and moonlight, traditional Jiangnan winter setting, suitable for ages 4-8. Close-up, slightly low angle. A 7-year-old girl with a round face, black hair in two small buns, wearing a red padded jacket and dark trousers, distinctive round bright eyes; An elderly woman with silver hair in a low bun, wearing a dark blue quilted coat, gentle wrinkled face, distinctive warm smile lines around her eyes. Grandma gently pats 阿圆's head with a reassuring expression, 阿圆 looks up with determined bright eyes and clenched fists, speaking earnestly. Interior of traditional house, dim room with a small oil lamp on a wooden table, window showing dark snowy night outside. Grandma's hand on 阿圆's head in foreground, 阿圆's determined face as focal point, dark window in background. Warm dim oil lamp light casting soft shadows, cold blue light from window, intimate interior. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 5,
+      "story_text": "第二天，阿圆拿出一张红纸、一根细竹条和一点糯米浆。她跟着奶奶学，把竹条弯成圆圆的圈，再把红纸轻轻糊上去。她画了一只小兔子，又画了一朵祥云。",
+      "characters_in_scene": [
+        "阿圆",
+        "奶奶"
+      ],
+      "shot": "Over-the-shoulder shot from behind 阿圆",
+      "visual_action": "阿圆 bends a thin bamboo strip into a circle with concentrated effort, red paper and rice paste on the table, she paints a small rabbit and auspicious cloud on the paper with a brush, grandma watches and guides from beside",
+      "environment": "Interior room, wooden table with crafting materials — red paper, bamboo strips, bowl of rice paste, paintbrush, ink, snow visible through window",
+      "composition": "阿圆's hands and the half-made lantern in foreground, crafting materials spread on table in middle ground, grandma guiding in background",
+      "lighting": "Daytime interior, soft diffused winter light from window, warm and focused atmosphere",
+      "prompt": "Watercolor and ink wash illustration, soft brushwork with delicate linework, muted warm palette with red and gold accents, gentle ambient lighting from lanterns and moonlight, traditional Jiangnan winter setting, suitable for ages 4-8. Over-the-shoulder shot from behind 阿圆. A 7-year-old girl with a round face, black hair in two small buns, wearing a red padded jacket and dark trousers, distinctive round bright eyes; An elderly woman with silver hair in a low bun, wearing a dark blue quilted coat, gentle wrinkled face, distinctive warm smile lines around her eyes. 阿圆 bends a thin bamboo strip into a circle with concentrated effort, red paper and rice paste on the table, she paints a small rabbit and auspicious cloud on the paper with a brush, grandma watches and guides from beside. Interior room, wooden table with crafting materials — red paper, bamboo strips, bowl of rice paste, paintbrush, ink, snow visible through window. 阿圆's hands and the half-made lantern in foreground, crafting materials spread on table in middle ground, grandma guiding in background. Daytime interior, soft diffused winter light from window, warm and focused atmosphere. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 6,
+      "story_text": "最后，奶奶帮她点上一小截蜡烛。一盏小小的月亮灯笼做好了。",
+      "characters_in_scene": [
+        "阿圆",
+        "奶奶"
+      ],
+      "shot": "Close-up",
+      "visual_action": "Grandma carefully lights a small candle inside the lantern with a match, 阿圆 watches with wide delighted eyes as warm red glow illuminates her face, the completed round red lantern with painted rabbit and cloud glows from within",
+      "environment": "Interior room, the red paper lantern on the table, match and candle",
+      "composition": "The glowing lantern as central focal point, grandma's hand with match on the left, 阿圆's illuminated face on the right, red glow filling the frame",
+      "lighting": "Warm red-orange candlelight glowing through red paper, dramatic warm light on faces, dark background",
+      "prompt": "Watercolor and ink wash illustration, soft brushwork with delicate linework, muted warm palette with red and gold accents, gentle ambient lighting from lanterns and moonlight, traditional Jiangnan winter setting, suitable for ages 4-8. Close-up. A 7-year-old girl with a round face, black hair in two small buns, wearing a red padded jacket and dark trousers, distinctive round bright eyes; An elderly woman with silver hair in a low bun, wearing a dark blue quilted coat, gentle wrinkled face, distinctive warm smile lines around her eyes. Grandma carefully lights a small candle inside the lantern with a match, 阿圆 watches with wide delighted eyes as warm red glow illuminates her face, the completed round red lantern with painted rabbit and cloud glows from within. Interior room, the red paper lantern on the table, match and candle. The glowing lantern as central focal point, grandma's hand with match on the left, 阿圆's illuminated face on the right, red glow filling the frame. Warm red-orange candlelight glowing through red paper, dramatic warm light on faces, dark background. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 7,
+      "story_text": "天黑以后，阿圆提着灯笼走出家门。红红的光照亮她的鞋尖，也照亮门前的雪。",
+      "characters_in_scene": [
+        "阿圆"
+      ],
+      "shot": "Medium shot, low angle",
+      "visual_action": "阿圆 steps out of her doorway holding the red lantern by a stick at arm's length, the red glow illuminates her shoes and the snow at her feet, she looks ahead with brave anticipation",
+      "environment": "Village doorway with wooden door frame, snow-covered ground, dark snowy night, footprints in snow",
+      "composition": "阿圆 centered stepping forward, lantern held high casting red circle of light, dark snowy path ahead, doorway behind her",
+      "lighting": "Red lantern glow as primary light source creating a warm circle on snow, surrounding darkness, dramatic contrast",
+      "prompt": "Watercolor and ink wash illustration, soft brushwork with delicate linework, muted warm palette with red and gold accents, gentle ambient lighting from lanterns and moonlight, traditional Jiangnan winter setting, suitable for ages 4-8. Medium shot, low angle. A 7-year-old girl with a round face, black hair in two small buns, wearing a red padded jacket and dark trousers, distinctive round bright eyes. 阿圆 steps out of her doorway holding the red lantern by a stick at arm's length, the red glow illuminates her shoes and the snow at her feet, she looks ahead with brave anticipation. Village doorway with wooden door frame, snow-covered ground, dark snowy night, footprints in snow. 阿圆 centered stepping forward, lantern held high casting red circle of light, dark snowy path ahead, doorway behind her. Red lantern glow as primary light source creating a warm circle on snow, surrounding darkness, dramatic contrast. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 8,
+      "story_text": "隔壁的小石头看见了，也拿出自己做的蓝灯笼。荷塘边的小莲看见了，提来一盏画着鱼儿的灯笼。",
+      "characters_in_scene": [
+        "阿圆",
+        "小石头",
+        "小莲"
+      ],
+      "shot": "Wide shot, eye level",
+      "visual_action": "小石头 runs from a neighboring doorway holding up a blue lantern with a grin showing his missing tooth, 小莲 approaches from the direction of the frozen lotus pond carrying a lantern painted with fish, 阿圆 stands in the middle with her red lantern, all three children smile at each other",
+      "environment": "Snowy village path between houses, frozen lotus pond visible nearby, dark night with snow on ground",
+      "composition": "阿圆 with red lantern in center, 小石头 with blue lantern approaching from left, 小莲 with fish lantern approaching from right, three colored glows on snow",
+      "lighting": "Three distinct lantern glows — red, blue, and warm yellow from fish lantern — mixing on the snowy ground, dark surroundings",
+      "prompt": "Watercolor and ink wash illustration, soft brushwork with delicate linework, muted warm palette with red and gold accents, gentle ambient lighting from lanterns and moonlight, traditional Jiangnan winter setting, suitable for ages 4-8. Wide shot, eye level. A 7-year-old girl with a round face, black hair in two small buns, wearing a red padded jacket and dark trousers, distinctive round bright eyes; A 6-year-old boy with a buzz cut, wearing a brown padded vest over a grey shirt, round cheeks, distinctive missing front tooth; A 7-year-old girl with twin braids, wearing a pink floral padded jacket, delicate features, distinctive dimpled cheeks. 小石头 runs from a neighboring doorway holding up a blue lantern with a grin showing his missing tooth, 小莲 approaches from the direction of the frozen lotus pond carrying a lantern painted with fish, 阿圆 stands in the middle with her red lantern, all three children smile at each other. Snowy village path between houses, frozen lotus pond visible nearby, dark night with snow on ground. 阿圆 with red lantern in center, 小石头 with blue lantern approaching from left, 小莲 with fish lantern approaching from right, three colored glows on snow. Three distinct lantern glows — red, blue, and warm yellow from fish lantern — mixing on the snowy ground, dark surroundings. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 9,
+      "story_text": "不一会儿，村里的孩子们都来了。每个人手里都有一盏灯。有的像橘子，有的像莲花，有的像星星。大家排成一条弯弯的小队，从竹林走到石桥，又从石桥走到老槐树下。",
+      "characters_in_scene": [
+        "阿圆",
+        "小石头",
+        "小莲",
+        "村里的孩子们"
+      ],
+      "shot": "High angle wide shot",
+      "visual_action": "A winding procession of children carrying diverse lanterns walks through the village, 阿圆 leads at the front with her red moon lantern, children carry orange-shaped, lotus-shaped, and star-shaped lanterns, the line curves from bamboo grove past the stone bridge to the old locust tree",
+      "environment": "Snowy village path, bamboo grove, small stone bridge over frozen stream, old locust tree, snow-covered rooftops",
+      "composition": "Winding line of children from foreground-left curving to background-right, diverse lantern glows creating a colorful trail, village landscape framing the procession",
+      "lighting": "Multiple colored lantern glows creating a warm winding trail of light against dark snowy night, moonless dark sky",
+      "prompt": "Watercolor and ink wash illustration, soft brushwork with delicate linework, muted warm palette with red and gold accents, gentle ambient lighting from lanterns and moonlight, traditional Jiangnan winter setting, suitable for ages 4-8. High angle wide shot. A 7-year-old girl with a round face, black hair in two small buns, wearing a red padded jacket and dark trousers, distinctive round bright eyes; A 6-year-old boy with a buzz cut, wearing a brown padded vest over a grey shirt, round cheeks, distinctive missing front tooth; A 7-year-old girl with twin braids, wearing a pink floral padded jacket, delicate features, distinctive dimpled cheeks; A group of 5 to 8-year-old village children in colorful winter padded clothing, various hairstyles, carrying diverse handmade lanterns. A winding procession of children carrying diverse lanterns walks through the village, 阿圆 leads at the front with her red moon lantern, children carry orange-shaped, lotus-shaped, and star-shaped lanterns, the line curves from bamboo grove past the stone bridge to the old locust tree. Snowy village path, bamboo grove, small stone bridge over frozen stream, old locust tree, snow-covered rooftops. Winding line of children from foreground-left curving to background-right, diverse lantern glows creating a colorful trail, village landscape framing the procession. Multiple colored lantern glows creating a warm winding trail of light against dark snowy night, moonless dark sky. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 10,
+      "story_text": "阿圆抬头看天，大声说：「月亮，你看见了吗？我们在这里！」孩子们也一起喊：「月亮，你看见了吗？我们在这里！」",
+      "characters_in_scene": [
+        "阿圆",
+        "小石头",
+        "小莲",
+        "村里的孩子们"
+      ],
+      "shot": "Low angle looking up",
+      "visual_action": "阿圆 tilts her head back and shouts toward the dark cloudy sky with cupped hands, all the children around her also look up and shout with earnest hopeful faces, lanterns held high",
+      "environment": "Under the old locust tree, snow on ground, dark heavy clouds overhead, bare branches",
+      "composition": "Children in a group at bottom of frame looking up, their raised lanterns glowing, dark cloud-filled sky occupying upper two-thirds, sense of reaching upward",
+      "lighting": "Warm lantern glow from below illuminating children's upturned faces, dark oppressive sky above, dramatic uplighting",
+      "prompt": "Watercolor and ink wash illustration, soft brushwork with delicate linework, muted warm palette with red and gold accents, gentle ambient lighting from lanterns and moonlight, traditional Jiangnan winter setting, suitable for ages 4-8. Low angle looking up. A 7-year-old girl with a round face, black hair in two small buns, wearing a red padded jacket and dark trousers, distinctive round bright eyes; A 6-year-old boy with a buzz cut, wearing a brown padded vest over a grey shirt, round cheeks, distinctive missing front tooth; A 7-year-old girl with twin braids, wearing a pink floral padded jacket, delicate features, distinctive dimpled cheeks; A group of 5 to 8-year-old village children in colorful winter padded clothing, various hairstyles, carrying diverse handmade lanterns. 阿圆 tilts her head back and shouts toward the dark cloudy sky with cupped hands, all the children around her also look up and shout with earnest hopeful faces, lanterns held high. Under the old locust tree, snow on ground, dark heavy clouds overhead, bare branches. Children in a group at bottom of frame looking up, their raised lanterns glowing, dark cloud-filled sky occupying upper two-thirds, sense of reaching upward. Warm lantern glow from below illuminating children's upturned faces, dark oppressive sky above, dramatic uplighting. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 11,
+      "story_text": "他们的声音轻轻飘上天空。云层里，好像有什么动了一下。忽然，一阵风从竹林深处吹来。雪停了，云慢慢散开，一点银白色的光漏了出来。先是一小片，接着是一大片。",
+      "characters_in_scene": [
+        "阿圆",
+        "村里的孩子们"
+      ],
+      "shot": "Wide shot, tilted slightly upward",
+      "visual_action": "Wind sweeps through the bamboo grove rustling branches, clouds begin to part and break apart, a small sliver of silver-white light breaks through the cloud gap and expands, children below look up with awe, snow stops falling",
+      "environment": "Village with bamboo grove, parting clouds in sky, old locust tree, children gathered below",
+      "composition": "Breaking clouds with expanding moonlight beam in upper center, bamboo grove swaying on left, children looking up in lower portion, beam of light descending",
+      "lighting": "First silver moonbeam breaking through clouds creating dramatic shaft of light, warm lantern glow below, transition from dark to light",
+      "prompt": "Watercolor and ink wash illustration, soft brushwork with delicate linework, muted warm palette with red and gold accents, gentle ambient lighting from lanterns and moonlight, traditional Jiangnan winter setting, suitable for ages 4-8. Wide shot, tilted slightly upward. A 7-year-old girl with a round face, black hair in two small buns, wearing a red padded jacket and dark trousers, distinctive round bright eyes; A group of 5 to 8-year-old village children in colorful winter padded clothing, various hairstyles, carrying diverse handmade lanterns. Wind sweeps through the bamboo grove rustling branches, clouds begin to part and break apart, a small sliver of silver-white light breaks through the cloud gap and expands, children below look up with awe, snow stops falling. Village with bamboo grove, parting clouds in sky, old locust tree, children gathered below. Breaking clouds with expanding moonlight beam in upper center, bamboo grove swaying on left, children looking up in lower portion, beam of light descending. First silver moonbeam breaking through clouds creating dramatic shaft of light, warm lantern glow below, transition from dark to light. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 12,
+      "story_text": "最后，圆圆的月亮终于露出了脸。月光照在红灯笼上，红灯笼像开了花。月光照在蓝灯笼上，蓝灯笼像盛着一汪水。月光照在每个孩子的脸上，他们的眼睛都亮晶晶的。",
+      "characters_in_scene": [
+        "阿圆",
+        "小石头",
+        "小莲",
+        "村里的孩子们"
+      ],
+      "shot": "Medium wide shot",
+      "visual_action": "Full round moon shines brightly in the sky, moonlight falls on the red lantern making it glow like a blooming flower, moonlight on the blue lantern makes it shimmer like water, every child's face is lit up with sparkling bright eyes and joyful expressions",
+      "environment": "Village under full moonlight, snow-covered ground now silver-bright, old locust tree, diverse lanterns held by children",
+      "composition": "Large full moon at top center, children with glowing lanterns in middle ground, reflections on snow in foreground, harmonious moonlight and lantern light",
+      "lighting": "Bright silver moonlight flooding the scene, lanterns glowing with enhanced brilliance from combined light, sparkling eyes, magical luminous atmosphere",
+      "prompt": "Watercolor and ink wash illustration, soft brushwork with delicate linework, muted warm palette with red and gold accents, gentle ambient lighting from lanterns and moonlight, traditional Jiangnan winter setting, suitable for ages 4-8. Medium wide shot. A 7-year-old girl with a round face, black hair in two small buns, wearing a red padded jacket and dark trousers, distinctive round bright eyes; A 6-year-old boy with a buzz cut, wearing a brown padded vest over a grey shirt, round cheeks, distinctive missing front tooth; A 7-year-old girl with twin braids, wearing a pink floral padded jacket, delicate features, distinctive dimpled cheeks; A group of 5 to 8-year-old village children in colorful winter padded clothing, various hairstyles, carrying diverse handmade lanterns. Full round moon shines brightly in the sky, moonlight falls on the red lantern making it glow like a blooming flower, moonlight on the blue lantern makes it shimmer like water, every child's face is lit up with sparkling bright eyes and joyful expressions. Village under full moonlight, snow-covered ground now silver-bright, old locust tree, diverse lanterns held by children. Large full moon at top center, children with glowing lanterns in middle ground, reflections on snow in foreground, harmonious moonlight and lantern light. Bright silver moonlight flooding the scene, lanterns glowing with enhanced brilliance from combined light, sparkling eyes, magical luminous atmosphere. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 13,
+      "story_text": "小石头高兴地说：「是我们把月亮叫回来了！」奶奶站在门口，笑着说：「也许不是你们叫回了月亮，而是你们在没有月亮的时候，自己先点亮了夜晚。」",
+      "characters_in_scene": [
+        "小石头",
+        "奶奶"
+      ],
+      "shot": "Medium shot",
+      "visual_action": "小石头 jumps with excitement and points at the moon with a wide grin showing his missing tooth, 奶奶 stands at her doorway with arms folded and a gentle knowing smile, looking at the children with warmth",
+      "environment": "Village doorway, moonlit snowy night, other children visible in background with lanterns",
+      "composition": "小石头 in foreground left jumping excitedly, 奶奶 in middle ground right at doorway smiling, moonlit village scene in background",
+      "lighting": "Bright moonlight illuminating the scene, warm doorway light behind 奶奶, joyful bright atmosphere",
+      "prompt": "Watercolor and ink wash illustration, soft brushwork with delicate linework, muted warm palette with red and gold accents, gentle ambient lighting from lanterns and moonlight, traditional Jiangnan winter setting, suitable for ages 4-8. Medium shot. A 6-year-old boy with a buzz cut, wearing a brown padded vest over a grey shirt, round cheeks, distinctive missing front tooth; An elderly woman with silver hair in a low bun, wearing a dark blue quilted coat, gentle wrinkled face, distinctive warm smile lines around her eyes. 小石头 jumps with excitement and points at the moon with a wide grin showing his missing tooth, 奶奶 stands at her doorway with arms folded and a gentle knowing smile, looking at the children with warmth. Village doorway, moonlit snowy night, other children visible in background with lanterns. 小石头 in foreground left jumping excitedly, 奶奶 in middle ground right at doorway smiling, moonlit village scene in background. Bright moonlight illuminating the scene, warm doorway light behind 奶奶, joyful bright atmosphere. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 14,
+      "story_text": "阿圆听懂了一点点。她把灯笼举得更高，觉得手里的光虽然小，却很暖。",
+      "characters_in_scene": [
+        "阿圆"
+      ],
+      "shot": "Close-up, slightly low angle",
+      "visual_action": "阿圆 raises her red moon lantern high above her head with both hands, her face shows a quiet thoughtful smile with understanding dawning in her eyes, the small warm glow of the lantern illuminates her face from below",
+      "environment": "Snowy village ground, moonlit night, other children and their lanterns softly blurred in background",
+      "composition": "阿圆 centered, arms extended upward holding lantern high, lantern glow as focal point, her thoughtful face below, moon visible above",
+      "lighting": "Combined warm red lantern glow from below and cool silver moonlight from above on her face, intimate and warm",
+      "prompt": "Watercolor and ink wash illustration, soft brushwork with delicate linework, muted warm palette with red and gold accents, gentle ambient lighting from lanterns and moonlight, traditional Jiangnan winter setting, suitable for ages 4-8. Close-up, slightly low angle. A 7-year-old girl with a round face, black hair in two small buns, wearing a red padded jacket and dark trousers, distinctive round bright eyes. 阿圆 raises her red moon lantern high above her head with both hands, her face shows a quiet thoughtful smile with understanding dawning in her eyes, the small warm glow of the lantern illuminates her face from below. Snowy village ground, moonlit night, other children and their lanterns softly blurred in background. 阿圆 centered, arms extended upward holding lantern high, lantern glow as focal point, her thoughtful face below, moon visible above. Combined warm red lantern glow from below and cool silver moonlight from above on her face, intimate and warm. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 15,
+      "story_text": "从那以后，每到冬天云厚的夜晚，村里的孩子都会提着灯笼出来走一走。他们不再害怕黑夜，因为他们知道，月亮有时会被云遮住，但光可以从自己的手里开始。",
+      "characters_in_scene": [
+        "阿圆",
+        "小石头",
+        "小莲",
+        "村里的孩子们"
+      ],
+      "shot": "Wide establishing shot, elevated angle",
+      "visual_action": "Children walk confidently through the village on another cloudy winter night, 阿圆 leads with her red lantern, other children follow with their colorful lanterns, all smiling and unafraid, the lantern trail winds through the village",
+      "environment": "Winter village at night, snow on ground, thick clouds partially covering the moon, familiar paths between houses, bamboo grove and stone bridge visible",
+      "composition": "Procession of children with glowing lanterns winding through village, familiar landmarks visible, sense of routine and comfort, aerial perspective",
+      "lighting": "Warm colorful lantern glows creating a cheerful trail, dim moonlight filtering through clouds, cozy and brave atmosphere",
+      "prompt": "Watercolor and ink wash illustration, soft brushwork with delicate linework, muted warm palette with red and gold accents, gentle ambient lighting from lanterns and moonlight, traditional Jiangnan winter setting, suitable for ages 4-8. Wide establishing shot, elevated angle. A 7-year-old girl with a round face, black hair in two small buns, wearing a red padded jacket and dark trousers, distinctive round bright eyes; A 6-year-old boy with a buzz cut, wearing a brown padded vest over a grey shirt, round cheeks, distinctive missing front tooth; A 7-year-old girl with twin braids, wearing a pink floral padded jacket, delicate features, distinctive dimpled cheeks; A group of 5 to 8-year-old village children in colorful winter padded clothing, various hairstyles, carrying diverse handmade lanterns. Children walk confidently through the village on another cloudy winter night, 阿圆 leads with her red lantern, other children follow with their colorful lanterns, all smiling and unafraid, the lantern trail winds through the village. Winter village at night, snow on ground, thick clouds partially covering the moon, familiar paths between houses, bamboo grove and stone bridge visible. Procession of children with glowing lanterns winding through village, familiar landmarks visible, sense of routine and comfort, aerial perspective. Warm colorful lantern glows creating a cheerful trail, dim moonlight filtering through clouds, cozy and brave atmosphere. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 16,
+      "story_text": "夜深了，阿圆回到床上。奶奶替她盖好被子，轻声问：「今天还怕黑吗？」",
+      "characters_in_scene": [
+        "阿圆",
+        "奶奶"
+      ],
+      "shot": "Medium shot, eye level",
+      "visual_action": "阿圆 lies in bed tucked under a colorful quilt, 奶奶 leans over her pulling the quilt up to her shoulders with tender care, 奶奶's face shows gentle concern as she speaks softly, the unlit moon lantern rests on a small table nearby",
+      "environment": "Traditional bedroom, wooden bed with colorful quilt, small table with the moon lantern, window with moonlight streaming in, snow visible outside",
+      "composition": "阿圆 in bed in center, 奶奶 leaning over from right, lantern on table to the left, moonlit window in background",
+      "lighting": "Soft silver moonlight through window, warm dim interior, peaceful and intimate",
+      "prompt": "Watercolor and ink wash illustration, soft brushwork with delicate linework, muted warm palette with red and gold accents, gentle ambient lighting from lanterns and moonlight, traditional Jiangnan winter setting, suitable for ages 4-8. Medium shot, eye level. A 7-year-old girl with a round face, black hair in two small buns, wearing a red padded jacket and dark trousers, distinctive round bright eyes; An elderly woman with silver hair in a low bun, wearing a dark blue quilted coat, gentle wrinkled face, distinctive warm smile lines around her eyes. 阿圆 lies in bed tucked under a colorful quilt, 奶奶 leans over her pulling the quilt up to her shoulders with tender care, 奶奶's face shows gentle concern as she speaks softly, the unlit moon lantern rests on a small table nearby. Traditional bedroom, wooden bed with colorful quilt, small table with the moon lantern, window with moonlight streaming in, snow visible outside. 阿圆 in bed in center, 奶奶 leaning over from right, lantern on table to the left, moonlit window in background. Soft silver moonlight through window, warm dim interior, peaceful and intimate. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 17,
+      "story_text": "阿圆摇摇头，闭上眼睛说：「不怕。我的灯笼睡着了，月亮还醒着呢。」窗外，月光落在雪地上，安安静静，像一床给大地盖好的银被子。",
+      "characters_in_scene": [
+        "阿圆"
+      ],
+      "shot": "Close-up to wide transition",
+      "visual_action": "阿圆 shakes her head gently with closed eyes and a serene smile, the view expands to the window showing moonlight blanketing the snow-covered village landscape like a silver quilt, everything still and peaceful",
+      "environment": "Bedroom interior with sleeping 阿圆, window view of moonlit snowy village, rooftops and trees under silver light",
+      "composition": "阿圆's peaceful sleeping face on left side, large window view of silver moonlit snowscape dominating right side and background",
+      "lighting": "Soft silver moonlight, quiet and serene, the world bathed in gentle silver, peaceful night",
+      "prompt": "Watercolor and ink wash illustration, soft brushwork with delicate linework, muted warm palette with red and gold accents, gentle ambient lighting from lanterns and moonlight, traditional Jiangnan winter setting, suitable for ages 4-8. Close-up to wide transition. A 7-year-old girl with a round face, black hair in two small buns, wearing a red padded jacket and dark trousers, distinctive round bright eyes. 阿圆 shakes her head gently with closed eyes and a serene smile, the view expands to the window showing moonlight blanketing the snow-covered village landscape like a silver quilt, everything still and peaceful. Bedroom interior with sleeping 阿圆, window view of moonlit snowy village, rooftops and trees under silver light. 阿圆's peaceful sleeping face on left side, large window view of silver moonlit snowscape dominating right side and background. Soft silver moonlight, quiet and serene, the world bathed in gentle silver, peaceful night. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 18,
+      "story_text": "阿圆很快睡着了。她梦见自己提着月亮灯笼，走过竹林、荷塘和小石桥。天上的月亮跟着她，慢慢地、温柔地，把整个村子照得亮亮的。",
+      "characters_in_scene": [
+        "阿圆"
+      ],
+      "shot": "Wide dreamy shot, slightly elevated angle",
+      "visual_action": "阿圆 walks through a dreamlike village holding her glowing red moon lantern, the enormous moon in the sky follows her movement casting gentle silver light over everything, she walks past bamboo grove, lotus pond, and stone bridge with a peaceful happy expression, the entire village softly illuminated",
+      "environment": "Dreamlike Jiangnan village, bamboo grove, lotus pond, small stone bridge, traditional houses, all rendered with ethereal soft quality, oversized moon in sky",
+      "composition": "阿圆 walking along a path from foreground to background, moon above following her, village landmarks along the path, dreamy soft edges and floating quality",
+      "lighting": "Ethereal combined silver moonlight and warm red lantern glow, soft dreamy quality, everything gently luminous, magical and peaceful",
+      "prompt": "Watercolor and ink wash illustration, soft brushwork with delicate linework, muted warm palette with red and gold accents, gentle ambient lighting from lanterns and moonlight, traditional Jiangnan winter setting, suitable for ages 4-8. Wide dreamy shot, slightly elevated angle. A 7-year-old girl with a round face, black hair in two small buns, wearing a red padded jacket and dark trousers, distinctive round bright eyes. 阿圆 walks through a dreamlike village holding her glowing red moon lantern, the enormous moon in the sky follows her movement casting gentle silver light over everything, she walks past bamboo grove, lotus pond, and stone bridge with a peaceful happy expression, the entire village softly illuminated. Dreamlike Jiangnan village, bamboo grove, lotus pond, small stone bridge, traditional houses, all rendered with ethereal soft quality, oversized moon in sky. 阿圆 walking along a path from foreground to background, moon above following her, village landmarks along the path, dreamy soft edges and floating quality. Ethereal combined silver moonlight and warm red lantern glow, soft dreamy quality, everything gently luminous, magical and peaceful. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 import json
 import re
+from json_repair import repair_json
 from openai import OpenAI
 from config import get_llm_client_config
 
@@ -25,6 +26,8 @@ SYSTEM_PROMPT = """You are a fairy tale illustration assistant. Your job is to:
 - Vary shot types deliberately across scenes: establishing shot, wide shot, medium shot, close-up, over-the-shoulder, low angle, or high angle
 - Preserve important state from the previous scene, such as disguise, carried objects, weather, damage, or time of day
 - Exclude typography, signs, labels, captions, letters, logos, watermarks, and speech bubbles
+- The response must be valid JSON. Never place an unescaped ASCII double quote inside a JSON string
+- In Chinese story_text, replace dialogue quotation marks with Chinese corner quotes 「」 instead of ASCII double quotes
 
 You MUST respond in the following JSON format only, no other text:
 {
@@ -54,6 +57,29 @@ NO_TEXT_RULE = (
     "clean illustration with no typography, no signs, no labels, no captions, "
     "no letters, no logos, no watermark, no speech bubbles"
 )
+
+
+def parse_llm_json(content: str) -> dict:
+    """解析 LLM JSON；标准解析失败时修复常见的引号、逗号和截断问题。"""
+    try:
+        result = json.loads(content)
+    except json.JSONDecodeError as original_error:
+        try:
+            repaired_content = repair_json(content)
+            result = json.loads(repaired_content)
+        except (json.JSONDecodeError, ValueError, TypeError) as repair_error:
+            raise ValueError(
+                f"Failed to parse or repair LLM response as JSON:\n{content}"
+            ) from repair_error
+
+        if not isinstance(result, dict):
+            raise ValueError(
+                f"Repaired LLM response is not a JSON object:\n{content}"
+            ) from original_error
+
+    if not isinstance(result, dict):
+        raise ValueError(f"LLM response must be a JSON object:\n{content}")
+    return result
 
 
 def estimate_scene_count(story_text: str) -> int:
@@ -100,10 +126,7 @@ def parse_story(story_text: str) -> dict:
     elif "```" in content:
         content = content.split("```")[1].split("```")[0].strip()
 
-    try:
-        result = json.loads(content)
-    except json.JSONDecodeError as e:
-        raise ValueError(f"Failed to parse LLM response as JSON:\n{content}") from e
+    result = parse_llm_json(content)
 
     if not isinstance(result.get("scenes"), list) or not result["scenes"]:
         raise ValueError(f"LLM response missing 'scenes': {content}")
