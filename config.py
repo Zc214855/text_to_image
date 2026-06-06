@@ -192,6 +192,21 @@ ARK_MODELS = {
         "price": "约 ¥0.22/张，以方舟控制台为准",
         "summary": "当前默认模型。提示词理解、细节和多主体构图较强；官方还支持参考图与组图，本工具当前使用文生单图。",
     },
+    "doubao-seedream-4-0-250828": {
+        "label": "Seedream 4.0（1K 预览）· 火山方舟",
+        "provider": "volcengine",
+        "image_sizes": [
+            "1024x1024",
+            "1152x864",
+            "864x1152",
+            "1312x736",
+            "736x1312",
+            "1248x832",
+            "832x1248",
+        ],
+        "price": "约 ¥0.20/张，以方舟控制台为准",
+        "summary": "支持 1K 输出，适合低分辨率预览和构图确认；质量与提示词理解弱于 Seedream 5.0 Lite。",
+    },
 }
 
 ALL_MODELS = {**SF_MODELS, **DS_MODELS, **ARK_MODELS}

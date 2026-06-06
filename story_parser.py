@@ -92,9 +92,12 @@ def estimate_scene_count(story_text: str) -> int:
     return max(4, min(18, round((len(sentences) or 1) * 0.65)))
 
 
-def parse_story(story_text: str) -> dict:
+def parse_story(
+    story_text: str,
+    llm_client_config: tuple[str, str, str] | None = None,
+) -> dict:
     """Use LLM to split story into scenes and generate image prompts."""
-    base_url, api_key, model = get_llm_client_config()
+    base_url, api_key, model = llm_client_config or get_llm_client_config()
     client = OpenAI(api_key=api_key, base_url=base_url)
 
     # 以完整句子和动作节拍估算，避免按字符数机械切出叙事碎片。

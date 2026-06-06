@@ -22,6 +22,10 @@ NEGATIVE_PROMPT = (
 )
 
 
+class ImageDownloadError(RuntimeError):
+    """图片已生成，但下载阶段失败；禁止重新提交付费生图请求。"""
+
+
 def _get_model():
     import config
     return config.IMAGE_MODEL
@@ -123,11 +127,15 @@ def _ark_generate(prompt: str, model: str, size: str) -> str:
         "prompt": prompt,
         "size": size,
         "response_format": "url",
-        "output_format": "png",
         "watermark": False,
         "sequential_image_generation": "disabled",
         "optimize_prompt_options": {"mode": "standard"},
     }
+    if model in {
+        "doubao-seedream-5-0-260128",
+        "doubao-seedream-4-0-250828",
+    }:
+        payload["output_format"] = "png"
     resp = httpx.post(ARK_IMAGE_URL, json=payload, headers=headers, timeout=180)
     resp.raise_for_status()
     data = resp.json()
@@ -137,10 +145,15 @@ def _ark_generate(prompt: str, model: str, size: str) -> str:
     return images[0]["url"]
 
 
-def generate_image(prompt: str, seed: int | None = None) -> str:
+def generate_image(
+    prompt: str,
+    seed: int | None = None,
+    model: str | None = None,
+    size: str | None = None,
+) -> str:
     """Generate image, returns image URL."""
-    model = _get_model()
-    size = _get_size()
+    model = model or _get_model()
+    size = size or _get_size()
     provider = get_provider(model)
     if provider == "dashscope":
         return _ds_generate(prompt, model, size, seed)
@@ -172,9 +185,20 @@ def generate_and_save(
     filename: str,
     seed: int | None = None,
     output_dir: str | None = None,
+    model: str | None = None,
+    size: str | None = None,
+    download_retries: int = 2,
+    sleep_fn=time.sleep,
 ) -> str:
     """Generate an image and save it locally. Returns the local file path."""
-    image_url = generate_image(prompt, seed)
+    image_url = generate_image(prompt, seed, model=model, size=size)
     save_path = os.path.join(output_dir or OUTPUT_DIR, filename)
-    download_image(image_url, save_path)
-    return save_path
+    for attempt in range(download_retries + 1):
+        try:
+            return download_image(image_url, save_path)
+        except (httpx.TransportError, httpx.HTTPStatusError, ValueError) as error:
+            if attempt == download_retries:
+                raise ImageDownloadError(
+                    f"图片已生成但下载失败：{error}（尝试 {attempt + 1}/{download_retries + 1} 次）"
+                ) from error
+            sleep_fn(2 ** attempt)

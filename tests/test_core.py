@@ -5,8 +5,12 @@ import unittest
 from types import SimpleNamespace
 from unittest.mock import Mock, patch
 
+import httpx
+
 import config
 import image_generator
+import generation_tasks
+import main
 import output_manager
 import story_parser
 
@@ -167,6 +171,20 @@ class ImageGeneratorTests(unittest.TestCase):
         self.assertEqual("png", payload["output_format"])
         self.assertEqual("disabled", payload["sequential_image_generation"])
 
+    def test_ark_seedream_4_requests_png_output(self):
+        response = Mock()
+        response.json.return_value = {"data": [{"url": "https://example.test/a.png"}]}
+        response.raise_for_status.return_value = None
+
+        with patch.object(image_generator.httpx, "post", return_value=response) as post:
+            image_generator._ark_generate(
+                "test prompt",
+                "doubao-seedream-4-0-250828",
+                "864x1152",
+            )
+
+        self.assertEqual("png", post.call_args.kwargs["json"]["output_format"])
+
     def test_download_image_rejects_non_image_response(self):
         response = Mock()
         response.headers = {"content-type": "application/json"}
@@ -211,6 +229,36 @@ class ImageGeneratorTests(unittest.TestCase):
             expected_path,
         )
 
+    def test_download_retry_does_not_regenerate_image(self):
+        with (
+            tempfile.TemporaryDirectory() as directory,
+            patch.object(
+                image_generator,
+                "generate_image",
+                return_value="https://example.test/scene.png",
+            ) as generate,
+            patch.object(
+                image_generator,
+                "download_image",
+                side_effect=[
+                    httpx.ReadTimeout("download timeout"),
+                    os.path.join(directory, "scene.png"),
+                ],
+            ) as download,
+        ):
+            result = image_generator.generate_and_save(
+                "prompt",
+                "scene.png",
+                output_dir=directory,
+                model="Kwai-Kolors/Kolors",
+                size="1024x1024",
+                sleep_fn=lambda _: None,
+            )
+
+        self.assertEqual(os.path.join(directory, "scene.png"), result)
+        self.assertEqual(1, generate.call_count)
+        self.assertEqual(2, download.call_count)
+
 
 class OutputManagerTests(unittest.TestCase):
     def test_sanitize_story_title_replaces_windows_invalid_characters(self):
@@ -230,6 +278,230 @@ class OutputManagerTests(unittest.TestCase):
 
         self.assertEqual("小红帽", os.path.basename(first))
         self.assertEqual("小红帽_2", os.path.basename(second))
+
+
+class GenerationTaskTests(unittest.TestCase):
+    def test_find_latest_failed_task(self):
+        with tempfile.TemporaryDirectory() as directory:
+            first = os.path.join(directory, "故事一")
+            second = os.path.join(directory, "故事二")
+            os.makedirs(first)
+            os.makedirs(second)
+            generation_tasks.save_task(
+                first,
+                {
+                    "status": "partial",
+                    "scene_count": 1,
+                    "successful_scenes": [],
+                    "failed_scenes": [{"scene_number": 1, "error": "timeout"}],
+                },
+            )
+            generation_tasks.save_task(
+                second,
+                {
+                    "status": "completed",
+                    "scene_count": 0,
+                    "successful_scenes": [],
+                    "failed_scenes": [],
+                },
+            )
+
+            latest = generation_tasks.find_latest_failed_task(directory)
+
+        self.assertEqual(first, latest)
+
+    def test_find_latest_failed_task_includes_interrupted_task(self):
+        with tempfile.TemporaryDirectory() as directory:
+            task_dir = os.path.join(directory, "中断任务")
+            os.makedirs(task_dir)
+            generation_tasks.save_task(
+                task_dir,
+                {
+                    "status": "running",
+                    "scene_count": 3,
+                    "successful_scenes": [1],
+                    "failed_scenes": [],
+                    "image_extension": ".png",
+                },
+            )
+            with open(os.path.join(task_dir, "scene_01.png"), "wb") as file:
+                file.write(b"image")
+
+            latest = generation_tasks.find_latest_failed_task(directory)
+
+        self.assertEqual(task_dir, latest)
+
+
+class ImageRetryWorkflowTests(unittest.TestCase):
+    def test_rejected_server_request_is_retried_until_success(self):
+        request = httpx.Request("POST", "https://example.test")
+        server_error = httpx.HTTPStatusError(
+            "service unavailable",
+            request=request,
+            response=httpx.Response(503, request=request),
+        )
+        with patch.object(
+            main,
+            "generate_and_save",
+            side_effect=[
+                server_error,
+                server_error,
+                "scene.png",
+            ],
+        ) as generate:
+            path, attempts = main.generate_scene_with_retry(
+                "prompt",
+                "scene.png",
+                "output",
+                "Kwai-Kolors/Kolors",
+                "1024x1024",
+                sleep_fn=lambda _: None,
+            )
+
+        self.assertEqual("scene.png", path)
+        self.assertEqual(3, attempts)
+        self.assertEqual(3, generate.call_count)
+
+    def test_transport_timeout_is_not_resubmitted(self):
+        with patch.object(
+            main,
+            "generate_and_save",
+            side_effect=httpx.ReadTimeout("response timeout"),
+        ) as generate:
+            with self.assertRaisesRegex(RuntimeError, "尝试 1/3"):
+                main.generate_scene_with_retry(
+                    "prompt",
+                    "scene.png",
+                    "output",
+                    "Kwai-Kolors/Kolors",
+                    "1024x1024",
+                    sleep_fn=lambda _: None,
+                )
+
+        self.assertEqual(1, generate.call_count)
+
+    def test_generation_uses_explicit_model_and_size(self):
+        observed = {}
+
+        def fake_generate(*args, **kwargs):
+            observed.update(kwargs)
+            return "scene.png"
+
+        with (
+            patch.object(config, "IMAGE_MODEL", "doubao-seedream-5-0-260128"),
+            patch.object(config, "IMAGE_SIZE", "1728x2304"),
+            patch.object(main, "generate_and_save", side_effect=fake_generate),
+        ):
+            main.generate_scene_with_retry(
+                "prompt",
+                "scene.png",
+                "output",
+                "Kwai-Kolors/Kolors",
+                "1024x1024",
+            )
+
+        self.assertEqual("Kwai-Kolors/Kolors", observed["model"])
+        self.assertEqual("1024x1024", observed["size"])
+
+    def test_permanent_http_error_is_not_retried(self):
+        request = httpx.Request("POST", "https://example.test")
+        response = httpx.Response(400, request=request)
+        error = httpx.HTTPStatusError(
+            "bad request",
+            request=request,
+            response=response,
+        )
+
+        with patch.object(main, "generate_and_save", side_effect=error) as generate:
+            with self.assertRaisesRegex(RuntimeError, "尝试 1/3"):
+                main.generate_scene_with_retry(
+                    "prompt",
+                    "scene.png",
+                    "output",
+                    "Kwai-Kolors/Kolors",
+                    "1024x1024",
+                    sleep_fn=lambda _: None,
+                )
+
+        self.assertEqual(1, generate.call_count)
+
+    def test_retry_failed_images_uses_saved_prompts_without_llm(self):
+        with tempfile.TemporaryDirectory() as task_dir:
+            prompts = {
+                "scenes": [
+                    {"scene_number": 1, "prompt": "scene one"},
+                    {"scene_number": 2, "prompt": "scene two"},
+                ]
+            }
+            with open(
+                os.path.join(task_dir, "prompts.json"),
+                "w",
+                encoding="utf-8",
+            ) as file:
+                json.dump(prompts, file)
+            with open(os.path.join(task_dir, "scene_01.png"), "wb") as file:
+                file.write(b"image")
+            generation_tasks.save_task(
+                task_dir,
+                {
+                    "title": "测试",
+                    "image_model": "Kwai-Kolors/Kolors",
+                    "image_size": "1024x1024",
+                    "image_extension": ".png",
+                    "scene_count": 2,
+                    "successful_scenes": [1],
+                    "failed_scenes": [
+                        {"scene_number": 2, "error": "timeout"}
+                    ],
+                    "status": "partial",
+                },
+            )
+
+            def fake_generate(
+                prompt,
+                filename,
+                output_dir,
+                image_model,
+                image_size,
+            ):
+                self.assertEqual("Kwai-Kolors/Kolors", image_model)
+                self.assertEqual("1024x1024", image_size)
+                path = os.path.join(output_dir, filename)
+                with open(path, "wb") as file:
+                    file.write(b"image")
+                return path, 1
+
+            with (
+                patch.object(main, "generate_scene_with_retry", side_effect=fake_generate),
+                patch.object(main, "parse_story") as parse_story,
+            ):
+                results = list(
+                    main.retry_failed_images(
+                        task_dir,
+                        progress=lambda *args, **kwargs: None,
+                    )
+                )
+
+            task = generation_tasks.load_task(task_dir)
+
+        self.assertEqual(1, len(results))
+        self.assertIn("未调用 LLM", results[0][0])
+        self.assertEqual("completed", task["status"])
+        self.assertEqual([1, 2], task["successful_scenes"])
+        self.assertEqual([], task["failed_scenes"])
+        parse_story.assert_not_called()
+
+    def test_retry_refuses_task_that_is_currently_running(self):
+        with tempfile.TemporaryDirectory() as task_dir:
+            with generation_tasks.task_execution_lock(task_dir):
+                results = list(
+                    main.retry_failed_images(
+                        task_dir,
+                        progress=lambda *args, **kwargs: None,
+                    )
+                )
+
+        self.assertIn("正在生成图片", results[0][0])
 
 
 if __name__ == "__main__":
