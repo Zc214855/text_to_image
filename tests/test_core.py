@@ -1,7 +1,9 @@
+import gc
 import json
 import os
 import tempfile
 import unittest
+import warnings
 from types import SimpleNamespace
 from unittest.mock import Mock, patch
 
@@ -333,6 +335,54 @@ class GenerationTaskTests(unittest.TestCase):
 
 
 class ImageRetryWorkflowTests(unittest.TestCase):
+    def test_generation_button_updates_only_change_interactive_state(self):
+        disabled = main.set_generation_buttons_enabled(False)
+        enabled = main.set_generation_buttons_enabled(True)
+
+        self.assertEqual(
+            (
+                {"interactive": False, "__type__": "update"},
+                {"interactive": False, "__type__": "update"},
+            ),
+            disabled,
+        )
+        self.assertEqual(
+            (
+                {"interactive": True, "__type__": "update"},
+                {"interactive": True, "__type__": "update"},
+            ),
+            enabled,
+        )
+
+    def test_generate_and_retry_restore_buttons_after_completion(self):
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", ResourceWarning)
+            app = main.build_ui()
+            try:
+                for target in (main.generate, main.retry_failed_images):
+                    event_id, event = next(
+                        (event_id, event)
+                        for event_id, event in app.fns.items()
+                        if event.fn is target
+                    )
+                    disable_event = app.fns[event.trigger_after]
+                    restore_events = [
+                        candidate
+                        for candidate in app.fns.values()
+                        if candidate.trigger_after == event_id
+                    ]
+
+                    self.assertFalse(disable_event.queue)
+                    self.assertEqual(1, event.concurrency_limit)
+                    self.assertEqual("image-generation", event.concurrency_id)
+                    self.assertEqual(1, len(restore_events))
+                    self.assertFalse(restore_events[0].queue)
+                    self.assertFalse(restore_events[0].trigger_only_on_success)
+            finally:
+                app.close()
+                del app
+                gc.collect()
+
     def test_rejected_server_request_is_retried_until_success(self):
         request = httpx.Request("POST", "https://example.test")
         server_error = httpx.HTTPStatusError(

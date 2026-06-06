@@ -103,6 +103,14 @@ def build_generation_summary(task, task_dir):
     return "\n".join(lines)
 
 
+def set_generation_buttons_enabled(enabled):
+    """同步切换生成与重试按钮，防止长任务执行期间重复排队。"""
+    return (
+        gr.update(interactive=enabled),
+        gr.update(interactive=enabled),
+    )
+
+
 def check_llm_status(provider=None):
     """检测 LLM 服务是否可用，返回状态文本"""
     provider = provider or config.LLM_PROVIDER
@@ -510,19 +518,42 @@ def build_ui():
                     object_fit="contain",
                 )
 
-        generate_btn.click(
+        generate_event = generate_btn.click(
+            fn=lambda: set_generation_buttons_enabled(False),
+            outputs=[generate_btn, retry_btn],
+            queue=False,
+            show_progress="hidden",
+        ).then(
             fn=generate,
             inputs=[story_input, llm_dropdown, model_dropdown, size_dropdown],
             outputs=[result_text, gallery, current_task_dir],
             concurrency_limit=1,
             concurrency_id="image-generation",
         )
-        retry_btn.click(
+        generate_event.then(
+            fn=lambda: set_generation_buttons_enabled(True),
+            outputs=[generate_btn, retry_btn],
+            queue=False,
+            show_progress="hidden",
+        )
+
+        retry_event = retry_btn.click(
+            fn=lambda: set_generation_buttons_enabled(False),
+            outputs=[generate_btn, retry_btn],
+            queue=False,
+            show_progress="hidden",
+        ).then(
             fn=retry_failed_images,
             inputs=[current_task_dir],
             outputs=[result_text, gallery, current_task_dir],
             concurrency_limit=1,
             concurrency_id="image-generation",
+        )
+        retry_event.then(
+            fn=lambda: set_generation_buttons_enabled(True),
+            outputs=[generate_btn, retry_btn],
+            queue=False,
+            show_progress="hidden",
         )
 
         gr.Markdown("---")
