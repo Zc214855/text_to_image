@@ -1,27 +1,30 @@
 import json
+import re
 from openai import OpenAI
-from config import get_llm_client_config, LLM_MODEL
+from config import get_llm_client_config
 
 SYSTEM_PROMPT = """You are a fairy tale illustration assistant. Your job is to:
 1. Read the given fairy tale text
-2. Split it into VERY detailed scenes — approximately ONE scene per 30-50 Chinese characters. Generate as many scenes as possible so that nearly every sentence gets its own illustration. DO NOT skip or merge story content.
-3. First define ALL recurring characters with consistent visual descriptions
-4. For each scene, write an English image generation prompt that MUST reuse the exact same character descriptions and MUST closely match the specific story content of that scene
+2. Split it into coherent visual story beats. Each scene must show one complete, decisive action. Merge dialogue or narration that has no independent visual action into the nearest scene.
+3. Define ALL visible named or recurring characters before writing scenes.
+4. Build one consistent art direction for the entire book.
+5. For each scene, return structured visual fields. Do not repeat character definitions or the shared style inside visual_action.
 
 ## Character Definition Rules:
-- List every character that appears more than once
-- For each character, give a FIXED visual description: hair color, clothing, distinctive features
-- These descriptions MUST be copied verbatim into every scene prompt where that character appears
-- Example: if "小女孩" is defined as "a little girl with red hood, brown curly hair, blue dress, white socks", EVERY scene with her MUST include "a little girl with red hood, brown curly hair, blue dress, white socks"
+- List every visible character, including characters that appear only once
+- Give each character a concise FIXED English visual description: age, body type, face/hair/fur, clothing colors, and one distinctive feature
+- Keep the visual description under 45 English words
+- Do not include pose, action, emotion, environment, lighting, or art style in character definitions
 
-## Prompt Rules:
-- Each scene's prompt MUST closely reflect the EXACT content of that scene's story_text — if the text says the girl picks flowers, show her picking flowers; if the wolf knocks on the door, show the wolf knocking on the door
-- Describe the scene visually: character poses, actions, facial expressions, environment, lighting, mood
-- Always START each prompt with the full character description(s) from the character list
-- Always END each prompt with: "children's book illustration, watercolor style, soft colors, whimsical, no text, no letters, no words"
-- Keep each prompt under 200 words
-- Do NOT include any text, words, letters, or speech bubbles in the image description
-- Focus on what can be SEEN, not narrated
+## Scene Rules:
+- Cover the full story in chronological order without inventing plot events
+- Keep causally connected actions together; do not create fragments such as a scene containing only "再也没有起来"
+- visual_action must describe visible poses, interaction, facial expressions, and the exact story action
+- environment must state location and story-relevant objects
+- composition must state subject placement, foreground, middle ground, and background when useful
+- Vary shot types deliberately across scenes: establishing shot, wide shot, medium shot, close-up, over-the-shoulder, low angle, or high angle
+- Preserve important state from the previous scene, such as disguise, carried objects, weather, damage, or time of day
+- Exclude typography, signs, labels, captions, letters, logos, watermarks, and speech bubbles
 
 You MUST respond in the following JSON format only, no other text:
 {
@@ -32,40 +35,60 @@ You MUST respond in the following JSON format only, no other text:
       "visual": "consistent English visual description of this character"
     }
   ],
-  "style": "a fixed style prefix that will be prepended to every prompt, describing the overall art style",
+  "style": "fixed English art direction: medium, line quality, palette, lighting logic, historical setting, age suitability",
   "scenes": [
     {
       "scene_number": 1,
       "story_text": "this scene's story content in Chinese",
       "characters_in_scene": ["角色名1", "角色名2"],
-      "prompt": "English image generation prompt (must include the full visual description of each character from the characters list, plus scene action and environment)"
+      "shot": "English shot type and camera angle",
+      "visual_action": "English visible action, poses, interaction, and expressions",
+      "environment": "English location and story-relevant objects",
+      "composition": "English spatial composition and focal point",
+      "lighting": "English lighting, time, and mood"
     }
   ]
 }"""
 
+NO_TEXT_RULE = (
+    "clean illustration with no typography, no signs, no labels, no captions, "
+    "no letters, no logos, no watermark, no speech bubbles"
+)
+
+
+def estimate_scene_count(story_text: str) -> int:
+    """估算完整动作镜头数，避免把对话和连续动作逐句拆开。"""
+    sentences = [
+        part.strip()
+        for part in re.split(r"(?<=[。！？!?])", story_text)
+        if part.strip()
+    ]
+    return max(4, min(18, round((len(sentences) or 1) * 0.65)))
+
 
 def parse_story(story_text: str) -> dict:
     """Use LLM to split story into scenes and generate image prompts."""
-    base_url, api_key = get_llm_client_config()
+    base_url, api_key, model = get_llm_client_config()
     client = OpenAI(api_key=api_key, base_url=base_url)
 
-    # Estimate desired scene count: ~1 scene per 40 chars, more illustrations
-    char_count = len(story_text)
-    target_scenes = max(6, min(50, char_count // 40))
+    # 以完整句子和动作节拍估算，避免按字符数机械切出叙事碎片。
+    target_scenes = estimate_scene_count(story_text)
 
     user_message = (
-        f"请将以下童话故事拆分为约 {target_scenes} 个场景"
-        f"（故事约{char_count}字，平均每场景约40字，尽量每句话一个场景，不要遗漏任何内容）。\n\n"
+        f"请将以下童话故事拆分为大约 {target_scenes} 个完整视觉场景。"
+        f"场景总数不得超过 {min(18, target_scenes + 2)} 个。"
+        "优先合并连续对话和同一地点内的连续动作；保证叙事完整、角色一致和画面可见，"
+        "不要为了凑数量拆出残句。\n\n"
         f"---\n{story_text}"
     )
 
     response = client.chat.completions.create(
-        model=LLM_MODEL,
+        model=model,
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": user_message},
         ],
-        temperature=0.7,
+        temperature=0.35,
         max_tokens=16384,
     )
 
@@ -82,25 +105,54 @@ def parse_story(story_text: str) -> dict:
     except json.JSONDecodeError as e:
         raise ValueError(f"Failed to parse LLM response as JSON:\n{content}") from e
 
-    if "scenes" not in result or not result["scenes"]:
+    if not isinstance(result.get("scenes"), list) or not result["scenes"]:
         raise ValueError(f"LLM response missing 'scenes': {content}")
 
-    # Prepend the shared style prefix to every scene prompt
-    style = result.get("style", "children's book illustration, watercolor style, soft colors, whimsical")
-    characters = {c["name"]: c["visual"] for c in result.get("characters", [])}
+    style = result.get(
+        "style",
+        "hand-painted children's picture book, watercolor and gouache, "
+        "gentle textured paper, cohesive muted color palette, child-friendly",
+    )
+    characters = {}
+    for character in result.get("characters", []):
+        name = character.get("name")
+        visual = character.get("visual")
+        if name and visual:
+            characters[name] = visual
 
-    for scene in result["scenes"]:
-        prompt = scene["prompt"]
-        # Ensure character visuals are in the prompt — if LLM forgot, inject them
+    for index, scene in enumerate(result["scenes"], start=1):
+        if not isinstance(scene, dict):
+            raise ValueError(f"Scene {index} must be a JSON object")
+        if not scene.get("story_text"):
+            raise ValueError(f"Scene {index} missing story_text")
+
+        character_visuals = []
         for char_name in scene.get("characters_in_scene", []):
-            if char_name in characters and characters[char_name] not in prompt:
-                prompt = characters[char_name] + ", " + prompt
-        # Ensure style suffix
-        if style not in prompt:
-            prompt = prompt + ", " + style
-        # Ensure no-text suffix
-        if "no text" not in prompt and "no letters" not in prompt:
-            prompt = prompt + ", no text, no letters, no words"
-        scene["prompt"] = prompt
+            visual = characters.get(char_name)
+            if not visual:
+                raise ValueError(
+                    f"Scene {index} references undefined character: {char_name}"
+                )
+            character_visuals.append(visual)
+
+        visual_action = scene.get("visual_action") or scene.get("prompt")
+        if not visual_action:
+            raise ValueError(f"Scene {index} missing visual_action")
+
+        # 固定顺序组装提示词，每项只出现一次，降低重复描述对模型注意力的干扰。
+        prompt_parts = [
+            style,
+            scene.get("shot", ""),
+            "; ".join(character_visuals),
+            visual_action,
+            scene.get("environment", ""),
+            scene.get("composition", ""),
+            scene.get("lighting", ""),
+            NO_TEXT_RULE,
+        ]
+        scene["scene_number"] = index
+        scene["prompt"] = ". ".join(
+            part.strip(" .,") for part in prompt_parts if part and part.strip()
+        )
 
     return result
