@@ -1,0 +1,40 @@
+{
+  "title": "妈妈买绿豆",
+  "image_model": "doubao-seedream-5-0-260128",
+  "image_size": "1728x2304",
+  "image_extension": ".png",
+  "scene_count": 18,
+  "successful_scenes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "failed_scenes": [
+    {
+      "scene_number": 16,
+      "error": "Client error '429 Too Many Requests' for url 'https://ark.cn-beijing.volces.com/api/v3/images/generations'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429（尝试 3/3 次）"
+    },
+    {
+      "scene_number": 17,
+      "error": "Client error '429 Too Many Requests' for url 'https://ark.cn-beijing.volces.com/api/v3/images/generations'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429（尝试 3/3 次）"
+    },
+    {
+      "scene_number": 18,
+      "error": "Client error '429 Too Many Requests' for url 'https://ark.cn-beijing.volces.com/api/v3/images/generations'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429（尝试 3/3 次）"
+    }
+  ],
+  "status": "partial",
+  "updated_at": "2026-06-07T12:25:56.476124+00:00"
+}

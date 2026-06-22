@@ -1,40 +1,22 @@
 @echo off
 cd /d "%~dp0"
 
-taskkill /F /IM python.exe >nul 2>&1
-
-set PYTHON=
-for %%p in (
-    "python"
-    "python3"
-    "%LOCALAPPDATA%\Programs\Python\Python312\python.exe"
-    "%LOCALAPPDATA%\Programs\Python\Python313\python.exe"
-    "%LOCALAPPDATA%\Programs\Python\Python311\python.exe"
-) do (
-    where %%~p >nul 2>&1 && set "PYTHON=%%~p" && goto :found_python
-)
-echo ERROR: Python not found! Please install Python 3.11+
-pause
-exit /b 1
-:found_python
-echo Found Python: %PYTHON%
-
-echo ========================================
-echo   Installing dependencies...
-echo ========================================
-"%PYTHON%" -m pip install -q -r requirements.txt
-if errorlevel 1 (
-    echo ERROR: Failed to install dependencies!
-    pause
-    exit /b 1
-)
-
 echo ========================================
 echo   Starting AI Illustration Generator...
 echo ========================================
-"%PYTHON%" main.py
-if errorlevel 1 (
-    echo.
-    echo ERROR: Program exited with errors!
+
+rem Reuse the running server instead of starting a second process on port 7860.
+powershell -NoProfile -Command "if (Get-NetTCPConnection -LocalPort 7860 -State Listen -ErrorAction SilentlyContinue) { exit 0 } else { exit 1 }" >nul 2>nul
+if %errorlevel%==0 (
+    echo Server is already running at http://127.0.0.1:7860
+    start "" "http://127.0.0.1:7860"
+    exit /b 0
+)
+
+where py >nul 2>nul
+if %errorlevel%==0 (
+    py -3 main.py
+) else (
+    python main.py
 )
 pause
