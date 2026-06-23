@@ -115,27 +115,6 @@ def check_llm_status(provider=None):
     """检测 LLM 服务是否可用，返回状态文本"""
     provider = provider or config.LLM_PROVIDER
     llm_config = get_llm_provider_config(provider)
-    if provider == "freellmapi":
-        try:
-            resp = httpx.post(
-                f"{llm_config['base_url'].rstrip('/')}/chat/completions",
-                headers={"Authorization": f"Bearer {llm_config['api_key']}"},
-                json={
-                    "model": llm_config["model"],
-                    "messages": [{"role": "user", "content": "hi"}],
-                    "max_tokens": 5,
-                },
-                timeout=10,
-            )
-            data = resp.json()
-            if "choices" in data:
-                routed = resp.headers.get("X-Routed-Via", "unknown")
-                return f"FreeLLMAPI 连接正常 (路由: {routed})"
-            else:
-                msg = data.get("error", {}).get("message", str(data))
-                return f"FreeLLMAPI 连接失败: {msg}"
-        except Exception as e:
-            return f"FreeLLMAPI 连接失败: {e}"
     provider_keys = {
         "siliconflow": SILICONFLOW_API_KEY,
         "zhipu": llm_config["api_key"],
@@ -410,7 +389,6 @@ def build_model_table():
 
 def build_usage_guide():
     llm_label = {
-        "freellmapi": "FreeLLMAPI 自动路由",
         "siliconflow": "硅基流动",
         "zhipu": "智谱 GLM，经腾讯云 LKEAP Token Plan",
         "volcengine": "火山方舟",

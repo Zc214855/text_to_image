@@ -28,23 +28,10 @@ ARK_BASE_URL = os.getenv(
 )
 ARK_LLM_MODEL = os.getenv("ARK_LLM_MODEL", "doubao-seed-2-0-lite-260215")
 ARK_IMAGE_MODEL = os.getenv("ARK_IMAGE_MODEL", "doubao-seedream-5-0-260128")
-FREELLMAPI_BASE_URL = os.getenv(
-    "FREELLMAPI_BASE_URL", "http://localhost:3001/v1"
-)
-FREELLMAPI_API_KEY = os.getenv(
-    "FREELLMAPI_API_KEY", "freellmapi-placeholder"
-)
-FREELLMAPI_MODEL = os.getenv("FREELLMAPI_MODEL", "auto")
-
 # ---------- LLM 配置 ----------
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "siliconflow").strip().lower()
 _LLM_DEFAULTS = {
     "siliconflow": (BASE_URL, SILICONFLOW_API_KEY, "Qwen/Qwen3-8B"),
-    "freellmapi": (
-        FREELLMAPI_BASE_URL,
-        FREELLMAPI_API_KEY,
-        FREELLMAPI_MODEL,
-    ),
     "zhipu": (ZHIPU_BASE_URL, ZHIPU_API_KEY, ZHIPU_MODEL),
     "volcengine": (ARK_BASE_URL, ARK_API_KEY, ARK_LLM_MODEL),
 }
@@ -56,10 +43,6 @@ LLM_PROVIDERS = {
     "siliconflow": {
         "label": "Qwen3-8B · 硅基流动",
         "summary": "使用硅基流动上的 Qwen3-8B，成本较低，但复杂结构化分镜能力弱于 GLM-5.1。",
-    },
-    "freellmapi": {
-        "label": "FreeLLMAPI（自动路由）",
-        "summary": "调用本机 localhost:3001 代理，由代理自动选择已配置的免费文本模型。",
     },
     "volcengine": {
         "label": "豆包 Seed 2.0 Lite · 火山方舟",
