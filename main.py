@@ -36,7 +36,7 @@ from generation_tasks import (
 
 AUTO_RETRY_COUNT = 3
 RATE_LIMIT_RETRY_BASE = 10
-VOLCENGINE_SCENE_INTERVAL = 5
+DEFAULT_SCENE_INTERVAL = 1
 
 
 def validate_image_credentials(image_model):
@@ -103,6 +103,11 @@ def generate_scene_with_retry(
 def get_image_extension(image_model):
     """占位扩展名；实际扩展名由 download_image 根据真实 content-type 决定。"""
     return ".png"
+
+
+def get_scene_interval(image_model):
+    """从模型配置读取场景间隔（秒），防止触发 IPM 限流。"""
+    return get_model_config(image_model).get("scene_interval", DEFAULT_SCENE_INTERVAL)
 
 
 def _resolve_scene_path(task_dir: str, scene_number: int) -> str | None:
@@ -254,7 +259,7 @@ def generate(story_text, llm_provider, image_model, image_size, progress=gr.Prog
             if num < len(scenes):
                 if hit_limit:
                     time.sleep(10)
-                time.sleep(VOLCENGINE_SCENE_INTERVAL if provider == "volcengine" else 1)
+                time.sleep(get_scene_interval(image_model))
 
         task["status"] = "partial" if task["failed_scenes"] else "completed"
         save_task(story_output_dir, task)
@@ -355,7 +360,7 @@ def _retry_failed_images_locked(task_dir, image_model, image_size, progress):
         if index < len(retry_numbers):
             if hit_limit:
                 time.sleep(10)
-            time.sleep(VOLCENGINE_SCENE_INTERVAL if retry_provider == "volcengine" else 1)
+            time.sleep(get_scene_interval(image_model))
 
     task["status"] = "partial" if retry_failures else "completed"
     task["successful_scenes"] = sorted(successful)

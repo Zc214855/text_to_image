@@ -1,0 +1,401 @@
+{
+  "title": "会唱歌的油纸伞",
+  "characters": [
+    {
+      "name": "阿元",
+      "visual": "7-year-old boy, slim build, round face with big curious eyes, short black hair, indigo-blue tunic and trousers, cloth shoes, carries a small bamboo basket"
+    },
+    {
+      "name": "外婆",
+      "visual": "70-year-old woman, petite and thin, silver-white hair in a low bun, brown traditional jacket with cloth buttons, calloused hands, gentle wrinkles around eyes"
+    },
+    {
+      "name": "张奶奶",
+      "visual": "65-year-old woman, slightly plump, short gray hair, white apron over dark blue clothes, warm smiling eyes, rosy cheeks"
+    },
+    {
+      "name": "李伯伯",
+      "visual": "50-year-old man, sturdy build, dark weathered skin, thick eyebrows, gray short jacket, bamboo hat, rough hands"
+    },
+    {
+      "name": "小鲤鱼",
+      "visual": "Small red carp with shimmering golden scales, bright curious eyes, flowing translucent fins"
+    },
+    {
+      "name": "黄豆",
+      "visual": "Golden-yellow round soybean with tiny cheerful face, smooth glossy surface, warm glow"
+    },
+    {
+      "name": "茶叶",
+      "visual": "Tender green tea leaf with delicate visible veins, soft curling edges, fresh bright emerald color"
+    }
+  ],
+  "style": "Watercolor and colored pencil illustration, soft delicate linework, muted traditional Chinese palette of celadon grey, moon white and indigo blue with warm accent tones, gentle diffused lighting with rainy atmospheric haze, Huizhou traditional town setting, suitable for ages 4-8, highly detailed, best quality",
+  "scenes": [
+    {
+      "scene_number": 1,
+      "story_text": "很久以前，徽州山脚下有一座青瓦小镇。镇子不大，却有九十九条窄巷，每条巷子都铺着被雨水洗亮的青石板。",
+      "characters_in_scene": [],
+      "shot": "Establishing shot, high angle",
+      "visual_action": "Rain falls gently over the sprawling small town nestled at the mountain's base; wisps of mist drift between the layered grey-tiled roofs; no human figures, only the quiet town breathing under rain",
+      "environment": "Huizhou traditional town at the foot of misty mountains, dense cluster of white-walled grey-tiled buildings with horse-head gables, narrow winding alleys paved with rain-slicked blue-grey flagstones, rain pooling in shallow grooves between stones",
+      "composition": "Mountains recede into mist in the background, the town's rooftops fill the middle ground in a dense overlapping pattern, a single narrow alley with glistening flagstones draws the eye as the focal point in the foreground",
+      "lighting": "Overcast daylight with soft diffused rain haze, muted celadon-grey sky, cool damp atmosphere, quiet and still mood",
+      "state_tracking": "Initial scene; rain is falling; daytime",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, muted traditional Chinese palette of celadon grey, moon white and indigo blue with warm accent tones, gentle diffused lighting with rainy atmospheric haze, Huizhou traditional town setting, suitable for ages 4-8, highly detailed, best quality. Establishing shot, high angle. Rain falls gently over the sprawling small town nestled at the mountain's base; wisps of mist drift between the layered grey-tiled roofs; no human figures, only the quiet town breathing under rain. Huizhou traditional town at the foot of misty mountains, dense cluster of white-walled grey-tiled buildings with horse-head gables, narrow winding alleys paved with rain-slicked blue-grey flagstones, rain pooling in shallow grooves between stones. Mountains recede into mist in the background, the town's rooftops fill the middle ground in a dense overlapping pattern, a single narrow alley with glistening flagstones draws the eye as the focal point in the foreground. Overcast daylight with soft diffused rain haze, muted celadon-grey sky, cool damp atmosphere, quiet and still mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 2,
+      "story_text": "阿元最喜欢下雨，因为一下雨，家家户户都会撑起油纸伞。红的像山茶，黄的像杏花，青的像初春的竹叶。伞面在雨里轻轻转动，整条巷子就像开满了会走路的花。",
+      "characters_in_scene": [
+        "阿元"
+      ],
+      "shot": "Medium shot, low angle",
+      "visual_action": "Ayuan stands at the alley entrance tilting his head upward with a wide delighted grin, reaching one hand out to catch raindrops; behind him, townspeople walk with colorful oil-paper umbrellas twirling gently, their faces hidden beneath the canopy of rotating伞面",
+      "environment": "A narrow Huizhou alley with tall white walls on both sides, rain streaming down, multiple oil-paper umbrellas in red, yellow, and blue-green moving through the lane, wet flagstones reflecting umbrella colors",
+      "composition": "Ayuan placed slightly off-center in the foreground as the focal point, a canopy of colorful umbrellas fills the middle ground above, the alley walls converge into the background creating depth",
+      "lighting": "Grey overcast daylight filtering through rain, soft warm accents from the red and yellow umbrellas, playful and cheerful mood",
+      "state_tracking": "Still raining; daytime; Ayuan wearing indigo-blue tunic and trousers, cloth shoes, carrying small bamboo basket",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Medium shot, low angle. 7-year-old boy, slim build, round face with big curious eyes, short black hair, indigo-blue tunic and trousers, cloth shoes, carries a small bamboo basket. Ayuan stands at the alley entrance tilting his head upward with a wide delighted grin, reaching one hand out to catch raindrops; behind him, townspeople walk with colorful oil-paper umbrellas twirling gently, their faces hidden beneath the canopy of rotating伞面. A narrow Huizhou alley with tall white walls on both sides, rain streaming down, multiple oil-paper umbrellas in red, yellow, and blue-green moving through the lane, wet flagstones reflecting umbrella colors. Ayuan placed slightly off-center in the foreground as the focal point, a canopy of colorful umbrellas fills the middle ground above, the alley walls converge into the background creating depth. Grey overcast daylight filtering through rain, soft warm accents from the red and yellow umbrellas, playful and cheerful mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 3,
+      "story_text": "外婆做伞很慢。她先把竹子削成细细的伞骨，再把棉纸一层一层糊上去，最后刷桐油，晾在屋檐下。伞晾干的时候，会有一股淡淡的木香和油香。",
+      "characters_in_scene": [
+        "外婆"
+      ],
+      "shot": "Close-up, eye level",
+      "visual_action": "Grandmother's calloused hands carefully brush tung oil onto a half-finished umbrella spread open before her; her fingers press firmly along the bamboo rib, brow slightly furrowed in concentration; behind her, finished umbrellas hang drying under the eaves",
+      "environment": "Interior of a traditional Huizhou workshop, bamboo strips and tools scattered on a low wooden workbench, cotton paper sheets stacked to the side, a small tung-oil brush and bowl, finished umbrellas hanging in a row under the eaves outside the open door",
+      "composition": "Grandmother's hands and the umbrella surface dominate the foreground as the focal point, her face visible in the middle ground beyond her hands, hanging umbrellas line the background doorway",
+      "lighting": "Warm interior light from a small window, amber glow from the tung oil, soft and intimate mood with a sense of slow craftsmanship",
+      "state_tracking": "Still raining outside (visible through doorway); daytime; Ayuan not present in this scene",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Close-up, eye level. 70-year-old woman, petite and thin, silver-white hair in a low bun, brown traditional jacket with cloth buttons, calloused hands, gentle wrinkles around eyes. Grandmother's calloused hands carefully brush tung oil onto a half-finished umbrella spread open before her; her fingers press firmly along the bamboo rib, brow slightly furrowed in concentration; behind her, finished umbrellas hang drying under the eaves. Interior of a traditional Huizhou workshop, bamboo strips and tools scattered on a low wooden workbench, cotton paper sheets stacked to the side, a small tung-oil brush and bowl, finished umbrellas hanging in a row under the eaves outside the open door. Grandmother's hands and the umbrella surface dominate the foreground as the focal point, her face visible in the middle ground beyond her hands, hanging umbrellas line the background doorway. Warm interior light from a small window, amber glow from the tung oil, soft and intimate mood with a sense of slow craftsmanship. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 4,
+      "story_text": "有一天，外婆做了一把很特别的伞。那把伞是月白色的，伞面上没有画花鸟，也没有写诗，只在伞柄上系着一枚小小的铜铃。",
+      "characters_in_scene": [
+        "外婆",
+        "阿元"
+      ],
+      "shot": "Over-the-shoulder from Ayuan, medium shot",
+      "visual_action": "Grandmother holds the finished moon-white umbrella open with both hands, presenting it toward Ayuan; Ayuan leans forward eagerly on tiptoes, eyes wide with wonder, one hand reaching toward the small copper bell tied to the umbrella handle; the bell swings gently",
+      "environment": "Same Huizhou workshop interior, the moon-white umbrella prominent with its plain undecorated surface, a thin red cord tying a small aged copper bell to the bamboo handle, other colorful umbrellas visible in the background for contrast",
+      "composition": "The moon-white umbrella fills the center as the focal point, Grandmother behind it in the middle ground, Ayuan in the foreground reaching in from the right edge, the bell positioned at the visual intersection point",
+      "lighting": "Soft diffused daylight from the window falling on the umbrella surface, giving it a pale luminous quality, warm and expectant mood",
+      "state_tracking": "Daytime; rain has stopped (umbrellas no longer hanging outside); Ayuan wearing indigo-blue tunic, carrying bamboo basket",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Over-the-shoulder from Ayuan, medium shot. 70-year-old woman, petite and thin; 7-year-old boy, slim build. Grandmother holds the finished moon-white umbrella open with both hands, presenting it toward Ayuan; Ayuan leans forward eagerly on tiptoes, eyes wide with wonder, one hand reaching toward the small copper bell tied to the umbrella handle; the bell swings gently. Same Huizhou workshop interior, the moon-white umbrella prominent with its plain undecorated surface, a thin red cord tying a small aged copper bell to the bamboo handle, other colorful umbrellas visible in the background for contrast. The moon-white umbrella fills the center as the focal point, Grandmother behind it in the middle ground, Ayuan in the foreground reaching in from the right edge, the bell positioned at the visual intersection point. Soft diffused daylight from the window falling on the umbrella surface, giving it a pale luminous quality, warm and expectant mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 5,
+      "story_text": "风一吹，铜铃没有响，伞面却轻轻唱起歌来。歌声很细，很软，像雨丝落在荷叶上。阿元睁大眼睛问：「外婆，伞怎么会唱歌？」外婆笑着说：「这把伞用的是眠竹。」「眠竹是什么竹？」「长在云雾里的竹子，白天睡觉，夜里听故事。它听过的故事多了，做成伞以后，就会在雨夜唱出来。」",
+      "characters_in_scene": [
+        "阿元",
+        "外婆"
+      ],
+      "shot": "Medium shot, slight high angle",
+      "visual_action": "Ayuan crouches beside the open umbrella pressing his ear close to the伞面 with an astonished expression, both hands gripping the edge; Grandmother sits on a low stool beside him, one hand resting on his shoulder, the other gesturing toward the distant mountains as she speaks with a gentle knowing smile; the copper bell hangs motionless",
+      "environment": "Workshop interior with the moon-white umbrella open on the floor, a gentle breeze visible from a slightly swaying curtain, distant misty bamboo-covered mountains visible through the window",
+      "composition": "Ayuan and the umbrella occupy the foreground-left, Grandmother sits in the middle ground-right, the window with misty mountains in the background, the umbrella surface acts as a connecting element between both figures",
+      "lighting": "Soft ambient daylight mixed with a subtle warm glow emanating from the umbrella surface, magical and tender mood",
+      "state_tracking": "Daytime; the moon-white umbrella with copper bell now exists; Ayuan still in indigo-blue tunic",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Medium shot, slight high angle. 7-year-old boy, slim build; 70-year-old woman, petite and thin. Ayuan crouches beside the open umbrella pressing his ear close to the伞面 with an astonished expression, both hands gripping the edge; Grandmother sits on a low stool beside him, one hand resting on his shoulder, the other gesturing toward the distant mountains as she speaks with a gentle knowing smile; the copper bell hangs motionless. Workshop interior with the moon-white umbrella open on the floor, a gentle breeze visible from a slightly swaying curtain, distant misty bamboo-covered mountains visible through the window. Ayuan and the umbrella occupy the foreground-left, Grandmother sits in the middle ground-right, the window with misty mountains in the background, the umbrella surface acts as a connecting element between both figures. Soft ambient daylight mixed with a subtle warm glow emanating from the umbrella surface, magical and tender mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 6,
+      "story_text": "阿元更好奇了。他抱着那把伞，等啊等，终于等到黄昏后下起小雨。",
+      "characters_in_scene": [
+        "阿元"
+      ],
+      "shot": "Wide shot, eye level",
+      "visual_action": "Ayuan sits on the stone doorstep hugging the closed moon-white umbrella tightly against his chest, chin resting on top of it, gazing up at the sky with impatient anticipation; the first raindrops begin to fall and his eyes light up",
+      "environment": "Stone doorstep of a Huizhou house, the alley visible beyond, sky darkening with dusk clouds, first fine raindrops visible as thin streaks, a small bamboo basket set aside on the step",
+      "composition": "Ayuan centered in the foreground on the doorstep as the focal point, the narrow alley stretches into the middle ground, darkening sky fills the background, the closed umbrella vertical against his body",
+      "lighting": "Dusk transitioning from warm amber to cool blue-grey, thin rain catching the last warm light, expectant and quiet mood",
+      "state_tracking": "Daytime → dusk; rain begins again; Ayuan holding the closed moon-white umbrella with copper bell; bamboo basket beside him",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Wide shot, eye level. 7-year-old boy, slim build. Ayuan sits on the stone doorstep hugging the closed moon-white umbrella tightly against his chest, chin resting on top of it, gazing up at the sky with impatient anticipation; the first raindrops begin to fall and his eyes light up. Stone doorstep of a Huizhou house, the alley visible beyond, sky darkening with dusk clouds, first fine raindrops visible as thin streaks, a small bamboo basket set aside on the step. Ayuan centered in the foreground on the doorstep as the focal point, the narrow alley stretches into the middle ground, darkening sky fills the background, the closed umbrella vertical against his body. Dusk transitioning from warm amber to cool blue-grey, thin rain catching the last warm light, expectant and quiet mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 7,
+      "story_text": "雨刚落下，青石巷里就升起薄薄的水汽。阿元撑开月白油纸伞，伞面立刻亮了一点，好像把天上的月光接住了。",
+      "characters_in_scene": [
+        "阿元"
+      ],
+      "shot": "Low angle, close-up on umbrella",
+      "visual_action": "Ayuan pushes the umbrella open with both hands, arms stretched upward; the moon-white canopy blooms above him and immediately glows with a soft inner luminescence; his face is lifted toward it, mouth slightly open in awe, raindrops catching the light as they fall around the edges",
+      "environment": "Rainy Huizhou alley at dusk, thin mist rising from the wet flagstones, rain falling in fine threads, the moon-white umbrella now open and faintly glowing, the copper bell visible on the handle",
+      "composition": "The luminous umbrella canopy dominates the upper two-thirds of the frame as the focal point, Ayuan's upturned face visible beneath it in the lower third, misty alley walls frame the edges receding into the background",
+      "lighting": "Dusk with the umbrella emitting a soft moonlight glow from within, cool rain atmosphere contrasted with the warm ethereal light of the伞面, magical and wondrous mood",
+      "state_tracking": "Dusk; rain falling steadily; Ayuan now holding the open moon-white umbrella which glows faintly; copper bell on handle",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Low angle, close-up on umbrella. 7-year-old boy, slim build. Ayuan pushes the umbrella open with both hands, arms stretched upward; the moon-white canopy blooms above him and immediately glows with a soft inner luminescence; his face is lifted toward it, mouth slightly open in awe, raindrops catching the light as they fall around the edges. Rainy Huizhou alley at dusk, thin mist rising from the wet flagstones, rain falling in fine threads, the moon-white umbrella now open and faintly glowing, the copper bell visible on the handle. The luminous umbrella canopy dominates the upper two-thirds of the frame as the focal point, Ayuan's upturned face visible beneath it in the lower third, misty alley walls frame the edges receding into the background. Dusk with the umbrella emitting a soft moonlight glow from within, cool rain atmosphere contrasted with the warm ethereal light of the伞面, magical and wondrous mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 8,
+      "story_text": "他刚走到巷口，伞就唱起第一支歌。歌里有一只小鲤鱼，住在村口的溪水里，总想看看大江大河。后来春雨来了，溪水涨高，小鲤鱼顺着水路游过稻田，游过石桥，游到一片开满荷花的大湖里。它没有忘记小溪，每年春天都会带一串水泡回来，告诉小溪外面的世界有多宽。",
+      "characters_in_scene": [
+        "阿元",
+        "小鲤鱼"
+      ],
+      "shot": "Wide shot, slight low angle",
+      "visual_action": "Ayuan walks slowly through the alley holding the glowing umbrella overhead, head tilted listening intently with a soft smile; the small red carp with golden scales appears as a translucent vision swimming through the misty air beside the umbrella, its flowing fins trailing light; the fish arcs upward past a stone bridge, a trail of shimmering bubbles behind it",
+      "environment": "Rainy alley junction at the village entrance, a small stream running alongside the path, an arched stone bridge, rice paddies visible beyond, a distant lotus lake with pink blooms, fine rain and rising mist throughout",
+      "composition": "Ayuan and the umbrella in the foreground-left, the translucent red carp swimming mid-air through the middle ground as the secondary focal point, the stone bridge and distant lotus lake in the background, a trail of bubbles connecting the carp back toward the stream",
+      "lighting": "Dusk deepening into evening, the umbrella's moonlight glow illuminating Ayuan and the mist, the carp's golden scales casting warm reflections, dreamlike and enchanting mood",
+      "state_tracking": "Dusk → evening; rain continues; Ayuan holding open glowing moon-white umbrella with copper bell; the little red carp appears as a magical vision from the umbrella's song",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Wide shot, slight low angle. 7-year-old boy, slim build; Small red carp with shimmering golden scales, bright curious eyes, flowing translucent fins. Ayuan walks slowly through the alley holding the glowing umbrella overhead, head tilted listening intently with a soft smile; the small red carp with golden scales appears as a translucent vision swimming through the misty air beside the umbrella, its flowing fins trailing light; the fish arcs upward past a stone bridge, a trail of shimmering bubbles behind it. Rainy alley junction at the village entrance, a small stream running alongside the path, an arched stone bridge, rice paddies visible beyond, a distant lotus lake with pink blooms, fine rain and rising mist throughout. Ayuan and the umbrella in the foreground-left, the translucent red carp swimming mid-air through the middle ground as the secondary focal point, the stone bridge and distant lotus lake in the background, a trail of bubbles connecting the carp back toward the stream. Dusk deepening into evening, the umbrella's moonlight glow illuminating Ayuan and the mist, the carp's golden scales casting warm reflections, dreamlike and enchanting mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 9,
+      "story_text": "阿元听得入神，差点踩进水洼。伞轻轻一歪，替他挡住了溅起来的泥点。「谢谢你。」阿元小声说。油纸伞没有回答，只把歌声放得更轻。",
+      "characters_in_scene": [
+        "阿元"
+      ],
+      "shot": "Medium shot, slight low angle",
+      "visual_action": "Ayuan walks entranced, one cloth shoe hovering mid-step over a puddle; the umbrella tilts gracefully to one side, its edge shielding him; mud droplets hang frozen mid-splash near his feet; Ayuan tilts his head upward toward the umbrella with a soft grateful expression, lips slightly parted in a whisper",
+      "environment": "Rainy Huizhou alley with wet stone-paved path, puddles reflecting dim light, damp stone walls on both sides",
+      "composition": "Ayuan in the middle ground slightly off-center, the tilted umbrella canopy dominating the upper portion, puddle with splash details in the foreground, rain and mist in the background",
+      "lighting": "Evening, the umbrella's moon-white glow as primary light source, soft reflections on wet stones and puddles, gentle and intimate mood",
+      "state_tracking": "Evening; rain continues; Ayuan still holding open glowing moon-white umbrella with copper bell; the carp vision has faded, umbrella now singing softly",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Medium shot, slight low angle. 7-year-old boy, slim build. Ayuan walks entranced, one cloth shoe hovering mid-step over a puddle; the umbrella tilts gracefully to one side, its edge shielding him; mud droplets hang frozen mid-splash near his feet; Ayuan tilts his head upward toward the umbrella with a soft grateful expression, lips slightly parted in a whisper. Rainy Huizhou alley with wet stone-paved path, puddles reflecting dim light, damp stone walls on both sides. Ayuan in the middle ground slightly off-center, the tilted umbrella canopy dominating the upper portion, puddle with splash details in the foreground, rain and mist in the background. Evening, the umbrella's moon-white glow as primary light source, soft reflections on wet stones and puddles, gentle and intimate mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 10,
+      "story_text": "阿元继续往前走，走到豆腐坊门口。豆腐坊的张奶奶正在关门，她看见阿元的伞，惊讶地说：「这伞真漂亮。」",
+      "characters_in_scene": [
+        "阿元",
+        "张奶奶"
+      ],
+      "shot": "Wide shot, eye level",
+      "visual_action": "Ayuan approaches the shop entrance holding the umbrella; Grandma Zhang pulls a wooden door panel closed with both hands, pauses mid-action, turns her head toward Ayuan with wide surprised eyes and slightly parted lips, gazing at the glowing umbrella",
+      "environment": "Tofu shop storefront with wooden frame, steaming wooden steamer racks visible inside, wet doorstep, rain falling steadily",
+      "composition": "Grandma Zhang in the foreground at the right door frame, Ayuan in the middle ground approaching from the left, the glowing umbrella creating a halo above him, shop interior visible in the background",
+      "lighting": "Evening rain, warm amber light spilling from the shop interior contrasting with the cool moon-white umbrella glow, atmospheric and cozy mood",
+      "state_tracking": "Evening; rain continues; Ayuan holding glowing moon-white umbrella with copper bell; arriving at tofu shop",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Wide shot, eye level. 7-year-old boy, slim build; 65-year-old woman, slightly plump, short gray hair, white apron over dark blue clothes, warm smiling eyes, rosy cheeks. Ayuan approaches the shop entrance holding the umbrella; Grandma Zhang pulls a wooden door panel closed with both hands, pauses mid-action, turns her head toward Ayuan with wide surprised eyes and slightly parted lips, gazing at the glowing umbrella. Tofu shop storefront with wooden frame, steaming wooden steamer racks visible inside, wet doorstep, rain falling steadily. Grandma Zhang in the foreground at the right door frame, Ayuan in the middle ground approaching from the left, the glowing umbrella creating a halo above him, shop interior visible in the background. Evening rain, warm amber light spilling from the shop interior contrasting with the cool moon-white umbrella glow, atmospheric and cozy mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 11,
+      "story_text": "话音刚落，伞唱起第二支歌。歌里有一颗黄豆，它不想被磨成豆浆，因为它觉得自己太小，做不了什么大事。可后来它变成一碗热豆花，被送到一个生病的小孩手里。小孩吃完后，脸上有了笑。黄豆这才明白，小也有小的用处，暖也有暖的力气。",
+      "characters_in_scene": [
+        "阿元",
+        "黄豆",
+        "张奶奶"
+      ],
+      "shot": "Close-up, slightly high angle",
+      "visual_action": "Ayuan stands still holding the umbrella with both hands, looking upward raptly; the golden soybean appears as a magical vision near the umbrella — first small and huddled, then transforming into a steaming bowl of tofu pudding carried toward a pale child whose smile blooms; Grandma Zhang leans forward from the doorway, her eyes softening into warm crescents",
+      "environment": "Tofu shop entrance, rain falling around the magical vision, steam from the vision blending with the shop's real steam",
+      "composition": "The golden soybean vision in the center as the focal point, Ayuan's upturned face in the lower left, Grandma Zhang's face in the lower right, the umbrella canopy framing the top, rain and magical glow filling the background",
+      "lighting": "Evening, the umbrella's glow intensifying with warm golden light from the soybean vision, mixing with cool rain, magical and heartwarming mood",
+      "state_tracking": "Evening; rain continues; Ayuan holding glowing moon-white umbrella; second song playing, golden soybean vision appearing",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Close-up, slightly high angle. 7-year-old boy, slim build; Golden-yellow round soybean with tiny cheerful face, smooth glossy surface, warm glow; 65-year-old woman, slightly plump. Ayuan stands still holding the umbrella with both hands, looking upward raptly; the golden soybean appears as a magical vision near the umbrella — first small and huddled, then transforming into a steaming bowl of tofu pudding carried toward a pale child whose smile blooms; Grandma Zhang leans forward from the doorway, her eyes softening into warm crescents. Tofu shop entrance, rain falling around the magical vision, steam from the vision blending with the shop's real steam. The golden soybean vision in the center as the focal point, Ayuan's upturned face in the lower left, Grandma Zhang's face in the lower right, the umbrella canopy framing the top, rain and magical glow filling the background. Evening, the umbrella's glow intensifying with warm golden light from the soybean vision, mixing with cool rain, magical and heartwarming mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 12,
+      "story_text": "张奶奶听着听着，眼睛弯了起来。她从蒸笼里拿出一块刚做好的豆腐，包给阿元。「带回去给你外婆。」张奶奶说。",
+      "characters_in_scene": [
+        "阿元",
+        "张奶奶"
+      ],
+      "shot": "Medium shot, over-the-shoulder from Ayuan's perspective",
+      "visual_action": "Grandma Zhang's eyes crinkle into warm crescent smiles; she reaches into the steamer with calloused hands and lifts out a white block of fresh tofu, wrapping it carefully in cloth; she extends the wrapped tofu toward Ayuan with both hands; Ayuan reaches out to accept it, his expression bright and grateful",
+      "environment": "Inside the tofu shop doorway, wooden steamer with rising steam, cloth wrapping on the counter, rain visible outside",
+      "composition": "Grandma Zhang in the foreground right, her hands and the wrapped tofu as the focal point in the middle ground, Ayuan in the background left reaching forward, steam rising between them",
+      "lighting": "Warm amber interior light from the shop, the umbrella's cool glow from outside, steam catching both light sources, tender and generous mood",
+      "state_tracking": "Evening; rain continues; Ayuan now carrying wrapped tofu in addition to umbrella; soybean vision has faded",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Medium shot, over-the-shoulder from Ayuan's perspective. 7-year-old boy, slim build; 65-year-old woman, slightly plump. Grandma Zhang's eyes crinkle into warm crescent smiles; she reaches into the steamer with calloused hands and lifts out a white block of fresh tofu, wrapping it carefully in cloth; she extends the wrapped tofu toward Ayuan with both hands; Ayuan reaches out to accept it, his expression bright and grateful. Inside the tofu shop doorway, wooden steamer with rising steam, cloth wrapping on the counter, rain visible outside. Grandma Zhang in the foreground right, her hands and the wrapped tofu as the focal point in the middle ground, Ayuan in the background left reaching forward, steam rising between them. Warm amber interior light from the shop, the umbrella's cool glow from outside, steam catching both light sources, tender and generous mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 13,
+      "story_text": "阿元抱着豆腐，又往河边走。河边有一座小石桥，桥下停着一条乌篷船。船夫李伯伯正对着雨发愁。明天他要送一筐新茶去县城，可雨越下越密，河水也越来越急。",
+      "characters_in_scene": [
+        "阿元",
+        "李伯伯"
+      ],
+      "shot": "Establishing shot, high angle",
+      "visual_action": "Ayuan walks along the riverbank holding the umbrella in one hand and the wrapped tofu against his chest with the other; Uncle Li stands on the boat deck, one hand gripping the boat awning, the other rubbing his forehead, his face creased with worry as he stares at the swollen river",
+      "environment": "Small stone bridge over a rushing river, black-awning boat moored beneath, bamboo tea baskets on the deck, fast-moving murky water, rain intensifying",
+      "composition": "The stone bridge spanning the upper middle ground, the boat and Uncle Li in the lower middle ground near the water, Ayuan approaching on the riverbank path in the foreground left, rushing river and rain filling the background",
+      "lighting": "Evening, dim and overcast, the umbrella's glow the only warm light on Ayuan, the river reflecting dark grey sky, anxious and heavy mood",
+      "state_tracking": "Evening; rain intensifying; Ayuan holding umbrella and carrying wrapped tofu; river rising and flowing fast",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Establishing shot, high angle. 7-year-old boy, slim build; 50-year-old man, sturdy build, dark weathered skin, thick eyebrows, gray short jacket, bamboo hat, rough hands. Ayuan walks along the riverbank holding the umbrella in one hand and the wrapped tofu against his chest with the other; Uncle Li stands on the boat deck, one hand gripping the boat awning, the other rubbing his forehead, his face creased with worry as he stares at the swollen river. Small stone bridge over a rushing river, black-awning boat moored beneath, bamboo tea baskets on the deck, fast-moving murky water, rain intensifying. The stone bridge spanning the upper middle ground, the boat and Uncle Li in the lower middle ground near the water, Ayuan approaching on the riverbank path in the foreground left, rushing river and rain filling the background. Evening, dim and overcast, the umbrella's glow the only warm light on Ayuan, the river reflecting dark grey sky, anxious and heavy mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 14,
+      "story_text": "阿元站在桥上，伞面又亮了一点。第三支歌响起来了。歌里有一片茶叶，它刚长出来时只是山坡上一点嫩绿，怕风吹怕雨打也怕被采走。后来它被烘干，被装进小竹篓，被热水轻轻一泡，清香飘满一间屋子。远行的人喝了它，想起家乡的山。茶叶这才知道，离开枝头不是丢失自己，有时是把春天带给更远的人。",
+      "characters_in_scene": [
+        "阿元",
+        "茶叶",
+        "李伯伯"
+      ],
+      "shot": "Medium shot, low angle looking up from the bridge",
+      "visual_action": "Ayuan stands on the stone bridge, the umbrella glowing brighter above him; the tea leaf vision spirals into view — a trembling emerald leaf on a hillside branch, then being dried, then steeping in a cup with curling steam, a traveler's hands lifting the cup; Uncle Li on the boat below has turned toward Ayuan, his worried expression softening, his grip on the awning loosening",
+      "environment": "Stone bridge railing, river below, black-awning boat, rain falling through the magical vision",
+      "composition": "Ayuan and the glowing umbrella in the center, the tea leaf vision spiraling above the umbrella as the focal point, Uncle Li on the boat below in the lower right looking up, bridge railing in the foreground, rain and mist in the background",
+      "lighting": "Evening, the umbrella glowing brighter with emerald-green light from the tea leaf vision, warm and cool tones mixing, hopeful and transcendent mood",
+      "state_tracking": "Evening; rain continues heavily; Ayuan on bridge holding umbrella and tofu; third song playing, tea leaf vision appearing; river still rushing",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Medium shot, low angle looking up from the bridge. 7-year-old boy, slim build; Tender green tea leaf with delicate visible veins, soft curling edges, fresh bright emerald color; 50-year-old man, sturdy build. Ayuan stands on the stone bridge, the umbrella glowing brighter above him; the tea leaf vision spirals into view — a trembling emerald leaf on a hillside branch, then being dried, then steeping in a cup with curling steam, a traveler's hands lifting the cup; Uncle Li on the boat below has turned toward Ayuan, his worried expression softening, his grip on the awning loosening. Stone bridge railing, river below, black-awning boat, rain falling through the magical vision. Ayuan and the glowing umbrella in the center, the tea leaf vision spiraling above the umbrella as the focal point, Uncle Li on the boat below in the lower right looking up, bridge railing in the foreground, rain and mist in the background. Evening, the umbrella glowing brighter with emerald-green light from the tea leaf vision, warm and cool tones mixing, hopeful and transcendent mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 15,
+      "story_text": "李伯伯听完，慢慢不皱眉了。他摸摸船篷说：「明早雨要是小些，我就出发。新茶不能困在篓子里。」",
+      "characters_in_scene": [
+        "阿元",
+        "李伯伯"
+      ],
+      "shot": "Close-up, eye level",
+      "visual_action": "Uncle Li's brow slowly unfurrows, his expression shifting from worry to quiet resolve; he pats the boat awning with his rough hand, a small determined smile forming; he gazes out at the river with steadier eyes; Ayuan watches from the bridge above, nodding gently",
+      "environment": "Boat deck with bamboo tea baskets, river surface, rain continuing",
+      "composition": "Uncle Li's face and hand on the awning as the focal point in the center, Ayuan's small figure visible on the bridge above in the background, tea baskets in the foreground lower left",
+      "lighting": "Evening, the umbrella's glow from above casting soft light on Uncle Li's face, the river reflecting dim ambient light, resolute and calming mood",
+      "state_tracking": "Evening; rain continues; Ayuan on bridge with umbrella and tofu; tea leaf vision has faded; Uncle Li's worry replaced by determination",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Close-up, eye level. 7-year-old boy, slim build; 50-year-old man, sturdy build. Uncle Li's brow slowly unfurrows, his expression shifting from worry to quiet resolve; he pats the boat awning with his rough hand, a small determined smile forming; he gazes out at the river with steadier eyes; Ayuan watches from the bridge above, nodding gently. Boat deck with bamboo tea baskets, river surface, rain continuing. Uncle Li's face and hand on the awning as the focal point in the center, Ayuan's small figure visible on the bridge above in the background, tea baskets in the foreground lower left. Evening, the umbrella's glow from above casting soft light on Uncle Li's face, the river reflecting dim ambient light, resolute and calming mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 16,
+      "story_text": "阿元点点头，撑着伞回家。可走到半路，风忽然大起来。雨斜斜地扑向巷子，屋檐下的灯笼一盏接一盏暗了。小镇像被一只看不见的大手盖住，黑得只剩雨声。",
+      "characters_in_scene": [
+        "阿元"
+      ],
+      "shot": "Wide shot, high angle",
+      "visual_action": "Ayuan walks through a narrow alley leaning forward against the wind, both hands gripping the umbrella handle; the wind pushes the umbrella backward, rain slanting sharply; his tunic and trousers flap wildly; lanterns under the eaves flicker and extinguish one after another; Ayuan's face shows determination mixed with growing fear as darkness closes in",
+      "environment": "Narrow Huizhou alley with high white-washed walls, eaves with hanging lanterns going dark, wet stone path, wind-driven rain",
+      "composition": "Ayuan small in the center of the alley, the umbrella's shrinking glow the only light source, dark walls towering on both sides in the foreground, the alley stretching into complete darkness in the background, dimming lanterns along the edges",
+      "lighting": "Evening deepening into night, almost complete darkness, the umbrella's glow struggling against the wind, lanterns dying one by one, ominous and lonely mood",
+      "state_tracking": "Evening → night; rain intensifying with strong wind; Ayuan still holding umbrella and tofu; lanterns extinguishing; darkness closing in; umbrella glow struggling",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Wide shot, high angle. 7-year-old boy, slim build. Ayuan walks through a narrow alley leaning forward against the wind, both hands gripping the umbrella handle; the wind pushes the umbrella backward, rain slanting sharply; his tunic and trousers flap wildly; lanterns under the eaves flicker and extinguish one after another; Ayuan's face shows determination mixed with growing fear as darkness closes in. Narrow Huizhou alley with high white-washed walls, eaves with hanging lanterns going dark, wet stone path, wind-driven rain. Ayuan small in the center of the alley, the umbrella's shrinking glow the only light source, dark walls towering on both sides in the foreground, the alley stretching into complete darkness in the background, dimming lanterns along the edges. Evening deepening into night, almost complete darkness, the umbrella's glow struggling against the wind, lanterns dying one by one, ominous and lonely mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 17,
+      "story_text": "阿元有点害怕。他握紧伞柄，听见伞面发出很轻的沙沙声。这一次，油纸伞没有唱别人的故事。它唱起了外婆的声音：「阿元，夜里走路不要急。石板会记得白天的脚步，屋檐会记得回家的方向。你只要一步一步走，家就会一点一点靠近你。」",
+      "characters_in_scene": [
+        "阿元"
+      ],
+      "shot": "Close-up, slightly low angle",
+      "visual_action": "Ayuan grips the umbrella handle with both hands, knuckles white, eyes wide with fear that gradually softens; rain streams down the umbrella surface in rivulets; his expression shifts from frightened to quietly comforted as he tilts his head listening, lips parting slightly",
+      "environment": "Dark rainy Huizhou alley at night, wet stone pavement glistening, rain pouring heavily, no lanterns lit, narrow walls closing in",
+      "composition": "Ayuan centered in foreground, the umbrella canopy filling the upper half of the frame, dark alley walls flanking both sides creating a vertical corridor, rain streaks crossing the entire image",
+      "lighting": "Near-total darkness, the umbrella emitting a faint moon-white glow that barely holds against the black, rain creating a hazy veil, mood shifting from ominous to gently comforting",
+      "state_tracking": "Night with heavy rain and strong wind; Ayuan still holding umbrella and tofu; umbrella now singing with Grandmother's voice; fear → comfort; all lanterns extinguished",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Close-up, slightly low angle. 7-year-old boy, slim build. Ayuan grips the umbrella handle with both hands, knuckles white, eyes wide with fear that gradually softens; rain streams down the umbrella surface in rivulets; his expression shifts from frightened to quietly comforted as he tilts his head listening, lips parting slightly. Dark rainy Huizhou alley at night, wet stone pavement glistening, rain pouring heavily, no lanterns lit, narrow walls closing in. Ayuan centered in foreground, the umbrella canopy filling the upper half of the frame, dark alley walls flanking both sides creating a vertical corridor, rain streaks crossing the entire image. Near-total darkness, the umbrella emitting a faint moon-white glow that barely holds against the black, rain creating a hazy veil, mood shifting from ominous to gently comforting. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 18,
+      "story_text": "阿元鼻子一酸，忽然不怕了。他低头看见伞投在地上的影子。那影子像一朵白花，在雨里稳稳地开着。阿元跟着影子走，转过卖糖人的小巷，经过挂灯笼的茶馆，又跨过门前有老槐树的院子，终于看见自家窗户里的灯。",
+      "characters_in_scene": [
+        "阿元"
+      ],
+      "shot": "Wide shot, high angle looking down",
+      "visual_action": "Ayuan walks steadily through the rain, looking down at the white flower-shaped shadow on the wet ground, wiping his nose with one hand while the other holds the umbrella; he passes a sugar-figure stall, a teahouse with unlit lanterns, steps over the threshold of a courtyard with an old locust tree, finally stops and looks up with relief toward a warm window",
+      "environment": "Series of Huizhou alleyways at night — sugar-figure vendor's narrow lane with wooden stall, teahouse with hanging unlit lanterns, courtyard gate with gnarled old locust tree, approach to a house with a single lit window",
+      "composition": "Ayuan small in the middle ground following the winding path, the white flower shadow prominent on the wet stones in the foreground, alley walls framing the route, the lit window as a distant focal point drawing the eye through the composition",
+      "lighting": "Night with persistent rain, umbrella's soft white glow casting the flower shadow on wet pavement, the single warm amber window light in the distance as a beacon, mood transitioning from lonely to hopeful",
+      "state_tracking": "Still night and raining; Ayuan still holding umbrella and tofu; umbrella shadow visible as white flower on ground; fear resolved → determination → relief; approaching home",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Wide shot, high angle looking down. 7-year-old boy, slim build. Ayuan walks steadily through the rain, looking down at the white flower-shaped shadow on the wet ground, wiping his nose with one hand while the other holds the umbrella; he passes a sugar-figure stall, a teahouse with unlit lanterns, steps over the threshold of a courtyard with an old locust tree, finally stops and looks up with relief toward a warm window. Series of Huizhou alleyways at night — sugar-figure vendor's narrow lane with wooden stall, teahouse with hanging unlit lanterns, courtyard gate with gnarled old locust tree, approach to a house with a single lit window. Ayuan small in the middle ground following the winding path, the white flower shadow prominent on the wet stones in the foreground, alley walls framing the route, the lit window as a distant focal point drawing the eye through the composition. Night with persistent rain, umbrella's soft white glow casting the flower shadow on wet pavement, the single warm amber window light in the distance as a beacon, mood transitioning from lonely to hopeful. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 19,
+      "story_text": "外婆正站在门口等他。「回来啦。」外婆说。阿元把豆腐递给外婆，又把一路听到的三支歌讲给她听。",
+      "characters_in_scene": [
+        "阿元",
+        "外婆"
+      ],
+      "shot": "Medium shot, eye level",
+      "visual_action": "Grandmother stands in the doorway with one hand slightly raised; Ayuan steps forward and hands her the cloth-wrapped tofu with both hands, then gestures animatedly with raised fingers counting one, two, three as he recounts the songs, his face bright and eager; Grandmother receives the tofu and nods with a warm knowing smile",
+      "environment": "Doorway of a traditional Huizhou house, warm interior light spilling out onto the wet threshold, rain still falling in the dark street behind",
+      "composition": "Grandmother in the doorway in the middle ground left, Ayuan approaching from the foreground right, warm light creating a bright rectangle behind Grandmother, rain visible in the dark margin around them",
+      "lighting": "Warm amber light from inside the house contrasting with the dark rainy night outside, the threshold as a boundary between cold and warmth, cozy and welcoming mood",
+      "state_tracking": "Still night and raining; Ayuan arriving home; tofu handed to Grandmother; umbrella still in Ayuan's hand; relief and excitement",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Medium shot, eye level. 7-year-old boy, slim build; 70-year-old woman, petite and thin. Grandmother stands in the doorway with one hand slightly raised; Ayuan steps forward and hands her the cloth-wrapped tofu with both hands, then gestures animatedly with raised fingers counting one, two, three as he recounts the songs, his face bright and eager; Grandmother receives the tofu and nods with a warm knowing smile. Doorway of a traditional Huizhou house, warm interior light spilling out onto the wet threshold, rain still falling in the dark street behind. Grandmother in the doorway in the middle ground left, Ayuan approaching from the foreground right, warm light creating a bright rectangle behind Grandmother, rain visible in the dark margin around them. Warm amber light from inside the house contrasting with the dark rainy night outside, the threshold as a boundary between cold and warmth, cozy and welcoming mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 20,
+      "story_text": "外婆把豆腐放进锅里，煮了一锅热汤。汤里有豆腐，有青菜，还有一点点姜丝。雨声落在屋檐上，像有人在轻轻敲鼓。",
+      "characters_in_scene": [
+        "外婆",
+        "阿元"
+      ],
+      "shot": "Medium close-up, slightly low angle",
+      "visual_action": "Grandmother slides tofu slices into a steaming clay pot with her calloused hands, stirring with a wooden ladle; Ayuan sits at a small wooden table nearby with chin propped on both hands watching the pot, steam rising between them; rain drips from the eaves outside the window in rhythmic lines",
+      "environment": "Small traditional Huizhou kitchen interior, clay stove with a pot, wooden table with bowls and chopsticks laid out, green vegetables and ginger on a cutting board, window showing rain outside",
+      "composition": "Grandmother and the steaming pot in the middle ground left, Ayuan at the table in the foreground right, steam rising between them as a soft divider, window with rain in the background",
+      "lighting": "Warm firelight from the stove casting a gentle glow, soft lamplight inside, steam catching the warm light, rain visible through window but interior feels safe, cozy domestic mood",
+      "state_tracking": "Night, rain continuing; now inside the house; tofu being cooked into soup; umbrella set aside indoors; warm and safe",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Medium close-up, slightly low angle. 70-year-old woman, petite and thin; 7-year-old boy, slim build. Grandmother slides tofu slices into a steaming clay pot with her calloused hands, stirring with a wooden ladle; Ayuan sits at a small wooden table nearby with chin propped on both hands watching the pot, steam rising between them; rain drips from the eaves outside the window in rhythmic lines. Small traditional Huizhou kitchen interior, clay stove with a pot, wooden table with bowls and chopsticks laid out, green vegetables and ginger on a cutting board, window showing rain outside. Grandmother and the steaming pot in the middle ground left, Ayuan at the table in the foreground right, steam rising between them as a soft divider, window with rain in the background. Warm firelight from the stove casting a gentle glow, soft lamplight inside, steam catching the warm light, rain visible through window but interior feels safe, cozy domestic mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 21,
+      "story_text": "阿元喝完汤，抱着油纸伞坐在床边。他问：「外婆，这把伞会一直唱歌吗？」外婆说：「会。不过它只在需要的时候唱。」「什么时候才是需要的时候？」外婆替他掖好被角，说：「有人害怕的时候，有人忘记自己很重要的时候，有人要去远方却舍不得的时候。还有，小孩子睡不着的时候。」",
+      "characters_in_scene": [
+        "阿元",
+        "外婆"
+      ],
+      "shot": "Over-the-shoulder from Grandmother's perspective",
+      "visual_action": "Ayuan sits on the bed edge hugging the folded umbrella to his chest, looking up at Grandmother with wide curious sleepy eyes; Grandmother kneels beside the bed tucking the quilt corners firmly around him with both hands, her face gentle and knowing as she speaks",
+      "environment": "Small bedroom, wooden bed with a quilt, the oil-paper umbrella held by Ayuan, rain audible on the roof tiles",
+      "composition": "Ayuan on the bed in the foreground-center, Grandmother bending from the right edge of frame, the umbrella cradled in Ayuan's lap as a focal point, quilt creating horizontal lines across the lower frame",
+      "lighting": "Soft warm lamplight casting gentle shadows, intimate and tender, the room feeling small and safe against the rain outside, sleepy and peaceful mood",
+      "state_tracking": "Night, rain continuing; Ayuan in bed; umbrella held by Ayuan; tofu soup finished; sleepy and content; Grandmother tucking him in",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Over-the-shoulder from Grandmother's perspective. 7-year-old boy, slim build; 70-year-old woman, petite and thin. Ayuan sits on the bed edge hugging the folded umbrella to his chest, looking up at Grandmother with wide curious sleepy eyes; Grandmother kneels beside the bed tucking the quilt corners firmly around him with both hands, her face gentle and knowing as she speaks. Small bedroom, wooden bed with a quilt, the oil-paper umbrella held by Ayuan, rain audible on the roof tiles. Ayuan on the bed in the foreground-center, Grandmother bending from the right edge of frame, the umbrella cradled in Ayuan's lap as a focal point, quilt creating horizontal lines across the lower frame. Soft warm lamplight casting gentle shadows, intimate and tender, the room feeling small and safe against the rain outside, sleepy and peaceful mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 22,
+      "story_text": "阿元马上闭上眼睛，可又偷偷睁开一条缝。月白油纸伞靠在床边，伞柄上的铜铃安安静静。窗外的雨慢慢小了，远处传来更夫打梆子的声音。",
+      "characters_in_scene": [
+        "阿元"
+      ],
+      "shot": "Close-up, eye level",
+      "visual_action": "Ayuan lies in bed with eyes squeezed shut, then one eye peeks open in a narrow slit toward the umbrella; his small hand reaches out from under the quilt toward the umbrella; the copper bell on the umbrella handle hangs perfectly still; his mouth curves in a tiny secret smile",
+      "environment": "Bedroom at night, bed with quilt, umbrella propped against the bedside, window with rain subsiding, distant night watchman's clapper",
+      "composition": "Ayuan's face in the foreground left with one eye cracked open, the umbrella and its copper bell in the middle ground right, quilt edge creating a diagonal, window faintly visible in the background",
+      "lighting": "Very dim, faint cool moonlight filtering through the window now that rain is lighter, soft blue-grey tones dominant, quiet and hushed mood",
+      "state_tracking": "Night, rain slowly subsiding; Ayuan in bed pretending to sleep; umbrella leaning beside bed; copper bell silent; drowsy and mischievous",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Close-up, eye level. 7-year-old boy, slim build. Ayuan lies in bed with eyes squeezed shut, then one eye peeks open in a narrow slit toward the umbrella; his small hand reaches out from under the quilt toward the umbrella; the copper bell on the umbrella handle hangs perfectly still; his mouth curves in a tiny secret smile. Bedroom at night, bed with quilt, umbrella propped against the bedside, window with rain subsiding, distant night watchman's clapper. Ayuan's face in the foreground left with one eye cracked open, the umbrella and its copper bell in the middle ground right, quilt edge creating a diagonal, window faintly visible in the background. Very dim, faint cool moonlight filtering through the window now that rain is lighter, soft blue-grey tones dominant, quiet and hushed mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 23,
+      "story_text": "就在阿元快要睡着时，伞面又轻轻唱了起来。这一次，歌里没有小鲤鱼，没有黄豆，也没有茶叶。歌里有一个小男孩，他撑着一把会唱歌的油纸伞，走过九十九条青石巷，把听来的故事一颗一颗放进梦里。等天亮以后，梦就会发芽，长成新的故事。",
+      "characters_in_scene": [
+        "阿元"
+      ],
+      "shot": "Wide shot, slightly high angle",
+      "visual_action": "Ayuan drifting to sleep, eyes half-closed, a faint smile on his face; the umbrella beside him begins to glow softly; around him, dream imagery materializes — a tiny silhouette of a boy with an umbrella walking through endless stone alleys, luminous story-seeds drifting upward from the umbrella like floating fireflies, each seed a tiny glowing orb",
+      "environment": "Bedroom dissolving into dreamscape, the stone alleys of Huizhou becoming ethereal and translucent, story-seeds floating upward into mist",
+      "composition": "Ayuan sleeping in bed in the lower foreground, the glowing umbrella beside him as the radiant focal point, dream imagery expanding upward and outward from the umbrella into the upper two-thirds of the frame, stone alley silhouettes fading into mist in the background",
+      "lighting": "Soft moon-white glow from the umbrella gently intensifying, dream-seeds catching the light like tiny stars, ethereal and magical mood, the boundary between real and dream softly blurring",
+      "state_tracking": "Night, rain very light now; Ayuan falling asleep; umbrella singing softly; dream imagery emerging; magical transition; story-seeds as new visual element",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Wide shot, slightly high angle. 7-year-old boy, slim build. Ayuan drifting to sleep, eyes half-closed, a faint smile on his face; the umbrella beside him begins to glow softly; around him, dream imagery materializes — a tiny silhouette of a boy with an umbrella walking through endless stone alleys, luminous story-seeds drifting upward from the umbrella like floating fireflies, each seed a tiny glowing orb. Bedroom dissolving into dreamscape, the stone alleys of Huizhou becoming ethereal and translucent, story-seeds floating upward into mist. Ayuan sleeping in bed in the lower foreground, the glowing umbrella beside him as the radiant focal point, dream imagery expanding upward and outward from the umbrella into the upper two-thirds of the frame, stone alley silhouettes fading into mist in the background. Soft moon-white glow from the umbrella gently intensifying, dream-seeds catching the light like tiny stars, ethereal and magical mood, the boundary between real and dream softly blurring. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 24,
+      "story_text": "第二天清晨，雨停了。屋檐下滴着水，青石板亮晶晶的。小镇上的人都说，昨晚他们做了很好的梦。张奶奶梦见黄豆开出了金色的小花。李伯伯梦见茶香顺着河水飘到很远很远的地方。外婆梦见年轻时的自己，坐在门前削竹篾，身旁有个小小的阿元，正在认真听雨。",
+      "characters_in_scene": [
+        "张奶奶",
+        "李伯伯",
+        "外婆",
+        "阿元"
+      ],
+      "shot": "Establishing shot, wide angle",
+      "visual_action": "Morning light on the wet town; Zhang Grandma stands outside her door cupping a golden soybean flower in both hands with eyes closed in a blissful smile; Uncle Li stands by the riverbank with arms relaxed, watching tea-scented mist drift along the water; Grandmother sits at her doorway shaving bamboo strips while a tiny Ayuan crouches beside her listening to the rain with head tilted",
+      "environment": "Huizhou town after rain, glistening wet stone pavements, water dripping from tiled eaves, morning mist along the river, doorways and courtyards, old locust tree with raindrops on leaves",
+      "composition": "Three dream-vignettes arranged across the frame — Zhang Grandma on the left, Uncle Li by the river in the center, Grandmother and young Ayuan at the doorway on the right, wet rooftops and pale morning sky unifying the background",
+      "lighting": "Fresh clear morning light after rain, soft and luminous, water droplets catching sunlight as tiny sparkles, the celadon and moon-white palette returning with warm golden accents, hopeful and renewed mood",
+      "state_tracking": "Next morning; rain stopped; wet surfaces glistening; everyone had good dreams; umbrella's magic revealed through dreams; new day beginning; Ayuan appears as a younger version in Grandmother's dream",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Establishing shot, wide angle. 65-year-old woman, slightly plump; 50-year-old man, sturdy build; 70-year-old woman, petite and thin; 7-year-old boy, slim build. Morning light on the wet town; Zhang Grandma stands outside her door cupping a golden soybean flower in both hands with eyes closed in a blissful smile; Uncle Li stands by the riverbank with arms relaxed, watching tea-scented mist drift along the water; Grandmother sits at her doorway shaving bamboo strips while a tiny Ayuan crouches beside her listening to the rain with head tilted. Huizhou town after rain, glistening wet stone pavements, water dripping from tiled eaves, morning mist along the river, doorways and courtyards, old locust tree with raindrops on leaves. Three dream-vignettes arranged across the frame — Zhang Grandma on the left, Uncle Li by the river in the center, Grandmother and young Ayuan at the doorway on the right, wet rooftops and pale morning sky unifying the background. Fresh clear morning light after rain, soft and luminous, water droplets catching sunlight as tiny sparkles, the celadon and moon-white palette returning with warm golden accents, hopeful and renewed mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 25,
+      "story_text": "至于阿元，他醒来时发现，月白油纸伞的伞面上多了一幅淡淡的画。画里是一座青瓦小镇，一条发亮的石板巷，一个撑伞的小孩。还有满天细雨，正在安静地唱歌。",
+      "characters_in_scene": [
+        "阿元"
+      ],
+      "shot": "Close-up, slight high angle, looking down at the umbrella surface with Ayuan's face visible at the edge of the frame",
+      "visual_action": "Ayuan sits on his bed just woken, holding the opened moon-white umbrella tilted toward him, his big eyes wide with wonder and lips slightly parted, one small hand reaching to gently trace the faint painting on the paper surface — the painted scene showing a grey-tiled town, a glistening stone alley, a tiny child figure holding an umbrella, and delicate rain lines falling softly across it all",
+      "environment": "Ayuan's small bedroom with wooden bed frame and folded quilt, morning light entering through a lattice window, the moon-white oil-paper umbrella now bearing a faint watercolor-like painting on its interior surface, bamboo basket resting beside the bed",
+      "composition": "Umbrella surface dominates the middle ground as the focal point, Ayuan's face and reaching hand in the foreground at the lower edge, bed and window softly receding into the background",
+      "lighting": "Soft clear morning sunlight filtering through the window lattice, casting gentle warm golden streaks across the bed, the umbrella's painted surface appearing to glow faintly as if lit from within, serene and magical mood",
+      "state_tracking": "Morning after rain stopped; wet surfaces still glistening outside; umbrella now permanently bears a faint painting depicting the grey-tiled town, shining stone alley, a child with umbrella, and singing rain; Ayuan just waking from good dream; magic of umbrella now physically manifested on its surface",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor and colored pencil illustration, soft delicate linework, highly detailed, best quality. Close-up, slight high angle, looking down at the umbrella surface with Ayuan's face visible at the edge of the frame. 7-year-old boy, slim build. Ayuan sits on his bed just woken, holding the opened moon-white umbrella tilted toward him, his big eyes wide with wonder and lips slightly parted, one small hand reaching to gently trace the faint painting on the paper surface — the painted scene showing a grey-tiled town, a glistening stone alley, a tiny child figure holding an umbrella, and delicate rain lines falling softly across it all. Ayuan's small bedroom with wooden bed frame and folded quilt, morning light entering through a lattice window, the moon-white oil-paper umbrella now bearing a faint watercolor-like painting on its interior surface, bamboo basket resting beside the bed. Umbrella surface dominates the middle ground as the focal point, Ayuan's face and reaching hand in the foreground at the lower edge, bed and window softly receding into the background. Soft clear morning sunlight filtering through the window lattice, casting gentle warm golden streaks across the bed, the umbrella's painted surface appearing to glow faintly as if lit from within, serene and magical mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    }
+  ]
+}
