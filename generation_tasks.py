@@ -47,10 +47,18 @@ def save_task(task_dir: str, task: dict) -> str:
         ) as file:
             temp_path = file.name
             json.dump(task, file, ensure_ascii=False, indent=2)
+            # 刷盘后再 replace，防止断电导致目录项已更新但文件内容缺失
+            file.flush()
+            os.fsync(file.fileno())
         os.replace(temp_path, task_path)
+        temp_path = None
     finally:
         if temp_path and os.path.exists(temp_path):
-            os.remove(temp_path)
+            try:
+                os.remove(temp_path)
+            except OSError:
+                # 清理失败不应掩盖原始写入异常
+                pass
     return task_path
 
 
@@ -78,33 +86,37 @@ def find_latest_failed_task(output_root: str) -> str | None:
         return None
 
     candidates = []
-    for entry in os.scandir(output_root):
-        if not entry.is_dir():
-            continue
-        task_path = os.path.join(entry.path, TASK_FILENAME)
-        if not os.path.isfile(task_path):
-            continue
-        try:
-            task = load_task(entry.path)
-        except (OSError, ValueError, json.JSONDecodeError):
-            continue
-        successful = set(task.get("successful_scenes", []))
-        scene_count = task.get("scene_count", 0)
-        extension = task.get("image_extension", ".png")
-        has_missing_file = any(
-            not os.path.isfile(
-                os.path.join(entry.path, f"scene_{number:02d}{extension}")
+    with os.scandir(output_root) as entries:
+        for entry in entries:
+            if not entry.is_dir():
+                continue
+            task_path = os.path.join(entry.path, TASK_FILENAME)
+            if not os.path.isfile(task_path):
+                continue
+            try:
+                task = load_task(entry.path)
+            except (OSError, ValueError):
+                continue
+            successful = set(task.get("successful_scenes", []))
+            scene_count = task.get("scene_count", 0)
+            extension = task.get("image_extension", ".png")
+            has_missing_file = any(
+                not any(
+                    os.path.isfile(
+                        os.path.join(entry.path, f"scene_{number:02d}{ext}")
+                    )
+                    for ext in (extension, ".png", ".jpg", ".webp")
+                )
+                for number in successful
             )
-            for number in successful
-        )
-        is_incomplete = (
-            bool(task.get("failed_scenes"))
-            or task.get("status") != "completed"
-            or len(successful) < scene_count
-            or has_missing_file
-        )
-        if is_incomplete:
-            candidates.append((os.path.getmtime(task_path), entry.path))
+            is_incomplete = (
+                bool(task.get("failed_scenes"))
+                or task.get("status") != "completed"
+                or len(successful) < scene_count
+                or has_missing_file
+            )
+            if is_incomplete:
+                candidates.append((os.path.getmtime(task_path), entry.path))
 
     return max(candidates, default=(0, None))[1]
 
@@ -114,9 +126,15 @@ def collect_generated_images(
     scene_numbers: list[int],
     extension: str = ".png",
 ) -> list[str]:
+    """收集已生成的场景图片，自动匹配 .png/.jpg/.webp 扩展名。"""
     images = []
     for scene_number in sorted(scene_numbers):
-        path = os.path.join(task_dir, f"scene_{scene_number:02d}{extension}")
-        if os.path.isfile(path):
-            images.append(path)
+        found = None
+        for ext in (".png", ".jpg", ".webp", ".gif", extension):
+            path = os.path.join(task_dir, f"scene_{scene_number:02d}{ext}")
+            if os.path.isfile(path):
+                found = path
+                break
+        if found:
+            images.append(found)
     return images

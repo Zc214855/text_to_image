@@ -70,7 +70,8 @@ class StoryParserTests(unittest.TestCase):
         self.assertEqual(14, story_parser.estimate_scene_count(story))
 
     def test_parse_story_builds_one_consistent_prompt(self):
-        payload = {
+        # 第一轮：大纲响应（无视觉细节字段）
+        outline_payload = {
             "title": "测试故事",
             "characters": [
                 {
@@ -81,7 +82,17 @@ class StoryParserTests(unittest.TestCase):
             "style": "watercolor picture book, muted blue and gold palette",
             "scenes": [
                 {
-                    "scene_number": 9,
+                    "scene_number": 1,
+                    "story_text": "女孩推开木门。",
+                    "characters_in_scene": ["女孩"],
+                }
+            ],
+        }
+        # 第二轮：细节填充响应
+        detail_payload = {
+            "scenes": [
+                {
+                    "scene_number": 1,
                     "story_text": "女孩推开木门。",
                     "characters_in_scene": ["女孩"],
                     "shot": "medium shot at eye level",
@@ -89,18 +100,29 @@ class StoryParserTests(unittest.TestCase):
                     "environment": "an old cottage entrance",
                     "composition": "the girl is the clear focal point",
                     "lighting": "cool dawn light",
+                    "state_tracking": "early morning, outdoors",
                 }
             ],
         }
-        response = SimpleNamespace(
+        outline_response = SimpleNamespace(
             choices=[
                 SimpleNamespace(
-                    message=SimpleNamespace(content=json.dumps(payload))
+                    message=SimpleNamespace(content=json.dumps(outline_payload))
+                )
+            ]
+        )
+        detail_response = SimpleNamespace(
+            choices=[
+                SimpleNamespace(
+                    message=SimpleNamespace(content=json.dumps(detail_payload))
                 )
             ]
         )
         client = Mock()
-        client.chat.completions.create.return_value = response
+        client.chat.completions.create.side_effect = [
+            outline_response,
+            detail_response,
+        ]
 
         with (
             patch.object(
@@ -114,33 +136,61 @@ class StoryParserTests(unittest.TestCase):
 
         prompt = result["scenes"][0]["prompt"]
         self.assertEqual(1, result["scenes"][0]["scene_number"])
-        self.assertEqual(1, prompt.count(payload["style"]))
-        self.assertEqual(1, prompt.count(payload["characters"][0]["visual"]))
+        self.assertEqual(1, prompt.count(outline_payload["style"]))
+        self.assertEqual(1, prompt.count(outline_payload["characters"][0]["visual"]))
         self.assertIn("no typography", prompt)
-        client.chat.completions.create.assert_called_once()
+        # 两轮共调用 LLM 两次
+        self.assertEqual(2, client.chat.completions.create.call_count)
 
-    def test_parse_story_rejects_undefined_character(self):
-        payload = {
+    def test_parse_story_skips_undefined_character(self):
+        # 第一轮大纲：无角色定义
+        outline_payload = {
             "title": "测试故事",
             "characters": [],
             "style": "watercolor",
             "scenes": [
                 {
+                    "scene_number": 1,
                     "story_text": "女孩挥手。",
                     "characters_in_scene": ["女孩"],
-                    "visual_action": "a girl waves",
                 }
             ],
         }
-        response = SimpleNamespace(
+        # 第二轮细节：角色不在定义表中但仍被引用
+        detail_payload = {
+            "scenes": [
+                {
+                    "scene_number": 1,
+                    "story_text": "女孩挥手。",
+                    "characters_in_scene": ["女孩"],
+                    "shot": "medium shot",
+                    "visual_action": "a girl waves her hand",
+                    "environment": "a garden",
+                    "composition": "girl in center",
+                    "lighting": "morning sun",
+                    "state_tracking": "daytime",
+                }
+            ],
+        }
+        outline_response = SimpleNamespace(
             choices=[
                 SimpleNamespace(
-                    message=SimpleNamespace(content=json.dumps(payload))
+                    message=SimpleNamespace(content=json.dumps(outline_payload))
+                )
+            ]
+        )
+        detail_response = SimpleNamespace(
+            choices=[
+                SimpleNamespace(
+                    message=SimpleNamespace(content=json.dumps(detail_payload))
                 )
             ]
         )
         client = Mock()
-        client.chat.completions.create.return_value = response
+        client.chat.completions.create.side_effect = [
+            outline_response,
+            detail_response,
+        ]
 
         with (
             patch.object(
@@ -150,13 +200,17 @@ class StoryParserTests(unittest.TestCase):
             ),
             patch.object(story_parser, "OpenAI", return_value=client),
         ):
-            with self.assertRaisesRegex(ValueError, "undefined character"):
-                story_parser.parse_story("女孩挥手。")
+            result = story_parser.parse_story("女孩挥手。")
+
+        # 角色未定义时不应硬失败，场景正常生成但不含角色引用
+        prompt = result["scenes"][0]["prompt"]
+        self.assertNotIn("女孩", prompt.split("; ")[0] if "; " in prompt else "")
 
 
 class ImageGeneratorTests(unittest.TestCase):
     def test_ark_generate_disables_watermark(self):
         response = Mock()
+        response.status_code = 200
         response.json.return_value = {"data": [{"url": "https://example.test/a.png"}]}
         response.raise_for_status.return_value = None
 
@@ -175,6 +229,7 @@ class ImageGeneratorTests(unittest.TestCase):
 
     def test_ark_seedream_4_requests_png_output(self):
         response = Mock()
+        response.status_code = 200
         response.json.return_value = {"data": [{"url": "https://example.test/a.png"}]}
         response.raise_for_status.return_value = None
 
@@ -399,7 +454,7 @@ class ImageRetryWorkflowTests(unittest.TestCase):
                 "scene.png",
             ],
         ) as generate:
-            path, attempts = main.generate_scene_with_retry(
+            path, attempts, hit_limit = main.generate_scene_with_retry(
                 "prompt",
                 "scene.png",
                 "output",
@@ -418,7 +473,7 @@ class ImageRetryWorkflowTests(unittest.TestCase):
             "generate_and_save",
             side_effect=httpx.ReadTimeout("response timeout"),
         ) as generate:
-            with self.assertRaisesRegex(RuntimeError, "尝试 1/3"):
+            with self.assertRaisesRegex(RuntimeError, "尝试 1/4"):
                 main.generate_scene_with_retry(
                     "prompt",
                     "scene.png",
@@ -463,7 +518,7 @@ class ImageRetryWorkflowTests(unittest.TestCase):
         )
 
         with patch.object(main, "generate_and_save", side_effect=error) as generate:
-            with self.assertRaisesRegex(RuntimeError, "尝试 1/3"):
+            with self.assertRaisesRegex(RuntimeError, "尝试 1/4"):
                 main.generate_scene_with_retry(
                     "prompt",
                     "scene.png",
@@ -519,7 +574,7 @@ class ImageRetryWorkflowTests(unittest.TestCase):
                 path = os.path.join(output_dir, filename)
                 with open(path, "wb") as file:
                     file.write(b"image")
-                return path, 1
+                return path, 1, False
 
             with (
                 patch.object(main, "generate_scene_with_retry", side_effect=fake_generate),

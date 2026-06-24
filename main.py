@@ -1,5 +1,6 @@
 import json
 import os
+import sys
 import time
 import httpx
 
@@ -33,7 +34,9 @@ from generation_tasks import (
     task_execution_lock,
 )
 
-AUTO_RETRY_COUNT = 2
+AUTO_RETRY_COUNT = 3
+RATE_LIMIT_RETRY_BASE = 10
+VOLCENGINE_SCENE_INTERVAL = 5
 
 
 def validate_image_credentials(image_model):
@@ -56,6 +59,13 @@ def is_retryable_image_error(error: Exception) -> bool:
     return False
 
 
+def is_rate_limit_error(error: Exception) -> bool:
+    """判断是否为限流错误，限流需要更长的退避时间。"""
+    if isinstance(error, httpx.HTTPStatusError):
+        return error.response.status_code == 429
+    return False
+
+
 def generate_scene_with_retry(
     prompt,
     filename,
@@ -67,6 +77,7 @@ def generate_scene_with_retry(
 ):
     """生成单张图片；瞬时错误自动重试，返回图片路径和实际尝试次数。"""
     total_attempts = max_retries + 1
+    hit_rate_limit = False
     for attempt in range(1, total_attempts + 1):
         try:
             path = generate_and_save(
@@ -76,17 +87,31 @@ def generate_scene_with_retry(
                 model=image_model,
                 size=image_size,
             )
-            return path, attempt
+            return path, attempt, hit_rate_limit
         except Exception as error:
             if attempt == total_attempts or not is_retryable_image_error(error):
                 raise RuntimeError(
                     f"{error}（尝试 {attempt}/{total_attempts} 次）"
                 ) from error
-            sleep_fn(2 ** (attempt - 1))
+            if is_rate_limit_error(error):
+                hit_rate_limit = True
+                sleep_fn(RATE_LIMIT_RETRY_BASE * (2 ** (attempt - 1)))
+            else:
+                sleep_fn(2 ** (attempt - 1))
 
 
 def get_image_extension(image_model):
+    """占位扩展名；实际扩展名由 download_image 根据真实 content-type 决定。"""
     return ".png"
+
+
+def _resolve_scene_path(task_dir: str, scene_number: int) -> str | None:
+    """查找场景实际保存的图片路径（扩展名可能为 .png/.jpg/.webp）。"""
+    for ext in (".png", ".jpg", ".webp", ".gif"):
+        candidate = os.path.join(task_dir, f"scene_{scene_number:02d}{ext}")
+        if os.path.isfile(candidate):
+            return candidate
+    return None
 
 
 def build_generation_summary(task, task_dir):
@@ -169,6 +194,9 @@ def generate(story_text, llm_provider, image_model, image_size, progress=gr.Prog
     llm_label = LLM_PROVIDERS[llm_provider]["label"]
     info_lines = [f"标题：{title}"]
     info_lines.append(f"场景数量：{len(scenes)}")
+    dropped = result.get("_dropped_scenes", [])
+    if dropped:
+        info_lines.append(f"⚠ 丢弃残缺场景 {len(dropped)} 个：{'；'.join(dropped)}")
     info_lines.append(f"LLM：{selected_llm['model']} [{llm_label}]")
     info_lines.append(f"LLM状态：{llm_status}")
     info_lines.append(f"图像模型：{image_model} [{provider_label}]")
@@ -205,8 +233,9 @@ def generate(story_text, llm_provider, image_model, image_size, progress=gr.Prog
             prompt = scene["prompt"]
             progress((i + 1) / len(scenes), desc=f"正在生成场景 {num}/{len(scenes)}...")
 
+            hit_limit = False
             try:
-                _, attempts = generate_scene_with_retry(
+                _, attempts, hit_limit = generate_scene_with_retry(
                     prompt,
                     f"scene_{num:02d}{image_extension}",
                     story_output_dir,
@@ -223,7 +252,9 @@ def generate(story_text, llm_provider, image_model, image_size, progress=gr.Prog
             save_task(story_output_dir, task)
 
             if num < len(scenes):
-                time.sleep(1)
+                if hit_limit:
+                    time.sleep(10)
+                time.sleep(VOLCENGINE_SCENE_INTERVAL if provider == "volcengine" else 1)
 
         task["status"] = "partial" if task["failed_scenes"] else "completed"
         save_task(story_output_dir, task)
@@ -266,7 +297,6 @@ def _retry_failed_images_locked(task_dir, progress):
         return
 
     image_size = task["image_size"]
-    extension = task.get("image_extension", get_image_extension(image_model))
     scenes_by_number = {
         scene["scene_number"]: scene for scene in prompts["scenes"]
     }
@@ -277,16 +307,14 @@ def _retry_failed_images_locked(task_dir, progress):
     missing_numbers = {
         number
         for number in scenes_by_number
-        if not os.path.isfile(
-            os.path.join(task_dir, f"scene_{number:02d}{extension}")
-        )
+        if not _resolve_scene_path(task_dir, number)
     }
     retry_numbers = sorted(failed_numbers | missing_numbers)
     if not retry_numbers:
         task["status"] = "completed"
         task["failed_scenes"] = []
         save_task(task_dir, task)
-        images = collect_generated_images(task_dir, list(scenes_by_number), extension)
+        images = collect_generated_images(task_dir, list(scenes_by_number))
         yield "任务没有失败或缺失图片", images, task_dir
         return
 
@@ -296,6 +324,7 @@ def _retry_failed_images_locked(task_dir, progress):
     save_task(task_dir, task)
 
     retry_failures = []
+    retry_provider = get_provider(image_model)
     for index, scene_number in enumerate(retry_numbers, start=1):
         scene = scenes_by_number.get(scene_number)
         if not scene:
@@ -307,10 +336,11 @@ def _retry_failed_images_locked(task_dir, progress):
             index / len(retry_numbers),
             desc=f"仅重试图片 {index}/{len(retry_numbers)}（场景 {scene_number}）...",
         )
+        hit_limit = False
         try:
-            _, attempts = generate_scene_with_retry(
+            _, attempts, hit_limit = generate_scene_with_retry(
                 scene["prompt"],
-                f"scene_{scene_number:02d}{extension}",
+                f"scene_{scene_number:02d}{task['image_extension']}",
                 task_dir,
                 image_model,
                 image_size,
@@ -325,11 +355,16 @@ def _retry_failed_images_locked(task_dir, progress):
         task["failed_scenes"] = retry_failures
         save_task(task_dir, task)
 
+        if index < len(retry_numbers):
+            if hit_limit:
+                time.sleep(10)
+            time.sleep(VOLCENGINE_SCENE_INTERVAL if retry_provider == "volcengine" else 1)
+
     task["status"] = "partial" if retry_failures else "completed"
     task["successful_scenes"] = sorted(successful)
     task["failed_scenes"] = retry_failures
     save_task(task_dir, task)
-    images = collect_generated_images(task_dir, sorted(successful), extension)
+    images = collect_generated_images(task_dir, sorted(successful))
     summary = "未调用 LLM，仅重试图片。\n" + build_generation_summary(task, task_dir)
     yield summary, images, task_dir
 
@@ -416,7 +451,7 @@ def build_usage_guide():
         "- 页面上的“分镜 LLM”只切换当前任务使用的文本模型，不修改 `.env` 默认值。\n"
         "- `IMAGE_MODEL` / `IMAGE_SIZE`：控制启动时默认图像模型和尺寸。\n"
         "- 页面切换图像模型后，尺寸列表会自动更新。\n"
-        "- 生图请求明确返回限流或 5xx 时自动重试 2 次；POST 传输超时不自动重提，避免重复计费。\n"
+        "- 生图请求明确返回限流或 5xx 时自动重试 3 次；POST 传输超时不自动重提，避免重复计费。\n"
         "- 图片下载失败会对同一个结果 URL 重试，不会重新提交生图请求；最终失败后可仅重试图片，不重复调用 LLM。\n"
         "- 费用和模型可用性会由平台调整，实际以对应平台控制台为准。"
     )
@@ -545,6 +580,8 @@ def main():
         validate_config()
     except SystemExit as e:
         print(str(e))
+        input("按回车键退出...")
+        sys.exit(1)
 
     app = build_ui()
     app.launch(

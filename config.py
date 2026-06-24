@@ -81,7 +81,7 @@ def get_llm_provider_config(provider: str):
 
 # ---------- 图片生成模型 ----------
 IMAGE_MODEL = os.getenv("IMAGE_MODEL", "Kwai-Kolors/Kolors")
-IMAGE_SIZE = os.getenv("IMAGE_SIZE", "1024x1024")
+IMAGE_SIZE = os.getenv("IMAGE_SIZE", "768x1024")
 OUTPUT_DIR = os.getenv("OUTPUT_DIR", "output")
 
 # ---------- SiliconFlow 图片模型 ----------
@@ -89,7 +89,7 @@ SF_MODELS = {
     "Kwai-Kolors/Kolors": {
         "label": "Kolors（免费基础款）· 硅基流动",
         "provider": "siliconflow",
-        "image_sizes": ["1024x1024", "960x1280", "768x1024", "720x1440", "720x1280"],
+        "image_sizes": ["960x1280", "768x1024", "720x1280", "1024x1024", "720x1440"],
         "num_inference_steps": 20,
         "guidance_scale": 7.5,
         "price": "免费",
@@ -98,7 +98,7 @@ SF_MODELS = {
     "Tongyi-MAI/Z-Image-Turbo": {
         "label": "Z-Image Turbo（快速低价）· 硅基流动",
         "provider": "siliconflow",
-        "image_sizes": ["1024x1024", "1280x720", "720x1280", "1024x768", "768x1024", "864x1152", "1152x864"],
+        "image_sizes": ["864x1152", "720x1280", "768x1024", "1024x768", "1280x720", "1152x864", "1024x1024"],
         "num_inference_steps": 10,
         "guidance_scale": 5.0,
         "price": "¥0.10/张",
@@ -107,7 +107,7 @@ SF_MODELS = {
     "Tongyi-MAI/Z-Image": {
         "label": "Z-Image（质量版）· 硅基流动",
         "provider": "siliconflow",
-        "image_sizes": ["1024x1024", "1280x720", "720x1280", "1024x768", "768x1024", "864x1152", "1152x864"],
+        "image_sizes": ["864x1152", "720x1280", "768x1024", "1024x768", "1280x720", "1152x864", "1024x1024"],
         "num_inference_steps": 20,
         "guidance_scale": 5.0,
         "price": "¥0.30/张",
@@ -116,7 +116,7 @@ SF_MODELS = {
     "baidu/ERNIE-Image-Turbo": {
         "label": "ERNIE Image Turbo（中文理解）· 硅基流动",
         "provider": "siliconflow",
-        "image_sizes": ["1024x1024", "1280x720", "720x1280", "1024x768", "768x1024"],
+        "image_sizes": ["720x1280", "768x1024", "1024x768", "1280x720", "1024x1024"],
         "num_inference_steps": 20,
         "guidance_scale": 7.5,
         "price": "¥0.11/张",
@@ -125,7 +125,7 @@ SF_MODELS = {
     "Qwen/Qwen-Image": {
         "label": "Qwen Image（复杂提示词）· 硅基流动",
         "provider": "siliconflow",
-        "image_sizes": ["1328x1328", "1664x928", "928x1664", "1472x1140", "1140x1472", "1584x1056", "1056x1584"],
+        "image_sizes": ["928x1664", "1104x1472", "1056x1584", "1664x928", "1472x1104", "1584x1056", "1328x1328"],
         "num_inference_steps": 20,
         "guidance_scale": 5.0,
         "price": "¥0.30/张",
@@ -136,25 +136,25 @@ SF_MODELS = {
 # ---------- 阿里云百炼(DashScope) 图片模型 ----------
 DS_MODELS = {
     "wanx2.1-t2i-turbo": {
-        "label": "万相 2.1 Turbo（旧版快速）· 阿里云百炼",
+        "label": "万相 2.1 Turbo · 阿里云百炼",
         "provider": "dashscope",
-        "image_sizes": ["1024*1024", "720*1280", "1280*720", "768*1024", "1024*768"],
-        "price": "按百炼控制台计费",
-        "summary": "仍可调用的旧版万相模型，生成速度优先；百炼当前更推荐万相 2.7 系列。",
+        "image_sizes": ["720*1280", "768*1024", "1280*720", "1024*768", "1024*1024"],
+        "price": "¥0.04/张（每月免费 500 张）",
+        "summary": "百炼文生图性价比之选，月免额度充足；复杂构图和角色一致性弱于 Seedream 5.0。",
     },
     "wanx2.1-t2i-plus": {
-        "label": "万相 2.1 Plus（旧版质量）· 阿里云百炼",
+        "label": "万相 2.1 Plus · 阿里云百炼",
         "provider": "dashscope",
-        "image_sizes": ["1024*1024", "720*1280", "1280*720", "768*1024", "1024*768"],
-        "price": "按百炼控制台计费",
-        "summary": "仍可调用的旧版万相质量模型，细节高于 2.1 Turbo；百炼当前更推荐万相 2.7 系列。",
+        "image_sizes": ["720*1280", "768*1024", "1280*720", "1024*768", "1024*1024"],
+        "price": "¥0.08/张（每月免费 200 张）",
+        "summary": "细节高于 2.1 Turbo，适合预算有限但对画质有要求的场景。",
     },
     "qwen-image-plus": {
-        "label": "Qwen Image Plus（高分辨率）· 阿里云百炼",
+        "label": "Qwen Image Plus · 阿里云百炼",
         "provider": "dashscope",
-        "image_sizes": ["1664*928", "928*1664", "1472*1104", "1104*1472", "1328*1328"],
-        "price": "按百炼控制台计费",
-        "summary": "百炼版千问图像单图模型，适合复杂语义和高分辨率；新项目可评估 Qwen Image 2.0。",
+        "image_sizes": ["928*1664", "1104*1472", "1056*1584", "1664*928", "1472*1104", "1584*1056", "1328*1328"],
+        "price": "¥0.04/张（每月免费 500 张）",
+        "summary": "百炼版千问图像模型，复杂语义和高分辨率构图能力强；免费额度同万相 Turbo。",
     },
 }
 
@@ -164,29 +164,44 @@ ARK_MODELS = {
         "label": "Seedream 5.0 Lite（当前推荐）· 火山方舟",
         "provider": "volcengine",
         "image_sizes": [
+            "1728x2304",
+            "1664x2496",
+            "1600x2848",
             "2048x2048",
             "2304x1728",
-            "1728x2304",
             "2848x1600",
-            "1600x2848",
             "2496x1664",
-            "1664x2496",
         ],
+        "output_format": "png",
         "price": "约 ¥0.22/张，以方舟控制台为准",
         "summary": "当前默认模型。提示词理解、细节和多主体构图较强；官方还支持参考图与组图，本工具当前使用文生单图。",
+    },
+    "doubao-seedream-4-5-251128": {
+        "label": "Seedream 4.5（高清版）· 火山方舟",
+        "provider": "volcengine",
+        "image_sizes": [
+            "1728x2304",
+            "1536x2560",
+            "2048x2048",
+            "2304x1728",
+            "2560x1536",
+        ],
+        "price": "约 ¥0.25/张，以方舟控制台为准",
+        "summary": "2K 高清输出，画质介于 4.0 和 5.0 之间；不支持 output_format 参数，默认输出 JPEG。",
     },
     "doubao-seedream-4-0-250828": {
         "label": "Seedream 4.0（1K 预览）· 火山方舟",
         "provider": "volcengine",
         "image_sizes": [
+            "864x1152",
+            "736x1312",
+            "832x1248",
             "1024x1024",
             "1152x864",
-            "864x1152",
             "1312x736",
-            "736x1312",
             "1248x832",
-            "832x1248",
         ],
+        "output_format": "png",
         "price": "约 ¥0.20/张，以方舟控制台为准",
         "summary": "支持 1K 输出，适合低分辨率预览和构图确认；质量与提示词理解弱于 Seedream 5.0 Lite。",
     },
