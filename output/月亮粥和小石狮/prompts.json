@@ -1,0 +1,328 @@
+{
+  "title": "月亮粥和小石狮",
+  "characters": [
+    {
+      "name": "小石狮",
+      "visual": "A small stone lion cub with rounded features, pale grey-blue limestone texture, mossy patches on ears and paws, carved curly mane, wide innocent stone eyes"
+    },
+    {
+      "name": "卖糖人爷爷",
+      "visual": "An elderly man with white beard, wrinkled kind face, wearing dark blue cotton jacket and trousers, carrying a bamboo shoulder pole with candy stalls"
+    },
+    {
+      "name": "穿红鞋的小孩",
+      "visual": "A small child around 5 years old, round face, black hair in tufts, wearing bright red cloth shoes and light green tunic"
+    },
+    {
+      "name": "小姑娘",
+      "visual": "A young girl around 8 years old, round face, black hair in twin buns with flower pins, wearing pale yellow tunic and light blue trousers, holding a wooden spoon"
+    },
+    {
+      "name": "小光",
+      "visual": "A small glowing golden orb of light, soft warm radiance, trembling slightly, the size of a firefly cluster"
+    },
+    {
+      "name": "阿福",
+      "visual": "A small boy around 6 years old, round chubby face, black messy hair, wearing a red sleeping garment"
+    }
+  ],
+  "style": "Watercolor illustration, soft flowing lines, warm blue-grey palette with golden moonlight accents, gentle moonlight and warm glow lighting logic, Jiangnan watertown historical setting, suitable for ages 3-8, highly detailed best quality",
+  "scenes": [
+    {
+      "scene_number": 1,
+      "story_text": "很久很久以前，江南有一座小镇，镇口有座青石桥，桥头蹲着一只小石狮。",
+      "characters_in_scene": [
+        "小石狮"
+      ],
+      "shot": "Establishing shot, high angle",
+      "visual_action": "A small stone lion cub sits upright at the bridgehead, front paws planted on the stone railing, gazing forward with wide innocent eyes, its curly mane catching the light",
+      "environment": "Jiangnan watertown entrance, arched blue-stone bridge over a calm canal, whitewashed walls and dark-tiled rooftops in the distance, willow trees draping over water",
+      "composition": "Stone lion placed at lower-right focal point, bridge curving from foreground into middle ground, town silhouette receding into background",
+      "lighting": "Late afternoon soft diffused light, warm golden-grey tones, peaceful and timeless mood",
+      "state_tracking": "Initial scene; stone lion in fixed sitting pose on bridge; daytime",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor illustration, soft flowing lines, warm blue-grey palette with golden moonlight accents, gentle moonlight and warm glow lighting logic, Jiangnan watertown historical setting, suitable for ages 3-8, highly detailed best quality. Establishing shot, high angle. A small stone lion cub with rounded features, pale grey-blue limestone texture, mossy patches on ears and paws, carved curly mane, wide innocent stone eyes. A small stone lion cub sits upright at the bridgehead, front paws planted on the stone railing, gazing forward with wide innocent eyes, its curly mane catching the light. Jiangnan watertown entrance, arched blue-stone bridge over a calm canal, whitewashed walls and dark-tiled rooftops in the distance, willow trees draping over water. Stone lion placed at lower-right focal point, bridge curving from foreground into middle ground, town silhouette receding into background. Late afternoon soft diffused light, warm golden-grey tones, peaceful and timeless mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 2,
+      "story_text": "白天，小石狮一动不动，看卖糖人的爷爷挑担经过。",
+      "characters_in_scene": [
+        "小石狮",
+        "卖糖人爷爷"
+      ],
+      "shot": "Medium shot, eye level",
+      "visual_action": "The stone lion sits perfectly still on the bridge railing like a statue, eyes fixed forward, while the elderly candy seller bends slightly under his shoulder pole, shuffling past with careful steps, white beard swaying with his gait",
+      "environment": "Stone bridge pathway, bamboo shoulder pole with two hanging candy baskets holding sugar figurines on sticks, cobblestone ground",
+      "composition": "Stone lion in foreground left, candy seller in middle ground right walking past, candy baskets at eye level to draw the viewer's gaze",
+      "lighting": "Bright midday light with soft shadows, warm and lively mood",
+      "state_tracking": "Still daytime; stone lion remains motionless in statue pose; candy seller introduced",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor illustration, soft flowing lines, highly detailed best quality. Medium shot, eye level. A small stone lion cub with rounded features, pale grey-blue limestone texture; An elderly man with white beard, wrinkled kind face, wearing dark blue cotton jacket and trousers, carrying a bamboo shoulder pole with candy stalls. The stone lion sits perfectly still on the bridge railing like a statue, eyes fixed forward, while the elderly candy seller bends slightly under his shoulder pole, shuffling past with careful steps, white beard swaying with his gait. Stone bridge pathway, bamboo shoulder pole with two hanging candy baskets holding sugar figurines on sticks, cobblestone ground. Stone lion in foreground left, candy seller in middle ground right walking past, candy baskets at eye level to draw the viewer's gaze. Bright midday light with soft shadows, warm and lively mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 3,
+      "story_text": "看穿红鞋的小孩跑过桥，看河里的乌篷船慢悠悠地摇远。",
+      "characters_in_scene": [
+        "小石狮",
+        "穿红鞋的小孩"
+      ],
+      "shot": "Wide shot, low angle",
+      "visual_action": "The small child runs across the bridge with arms spread wide, red shoes pattering on stone, tufts of black hair bouncing; the stone lion watches from its perch, head slightly tilted; a black-awning boat drifts slowly down the canal below",
+      "environment": "Bridge spanning over canal, black-awning boat on water, willow branches trailing in the current",
+      "composition": "Child in middle ground running left to right, stone lion in foreground right watching, boat in background on the water below the bridge railing",
+      "lighting": "Warm afternoon sunlight, dappled through willow leaves, gentle and carefree mood",
+      "state_tracking": "Still daytime; stone lion remains in fixed sitting position on bridge; child and boat introduced",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor illustration, soft flowing lines, highly detailed best quality. Wide shot, low angle. A small stone lion cub with rounded features, pale grey-blue limestone texture; A small child around 5 years old, round face, black hair in tufts, wearing bright red cloth shoes and light green tunic. The small child runs across the bridge with arms spread wide, red shoes pattering on stone, tufts of black hair bouncing; the stone lion watches from its perch, head slightly tilted; a black-awning boat drifts slowly down the canal below. Bridge spanning over canal, black-awning boat on water, willow branches trailing in the current. Child in middle ground running left to right, stone lion in foreground right watching, boat in background on the water below the bridge railing. Warm afternoon sunlight, dappled through willow leaves, gentle and carefree mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 4,
+      "story_text": "到了夜里，镇子睡着了，小石狮才轻轻抖抖耳朵，醒过来。",
+      "characters_in_scene": [
+        "小石狮"
+      ],
+      "shot": "Close-up, slight low angle",
+      "visual_action": "The stone lion's ears twitch and shake off a tiny piece of moss, its wide stone eyes blink slowly open, a subtle stretch running through its small body as it comes alive, mouth opening in a quiet yawn",
+      "environment": "Bridge at night, dark canal below, sleeping town with no lit windows, stars visible above",
+      "composition": "Stone lion's face and upper body filling the frame, ears at top of composition, bridge railing visible at bottom edge",
+      "lighting": "Cool blue-grey moonlight from above, soft silver glow on the lion's limestone texture, quiet and magical mood",
+      "state_tracking": "Day → night; town asleep; stone lion now animated and awake; moss on ears loosened",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor illustration, soft flowing lines, highly detailed best quality. Close-up, slight low angle. A small stone lion cub with rounded features, pale grey-blue limestone texture. The stone lion's ears twitch and shake off a tiny piece of moss, its wide stone eyes blink slowly open, a subtle stretch running through its small body as it comes alive, mouth opening in a quiet yawn. Bridge at night, dark canal below, sleeping town with no lit windows, stars visible above. Stone lion's face and upper body filling the frame, ears at top of composition, bridge railing visible at bottom edge. Cool blue-grey moonlight from above, soft silver glow on the lion's limestone texture, quiet and magical mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 5,
+      "story_text": "这天晚上，月亮圆得像一只白瓷碗，挂在桂花树梢。小石狮闻到一阵甜香，顺着桥栏跳下去。",
+      "characters_in_scene": [
+        "小石狮"
+      ],
+      "shot": "Medium shot, low angle",
+      "visual_action": "The stone lion leaps gracefully from the bridge railing, front paws extended, curly mane flowing with the motion, nose twitching as it scents the air, eyes bright with curiosity",
+      "environment": "Osmanthus tree with golden blossoms beside the bridge, full round moon above the branches, fallen osmanthus petals on the ground",
+      "composition": "Stone lion mid-leap in foreground, osmanthus tree in middle ground right, large moon in upper background as dominant visual element",
+      "lighting": "Bright moonlight casting silver-blue glow, golden accents on osmanthus flowers, warm sweet atmosphere",
+      "state_tracking": "Night continues; full moon; stone lion now off the bridge and moving; osmanthus scent introduced",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor illustration, soft flowing lines, highly detailed best quality. Medium shot, low angle. A small stone lion cub with rounded features, pale grey-blue limestone texture. The stone lion leaps gracefully from the bridge railing, front paws extended, curly mane flowing with the motion, nose twitching as it scents the air, eyes bright with curiosity. Osmanthus tree with golden blossoms beside the bridge, full round moon above the branches, fallen osmanthus petals on the ground. Stone lion mid-leap in foreground, osmanthus tree in middle ground right, large moon in upper background as dominant visual element. Bright moonlight casting silver-blue glow, golden accents on osmanthus flowers, warm sweet atmosphere. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 6,
+      "story_text": "发现河边坐着一个小姑娘，正抱着一口小砂锅。",
+      "characters_in_scene": [
+        "小石狮",
+        "小姑娘"
+      ],
+      "shot": "Over-the-shoulder shot from behind the stone lion",
+      "visual_action": "The stone lion creeps forward on tiptoe paws, peering curiously around a willow trunk; the young girl sits cross-legged on the riverbank, both arms wrapped around a small clay pot resting in her lap, her face calm and focused",
+      "environment": "Grassy riverbank, calm canal water reflecting moonlight, willow tree trunk, small clay sand pot with a lid",
+      "composition": "Stone lion's head and shoulder in foreground left, girl in middle ground center holding the pot, canal water in background",
+      "lighting": "Moonlight from above, soft reflections on water, gentle and mysterious mood",
+      "state_tracking": "Night continues; full moon; stone lion now at riverbank; girl introduced holding clay pot",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor illustration, soft flowing lines, highly detailed best quality. Over-the-shoulder shot from behind the stone lion. A small stone lion cub with rounded features, pale grey-blue limestone texture; A young girl around 8 years old, round face, black hair in twin buns with flower pins, wearing pale yellow tunic and light blue trousers, holding a wooden spoon. The stone lion creeps forward on tiptoe paws, peering curiously around a willow trunk; the young girl sits cross-legged on the riverbank, both arms wrapped around a small clay pot resting in her lap, her face calm and focused. Grassy riverbank, calm canal water reflecting moonlight, willow tree trunk, small clay sand pot with a lid. Stone lion's head and shoulder in foreground left, girl in middle ground center holding the pot, canal water in background. Moonlight from above, soft reflections on water, gentle and mysterious mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 7,
+      "story_text": "「你在煮什么？」「月亮粥。」小姑娘用木勺搅了搅锅，「一勺月光，三粒桂花，一颗好梦，再加一点点安静。」锅里真的亮起来了，像盛着一小片温柔的夜空。",
+      "characters_in_scene": [
+        "小石狮",
+        "小姑娘"
+      ],
+      "shot": "Close-up, slight high angle",
+      "visual_action": "The girl dips the wooden spoon into the clay pot and stirs slowly, her face illuminated from below by the glowing contents; the stone lion leans in close, front paws on the ground, nose nearly touching the pot rim, eyes wide with wonder; the pot emanates a soft luminous glow with tiny golden flecks swirling inside",
+      "environment": "Riverbank, clay pot with glowing contents, wooden spoon, scattered osmanthus petals on the ground",
+      "composition": "Glowing pot at center focal point, girl's hands and spoon above it, stone lion's face leaning in from the right, warm light rising from pot illuminating both faces",
+      "lighting": "Warm golden glow emanating from the pot below, cool moonlight from above, creating a dual-light effect, magical and tender mood",
+      "state_tracking": "Night continues; full moon; pot now glowing with moonlight porridge; wooden spoon in use; osmanthus petals present",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor illustration, soft flowing lines, highly detailed best quality. Close-up, slight high angle. A small stone lion cub with rounded features, pale grey-blue limestone texture; A young girl around 8 years old, round face. The girl dips the wooden spoon into the clay pot and stirs slowly, her face illuminated from below by the glowing contents; the stone lion leans in close, front paws on the ground, nose nearly touching the pot rim, eyes wide with wonder; the pot emanates a soft luminous glow with tiny golden flecks swirling inside. Riverbank, clay pot with glowing contents, wooden spoon, scattered osmanthus petals on the ground. Glowing pot at center focal point, girl's hands and spoon above it, stone lion's face leaning in from the right, warm light rising from pot illuminating both faces. Warm golden glow emanating from the pot below, cool moonlight from above, creating a dual-light effect, magical and tender mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 8,
+      "story_text": "小石狮吸了吸鼻子：「我能尝一口吗？」「可以，但你要帮我找一颗好梦。镇上的孩子今晚都睡不安稳，梦被风吹散了。」",
+      "characters_in_scene": [
+        "小石狮",
+        "小姑娘"
+      ],
+      "shot": "Medium shot, eye level",
+      "visual_action": "The stone lion sniffs the air toward the pot, one paw raised eagerly, tail curling with anticipation; the girl pauses stirring and looks at the lion with a gentle but serious expression, raising one finger as she explains her request; the pot continues to glow softly between them",
+      "environment": "Riverbank, glowing clay pot on the ground, wooden spoon resting inside, osmanthus tree nearby, night breeze visible in swaying grass",
+      "composition": "Girl seated on left, stone lion on right, glowing pot between them at center, osmanthus tree in background",
+      "lighting": "Warm golden glow from pot, cool moonlight filtering through osmanthus branches, gentle night breeze suggested by swaying shadows, hopeful yet slightly melancholic mood",
+      "state_tracking": "Night continues; full moon; pot still glowing; mission introduced — find lost dreams; breeze visible indicating scattered dreams",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor illustration, soft flowing lines, highly detailed best quality. Medium shot, eye level. A small stone lion cub with rounded features, pale grey-blue limestone texture; A young girl around 8 years old, round face. The stone lion sniffs the air toward the pot, one paw raised eagerly, tail curling with anticipation; the girl pauses stirring and looks at the lion with a gentle but serious expression, raising one finger as she explains her request; the pot continues to glow softly between them. Riverbank, glowing clay pot on the ground, wooden spoon resting inside, osmanthus tree nearby, night breeze visible in swaying grass. Girl seated on left, stone lion on right, glowing pot between them at center, osmanthus tree in background. Warm golden glow from pot, cool moonlight filtering through osmanthus branches, gentle night breeze suggested by swaying shadows, hopeful yet slightly melancholic mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 9,
+      "story_text": "于是小石狮驮着小姑娘，沿着石板路轻轻跑。",
+      "characters_in_scene": [
+        "小石狮",
+        "小姑娘"
+      ],
+      "shot": "Medium tracking shot, low angle, moving alongside the path",
+      "visual_action": "The small stone lion galloping lightly along the stone-paved lane with the girl perched on its back, her hands gripping its curly mane for balance, her wooden spoon tucked at her waist, the lion's mossy paws tapping rhythmically on the flagstones, both leaning forward with eager purpose",
+      "environment": "Narrow stone-paved alley of a Jiangnan watertown, canal water running alongside the path reflecting moonlight, arched stone bridge in the distance, old whitewashed walls on either side",
+      "composition": "Stone lion and girl in foreground-center moving rightward, canal and reflections in middle ground, moonlit rooftops and bridge in background",
+      "lighting": "Cool moonlight washing the stone path, warm glint off the girl's flower pins and spoon, gentle night shadows along the walls, adventurous and hopeful mood",
+      "state_tracking": "Night continues; full moon; mission to find lost dreams underway; girl now riding on stone lion's back; wooden spoon still carried; breeze still gently stirring",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor illustration, soft flowing lines, highly detailed best quality. Medium tracking shot, low angle, moving alongside the path. A small stone lion cub with rounded features, pale grey-blue limestone texture; A young girl around 8 years old, round face. The small stone lion galloping lightly along the stone-paved lane with the girl perched on its back, her hands gripping its curly mane for balance, her wooden spoon tucked at her waist, the lion's mossy paws tapping rhythmically on the flagstones, both leaning forward with eager purpose. Narrow stone-paved alley of a Jiangnan watertown, canal water running alongside the path reflecting moonlight, arched stone bridge in the distance, old whitewashed walls on either side. Stone lion and girl in foreground-center moving rightward, canal and reflections in middle ground, moonlit rooftops and bridge in background. Cool moonlight washing the stone path, warm glint off the girl's flower pins and spoon, gentle night shadows along the walls, adventurous and hopeful mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 10,
+      "story_text": "他们先到茶馆屋顶，找到一个打盹的纸风筝。风筝肚子里藏着一个梦：一个孩子梦见自己骑着鲤鱼，游过荷花池。",
+      "characters_in_scene": [
+        "小石狮",
+        "小姑娘"
+      ],
+      "shot": "Wide shot, slightly high angle looking down across the rooftop",
+      "visual_action": "The stone lion crouching on the curved clay tiles, the girl kneeling beside a slumped paper swallow kite that dozes with its wings folded, she gently lifts the kite's belly open to reveal a faint luminous vision inside — a tiny child astride a golden carp gliding through lotus blossoms, the dream-glow spilling softly onto her fingers",
+      "environment": "Curved clay tile rooftop of a traditional teahouse, paper swallow kite with painted red and grey wings lying among the tiles, distant lotus pond shimmering below, clay chimney nearby",
+      "composition": "Girl and kite as focal point in center-middle ground, stone lion crouching to her left, rooftop tiles spreading across foreground, moonlit sky and distant watertown silhouette in background",
+      "lighting": "Moonlight illuminating the rooftop tiles, soft golden-cyan dream-glow emanating from inside the kite casting warm light on the girl's hands and face, magical and wondrous mood",
+      "state_tracking": "Night continues; full moon; first dream found — kite dream of child riding carp through lotus pond; girl no longer riding lion; dream-glow now visible in girl's hands",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor illustration, soft flowing lines, highly detailed best quality. Wide shot, slightly high angle looking down across the rooftop. A small stone lion cub with rounded features, pale grey-blue limestone texture; A young girl around 8 years old, round face. The stone lion crouching on the curved clay tiles, the girl kneeling beside a slumped paper swallow kite that dozes with its wings folded, she gently lifts the kite's belly open to reveal a faint luminous vision inside — a tiny child astride a golden carp gliding through lotus blossoms, the dream-glow spilling softly onto her fingers. Curved clay tile rooftop of a traditional teahouse, paper swallow kite with painted red and grey wings lying among the tiles, distant lotus pond shimmering below, clay chimney nearby. Girl and kite as focal point in center-middle ground, stone lion crouching to her left, rooftop tiles spreading across foreground, moonlit sky and distant watertown silhouette in background. Moonlight illuminating the rooftop tiles, soft golden-cyan dream-glow emanating from inside the kite casting warm light on the girl's hands and face, magical and wondrous mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 11,
+      "story_text": "他们又到竹林深处，听见竹叶沙沙响。小石狮从一片最大的竹叶下面，找出第二个梦：一个孩子梦见自己变成小书童，跟着星星读诗。",
+      "characters_in_scene": [
+        "小石狮",
+        "小姑娘"
+      ],
+      "shot": "Close-up, low angle looking up through the bamboo",
+      "visual_action": "The stone lion crouching low and reaching one mossy paw carefully under a large drooping bamboo leaf, scooping out a small glowing orb, the girl leaning in close beside him with wide curious eyes and slightly parted lips, bamboo leaves rustling and trembling around them as the second dream emerges showing a faint vision of a tiny scholar following a trail of starlight with a scroll",
+      "environment": "Dense bamboo grove, tall green bamboo stalks with large drooping leaves, dappled moonlight filtering through the canopy, fallen leaves on the forest floor",
+      "composition": "Stone lion's paw and the glowing dream orb as focal point in foreground-center, girl's face leaning in from the right in middle ground, bamboo stalks framing vertically on both sides in background",
+      "lighting": "Dappled cool moonlight filtering through bamboo canopy creating shifting patterns, warm soft glow from the dream orb illuminating the lion's paw and nearby leaves, mysterious and gentle mood",
+      "state_tracking": "Night continues; full moon; two dreams now collected — kite dream and bamboo dream of child reading poetry with stars; girl carrying first dream-glow; bamboo leaves rustling from breeze",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor illustration, soft flowing lines, highly detailed best quality. Close-up, low angle looking up through the bamboo. A small stone lion cub with rounded features, pale grey-blue limestone texture; A young girl around 8 years old, round face. The stone lion crouching low and reaching one mossy paw carefully under a large drooping bamboo leaf, scooping out a small glowing orb, the girl leaning in close beside him with wide curious eyes and slightly parted lips, bamboo leaves rustling and trembling around them as the second dream emerges showing a faint vision of a tiny scholar following a trail of starlight with a scroll. Dense bamboo grove, tall green bamboo stalks with large drooping leaves, dappled moonlight filtering through the canopy, fallen leaves on the forest floor. Stone lion's paw and the glowing dream orb as focal point in foreground-center, girl's face leaning in from the right in middle ground, bamboo stalks framing vertically on both sides in background. Dappled cool moonlight filtering through bamboo canopy creating shifting patterns, warm soft glow from the dream orb illuminating the lion's paw and nearby leaves, mysterious and gentle mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 12,
+      "story_text": "最后，他们来到老槐树下。树洞里有团金色的小光，正缩成一团发抖。",
+      "characters_in_scene": [
+        "小石狮",
+        "小姑娘",
+        "小光"
+      ],
+      "shot": "Medium shot, eye-level, looking into the tree hollow",
+      "visual_action": "The stone lion and girl standing before the massive gnarled tree, peering into a dark hollow in the trunk where a small golden orb of light huddles tightly into a trembling ball, its glow flickering weakly, the girl raising one hand tentatively toward it, the lion's wide innocent eyes fixed on the shivering light",
+      "environment": "Ancient locust tree with massive gnarled trunk and thick spreading branches, dark hollow opening in the trunk, moss and twisted roots around the base, fallen locust leaves on the ground",
+      "composition": "Tree hollow with golden orb as focal point in center, stone lion standing to the left and girl to the right in foreground, massive trunk framing the scene, dark branches overhead in background",
+      "lighting": "Dim moonlight barely reaching the hollow entrance, the golden orb's weak trembling glow casting fragile warm light on the inner bark, strong contrast between dark hollow and fragile light, tender and slightly anxious mood",
+      "state_tracking": "Night continues; full moon; two dreams already collected and carried by girl; 小光 found trembling and frightened in tree hollow; 小光 identified as a lost dream afraid of the dark",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor illustration, soft flowing lines, highly detailed best quality. Medium shot, eye-level, looking into the tree hollow. A small stone lion cub with rounded features, pale grey-blue limestone texture; A young girl around 8 years old, round face; A small glowing golden orb of light, soft warm radiance, trembling slightly, the size of a firefly cluster. The stone lion and girl standing before the massive gnarled tree, peering into a dark hollow in the trunk where a small golden orb of light huddles tightly into a trembling ball, its glow flickering weakly, the girl raising one hand tentatively toward it, the lion's wide innocent eyes fixed on the shivering light. Ancient locust tree with massive gnarled trunk and thick spreading branches, dark hollow opening in the trunk, moss and twisted roots around the base, fallen locust leaves on the ground. Tree hollow with golden orb as focal point in center, stone lion standing to the left and girl to the right in foreground, massive trunk framing the scene, dark branches overhead in background. Dim moonlight barely reaching the hollow entrance, the golden orb's weak trembling glow casting fragile warm light on the inner bark, strong contrast between dark hollow and fragile light, tender and slightly anxious mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 13,
+      "story_text": "「你是谁的梦？」小姑娘轻声问。小光小声说：「我是阿福的梦。他怕黑，我不敢回去。」小石狮想了想，把自己胸口那点白白的月光取下来，放在小光旁边。「带着它吧。黑夜不咬人，它只是把白天收起来，让大家休息。」",
+      "characters_in_scene": [
+        "小石狮",
+        "小姑娘",
+        "小光"
+      ],
+      "shot": "Close-up, slightly low angle focusing on the exchange at the hollow",
+      "visual_action": "The girl crouching and leaning forward with soft concerned expression, one hand extended toward the trembling golden orb while her lips move gently, the stone lion pressing one paw to its own chest and slowly pulling out a small patch of white moonlight, placing it carefully beside the orb — the two lights mingling as the orb's trembling begins to ease",
+      "environment": "Inside and around the old locust tree hollow, rough mossy bark textures, the white moonlight patch and golden orb resting side by side on the inner wood",
+      "composition": "Stone lion's paw placing moonlight as focal point in foreground-center, golden orb beside it glowing steadier, girl's reaching hand from the right in middle ground, dark hollow interior in background framing the lights",
+      "lighting": "The white moonlight patch and golden orb creating a combined warm-cool glow that steadily brightens, surrounding darkness of the hollow softening, tender and reassuring mood as the orb calms",
+      "state_tracking": "Night continues; full moon; stone lion has given away the moonlight from its chest — pale spot now missing; 小光 warming and steadying; two other dreams still carried by girl; 小光 identified as 阿福's dream",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor illustration, soft flowing lines, highly detailed best quality. Close-up, slightly low angle focusing on the exchange at the hollow. A small stone lion cub with rounded features, pale grey-blue limestone texture; A young girl around 8 years old, round face; A small glowing golden orb of light, soft warm radiance. The girl crouching and leaning forward with soft concerned expression, one hand extended toward the trembling golden orb while her lips move gently, the stone lion pressing one paw to its own chest and slowly pulling out a small patch of white moonlight, placing it carefully beside the orb — the two lights mingling as the orb's trembling begins to ease. Inside and around the old locust tree hollow, rough mossy bark textures, the white moonlight patch and golden orb resting side by side on the inner wood. Stone lion's paw placing moonlight as focal point in foreground-center, golden orb beside it glowing steadier, girl's reaching hand from the right in middle ground, dark hollow interior in background framing the lights. The white moonlight patch and golden orb creating a combined warm-cool glow that steadily brightens, surrounding darkness of the hollow softening, tender and reassuring mood as the orb calms. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 14,
+      "story_text": "小光暖了起来，嗖地飞进阿福家的窗户。不一会儿，屋里传来轻轻的笑声。阿福睡熟了。",
+      "characters_in_scene": [
+        "小光",
+        "阿福"
+      ],
+      "shot": "Wide shot, slightly high angle looking across to the house window",
+      "visual_action": "The golden orb now glowing brightly and steadily, streaking in a swift luminous arc through the night air toward a wooden lattice window, inside the window the small boy 阿福 lying on his sleeping mat curled under a quilt with a gentle smile spreading across his round face, one small hand resting on the pillow as the golden light settles over him like a warm blanket",
+      "environment": "Traditional Jiangnan house with wooden lattice window and paper panes, sleeping mat and quilt inside, small courtyard with stepping stones and a potted plant below the window",
+      "composition": "Golden orb's flight path arcing from upper left to the window in middle ground-right, 阿福 visible through the window in background-center, courtyard stones and plant in foreground",
+      "lighting": "Bright warm golden glow from the orb illuminating its flight path and the window frame, soft interior glow settling over the sleeping boy, cool moonlight on the courtyard, peaceful and comforting mood",
+      "state_tracking": "Night continues; full moon; 小光 now bright and warm — no longer trembling; 阿福 sleeping peacefully with his dream returned; stone lion's chest moonlight still given away; two other dreams still collected",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor illustration, soft flowing lines, highly detailed best quality. Wide shot, slightly high angle looking across to the house window. A small glowing golden orb of light, soft warm radiance; A small boy around 6 years old, round chubby face, black messy hair, wearing a red sleeping garment. The golden orb now glowing brightly and steadily, streaking in a swift luminous arc through the night air toward a wooden lattice window, inside the window the small boy 阿福 lying on his sleeping mat curled under a quilt with a gentle smile spreading across his round face, one small hand resting on the pillow as the golden light settles over him like a warm blanket. Traditional Jiangnan house with wooden lattice window and paper panes, sleeping mat and quilt inside, small courtyard with stepping stones and a potted plant below the window. Golden orb's flight path arcing from upper left to the window in middle ground-right, 阿福 visible through the window in background-center, courtyard stones and plant in foreground. Bright warm golden glow from the orb illuminating its flight path and the window frame, soft interior glow settling over the sleeping boy, cool moonlight on the courtyard, peaceful and comforting mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 15,
+      "story_text": "小姑娘把三颗好梦放进砂锅。月亮粥咕嘟咕嘟冒着银色的小泡泡，香得连河水都慢了下来。",
+      "characters_in_scene": [
+        "小石狮",
+        "小姑娘"
+      ],
+      "shot": "Medium shot, slightly low angle looking up at the pot",
+      "visual_action": "The girl standing by the glowing pot on its small stove, using her wooden spoon to carefully guide three small luminous dream-orbs — each glowing a different soft hue — down into the bubbling porridge, the surface erupting with shimmering silver bubbles that rise and pop gently, the stone lion sitting beside her watching with wide amazed stone eyes",
+      "environment": "Back at the osmanthus tree with the clay pot on the small brick stove, three dream-orbs descending into the porridge, silver bubbles rising from the surface, osmanthus blossoms overhead",
+      "composition": "Pot with bubbling silver surface as focal point in center, girl leaning over from the left with spoon in foreground-middle ground, stone lion sitting to the right in middle ground, osmanthus tree trunk and moon in background",
+      "lighting": "Warm golden glow from the pot now mingled with silver bubble luminescence, cool moonlight filtering through osmanthus branches, magical and deeply satisfying mood",
+      "state_tracking": "Night continues; full moon; three dreams placed in pot — kite dream, bamboo dream, and 小光's warmth echo; porridge now bubbling with silver bubbles; returned to osmanthus tree location; stone lion's chest still missing moonlight patch",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor illustration, soft flowing lines, highly detailed best quality. Medium shot, slightly low angle looking up at the pot. A small stone lion cub with rounded features, pale grey-blue limestone texture; A young girl around 8 years old, round face. The girl standing by the glowing pot on its small stove, using her wooden spoon to carefully guide three small luminous dream-orbs — each glowing a different soft hue — down into the bubbling porridge, the surface erupting with shimmering silver bubbles that rise and pop gently, the stone lion sitting beside her watching with wide amazed stone eyes. Back at the osmanthus tree with the clay pot on the small brick stove, three dream-orbs descending into the porridge, silver bubbles rising from the surface, osmanthus blossoms overhead. Pot with bubbling silver surface as focal point in center, girl leaning over from the left with spoon in foreground-middle ground, stone lion sitting to the right in middle ground, osmanthus tree trunk and moon in background. Warm golden glow from the pot now mingled with silver bubble luminescence, cool moonlight filtering through osmanthus branches, magical and deeply satisfying mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 16,
+      "story_text": "她盛了一碗给小石狮。小石狮喝了一口，觉得肚子里暖暖的，像晒过太阳的青石板。它打了个小小的哈欠。",
+      "characters_in_scene": [
+        "小石狮",
+        "小姑娘"
+      ],
+      "shot": "Close-up, eye level, focused on the stone lion's face and the bowl",
+      "visual_action": "The girl holding a small ceramic bowl of shimmering silver-touched porridge toward the stone lion, the lion dipping its head to take a careful sip, its wide stone eyes half-closing with deep warmth and contentment, then its small mouth opening in a tiny sleepy yawn, the girl smiling softly down at it",
+      "environment": "Osmanthus tree, pot on stove with remaining porridge, small ceramic bowl, fallen osmanthus blossoms on the ground",
+      "composition": "Bowl and stone lion's face as focal point in foreground-center, girl's hands holding the bowl in middle ground, soft bokeh of osmanthus tree and moonlight in background",
+      "lighting": "Warm golden-silver glow from the porridge illuminating the lion's face from below, soft moonlight from above, cozy and drowsy mood",
+      "state_tracking": "Night continues; full moon; porridge being served and consumed; stone lion's chest still missing its moonlight patch but belly now warm from porridge; drowsy peaceful atmosphere settling in",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor illustration, soft flowing lines, highly detailed best quality. Close-up, eye level, focused on the stone lion's face and the bowl. A small stone lion cub with rounded features, pale grey-blue limestone texture; A young girl around 8 years old, round face. The girl holding a small ceramic bowl of shimmering silver-touched porridge toward the stone lion, the lion dipping its head to take a careful sip, its wide stone eyes half-closing with deep warmth and contentment, then its small mouth opening in a tiny sleepy yawn, the girl smiling softly down at it. Osmanthus tree, pot on stove with remaining porridge, small ceramic bowl, fallen osmanthus blossoms on the ground. Bowl and stone lion's face as focal point in foreground-center, girl's hands holding the bowl in middle ground, soft bokeh of osmanthus tree and moonlight in background. Warm golden-silver glow from the porridge illuminating the lion's face from below, soft moonlight from above, cozy and drowsy mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 17,
+      "story_text": "「我也会做梦吗？」小石狮问。「当然会。」小姑娘说，「只要你今晚愿意闭上眼睛。」",
+      "characters_in_scene": [
+        "小石狮",
+        "小姑娘"
+      ],
+      "shot": "Over-the-shoulder medium shot from behind the little girl, angled slightly downward toward the stone lion",
+      "visual_action": "The little stone lion tilts its head upward with wide wondering eyes, one front paw lifted slightly off the ground in an eager questioning pose. The little girl crouches beside it, one hand resting gently on its mossy mane, her wooden spoon laid down in a nearby porridge bowl, leaning forward with a warm reassuring smile as she pats its head",
+      "environment": "Town square near the porridge gathering spot, empty wooden bowls scattered on the stone pavement, a few remaining lanterns on poles, osmanthus petals drifting down",
+      "composition": "Little girl in foreground left facing right, stone lion in middle ground center-right, scattered bowls and lantern glow in background",
+      "lighting": "Warm golden lantern glow from nearby poles, soft silver moonlight from above, intimate tender mood",
+      "state_tracking": "Night continues; full moon; porridge gathering winding down with empty bowls; lion's belly still warm from porridge; wooden spoon set aside; drowsy peaceful atmosphere",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor illustration, soft flowing lines, highly detailed best quality. Over-the-shoulder medium shot from behind the little girl, angled slightly downward toward the stone lion. A small stone lion cub with rounded features, pale grey-blue limestone texture; A young girl around 8 years old, round face. The little stone lion tilts its head upward with wide wondering eyes, one front paw lifted slightly off the ground in an eager questioning pose. The little girl crouches beside it, one hand resting gently on its mossy mane, her wooden spoon laid down in a nearby porridge bowl, leaning forward with a warm reassuring smile as she pats its head. Town square near the porridge gathering spot, empty wooden bowls scattered on the stone pavement, a few remaining lanterns on poles, osmanthus petals drifting down. Little girl in foreground left facing right, stone lion in middle ground center-right, scattered bowls and lantern glow in background. Warm golden lantern glow from nearby poles, soft silver moonlight from above, intimate tender mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 18,
+      "story_text": "小石狮回到桥头，重新蹲好。月光落在它的鼻尖上，桂花香飘过来。它第一次闭上了石头眼睛。",
+      "characters_in_scene": [
+        "小石狮"
+      ],
+      "shot": "Close-up, slight low angle on the stone lion's face",
+      "visual_action": "The little stone lion crouches back in its familiar guardian pose at the bridgehead, stone eyelids slowly descending over its wide eyes for the very first time. Its mossy ears relax backward, and a small peaceful expression settles across its stone features as a single beam of moonlight lands directly on its nose tip",
+      "environment": "The ancient bluestone bridgehead with carved railing posts, an old osmanthus tree heavy with golden blossoms beside the bridge, quiet canal water below",
+      "composition": "Stone lion's face filling foreground center, bridge railing behind it in middle ground, osmanthus tree and moon in background",
+      "lighting": "Cool silver moonlight beam falling directly on the lion's nose and closed eyes, warm golden shimmer from osmanthus blossoms, serene magical mood",
+      "state_tracking": "Lion has returned to bridgehead and resumed guardian pose; eyes closing for the first time; night continues; full moon; osmanthus in bloom; belly still warm from porridge",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor illustration, soft flowing lines, highly detailed best quality. Close-up, slight low angle on the stone lion's face. A small stone lion cub with rounded features, pale grey-blue limestone texture. The little stone lion crouches back in its familiar guardian pose at the bridgehead, stone eyelids slowly descending over its wide eyes for the very first time. Its mossy ears relax backward, and a small peaceful expression settles across its stone features as a single beam of moonlight lands directly on its nose tip. The ancient bluestone bridgehead with carved railing posts, an old osmanthus tree heavy with golden blossoms beside the bridge, quiet canal water below. Stone lion's face filling foreground center, bridge railing behind it in middle ground, osmanthus tree and moon in background. Cool silver moonlight beam falling directly on the lion's nose and closed eyes, warm golden shimmer from osmanthus blossoms, serene magical mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 19,
+      "story_text": "梦里，它不是守桥的小石狮，而是一只真正的小狮子，跑过长城，跑过稻田，跑过亮晶晶的河流。每跑过一个地方，它就轻轻放下一颗好梦。",
+      "characters_in_scene": [
+        "小石狮"
+      ],
+      "shot": "Wide shot, dynamic low angle following the running lion cub across the dreamscape",
+      "visual_action": "A real soft-furred lion cub with the same innocent round eyes bounds joyfully through the dream landscape — leaping over the Great Wall parapet, dashing through golden rice stalks, splashing alongside a sparkling river. With each place it passes, a tiny glowing golden orb drops gently from its paw like a seed being planted into the ground",
+      "environment": "Dream landscape flowing together in watercolor logic — a sweeping section of the Great Wall, vast terraced rice paddies, a winding sparkling river, all blending softly into one another",
+      "composition": "Lion cub running left to right across middle ground, Great Wall in background left, rice paddies in background center, river curving through foreground",
+      "lighting": "Ethereal moonlit dreamlight with golden sparkles trailing the lion's path, warm and wondrous mood",
+      "state_tracking": "Dream sequence; lion transformed from stone to real soft-furred lion cub; night and full moon persist within the dream; golden dream-seeds being placed along the running path",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor illustration, soft flowing lines, highly detailed best quality. Wide shot, dynamic low angle following the running lion cub across the dreamscape. A small stone lion cub with rounded features, pale grey-blue limestone texture. A real soft-furred lion cub with the same innocent round eyes bounds joyfully through the dream landscape — leaping over the Great Wall parapet, dashing through golden rice stalks, splashing alongside a sparkling river. With each place it passes, a tiny glowing golden orb drops gently from its paw like a seed being planted into the ground. Dream landscape flowing together in watercolor logic — a sweeping section of the Great Wall, vast terraced rice paddies, a winding sparkling river, all blending softly into one another. Lion cub running left to right across middle ground, Great Wall in background left, rice paddies in background center, river curving through foreground. Ethereal moonlit dreamlight with golden sparkles trailing the lion's path, warm and wondrous mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    },
+    {
+      "scene_number": 20,
+      "story_text": "从那以后，小镇的孩子们每晚都睡得很香。只有很晚很晚的时候，如果有人路过青石桥，就会听见桥头的小石狮轻轻打呼噜。呼——像风吹过桂花树。也像月亮在煮一锅甜甜的粥。",
+      "characters_in_scene": [
+        "小石狮"
+      ],
+      "shot": "Establishing wide shot, gentle high angle looking down at the bridge and town",
+      "visual_action": "The little stone lion crouches at its bridgehead post, eyes contentedly closed, mouth slightly parted as tiny soft breath wisps curl upward from its nose like gentle steam. Osmanthus petals drift slowly around it. The town beyond sleeps peacefully with warm window glows flickering",
+      "environment": "The bluestone bridge at deep night, osmanthus tree beside the bridge shedding petals, quiet canal reflecting moonlight, sleeping town houses with softly lit windows",
+      "composition": "Bridge spanning horizontally across the lower third, stone lion at the right end as focal point, canal water in foreground, sleeping town houses in background left, full moon in upper right",
+      "lighting": "Deep blue-silver moonlight bathing the entire scene, warm golden glows from house windows, soft silvery reflections on canal water, profoundly peaceful and cozy mood",
+      "state_tracking": "Lion back in stone form at bridgehead; now able to dream and snore softly; deep night; full moon; osmanthus still blooming; peaceful ending state — the lion's warmth and dreams persist",
+      "prompt": "masterpiece, best quality, highly detailed children's book illustration. Watercolor illustration, soft flowing lines, highly detailed best quality. Establishing wide shot, gentle high angle looking down at the bridge and town. A small stone lion cub with rounded features, pale grey-blue limestone texture. The little stone lion crouches at its bridgehead post, eyes contentedly closed, mouth slightly parted as tiny soft breath wisps curl upward from its nose like gentle steam. Osmanthus petals drift slowly around it. The town beyond sleeps peacefully with warm window glows flickering. The bluestone bridge at deep night, osmanthus tree beside the bridge shedding petals, quiet canal reflecting moonlight, sleeping town houses with softly lit windows. Bridge spanning horizontally across the lower third, stone lion at the right end as focal point, canal water in foreground, sleeping town houses in background left, full moon in upper right. Deep blue-silver moonlight bathing the entire scene, warm golden glows from house windows, soft silvery reflections on canal water, profoundly peaceful and cozy mood. clean illustration with no typography, no signs, no labels, no captions, no letters, no logos, no watermark, no speech bubbles"
+    }
+  ]
+}

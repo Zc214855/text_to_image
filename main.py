@@ -268,7 +268,7 @@ def generate(story_text, llm_provider, image_model, image_size, progress=gr.Prog
     yield scene_info + "\n---\n" + result_text, generated_images, story_output_dir
 
 
-def retry_failed_images(task_dir, progress=gr.Progress()):
+def retry_failed_images(task_dir, image_model, image_size, progress=gr.Progress()):
     """获取任务互斥锁后恢复失败图片，避免与原生成流程并行执行。"""
     task_dir = task_dir or find_latest_failed_task(OUTPUT_DIR)
     if not task_dir:
@@ -276,12 +276,12 @@ def retry_failed_images(task_dir, progress=gr.Progress()):
         return
     try:
         with task_execution_lock(task_dir, blocking=False):
-            yield from _retry_failed_images_locked(task_dir, progress)
+            yield from _retry_failed_images_locked(task_dir, image_model, image_size, progress)
     except TaskAlreadyRunningError as error:
         yield str(error), None, task_dir
 
 
-def _retry_failed_images_locked(task_dir, progress):
+def _retry_failed_images_locked(task_dir, image_model, image_size, progress):
     """读取已保存提示词，仅重试失败或缺失图片，不重新调用 LLM。"""
     try:
         task = load_task(task_dir)
@@ -290,13 +290,10 @@ def _retry_failed_images_locked(task_dir, progress):
         yield f"读取失败任务出错：{error}", None, task_dir
         return
 
-    image_model = task["image_model"]
     credential_error = validate_image_credentials(image_model)
     if credential_error:
         yield credential_error, None, task_dir
         return
-
-    image_size = task["image_size"]
     scenes_by_number = {
         scene["scene_number"]: scene for scene in prompts["scenes"]
     }
@@ -363,9 +360,12 @@ def _retry_failed_images_locked(task_dir, progress):
     task["status"] = "partial" if retry_failures else "completed"
     task["successful_scenes"] = sorted(successful)
     task["failed_scenes"] = retry_failures
+    if image_model != task["image_model"]:
+        task["retry_image_model"] = image_model
     save_task(task_dir, task)
     images = collect_generated_images(task_dir, sorted(successful))
-    summary = "未调用 LLM，仅重试图片。\n" + build_generation_summary(task, task_dir)
+    model_note = f"\n重试模型：{image_model}" if image_model != task["image_model"] else ""
+    summary = "未调用 LLM，仅重试图片。\n" + build_generation_summary(task, task_dir) + model_note
     yield summary, images, task_dir
 
 
@@ -453,7 +453,11 @@ def build_usage_guide():
         "- 页面切换图像模型后，尺寸列表会自动更新。\n"
         "- 生图请求明确返回限流或 5xx 时自动重试 3 次；POST 传输超时不自动重提，避免重复计费。\n"
         "- 图片下载失败会对同一个结果 URL 重试，不会重新提交生图请求；最终失败后可仅重试图片，不重复调用 LLM。\n"
-        "- 费用和模型可用性会由平台调整，实际以对应平台控制台为准。"
+        "- 费用和模型可用性会由平台调整，实际以对应平台控制台为准。\n\n"
+        "### 平台控制台\n"
+        "- 硅基流动（Kolors / Z-Image / ERNIE Image / Qwen Image）：https://cloud.siliconflow.cn\n"
+        "- 阿里云百炼（万相 / Qwen Image Plus）：https://bailian.console.aliyun.com\n"
+        "- 火山方舟（Seedream 系列）：https://console.volcengine.com/ark"
     )
 
 
@@ -557,7 +561,7 @@ def build_ui():
             show_progress="hidden",
         ).then(
             fn=retry_failed_images,
-            inputs=[current_task_dir],
+            inputs=[current_task_dir, model_dropdown, size_dropdown],
             outputs=[result_text, gallery, current_task_dir],
             concurrency_limit=1,
             concurrency_id="image-generation",

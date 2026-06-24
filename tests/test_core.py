@@ -583,6 +583,8 @@ class ImageRetryWorkflowTests(unittest.TestCase):
                 results = list(
                     main.retry_failed_images(
                         task_dir,
+                        "Kwai-Kolors/Kolors",
+                        "1024x1024",
                         progress=lambda *args, **kwargs: None,
                     )
                 )
@@ -602,6 +604,8 @@ class ImageRetryWorkflowTests(unittest.TestCase):
                 results = list(
                     main.retry_failed_images(
                         task_dir,
+                        "Kwai-Kolors/Kolors",
+                        "1024x1024",
                         progress=lambda *args, **kwargs: None,
                     )
                 )

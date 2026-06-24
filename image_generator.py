@@ -60,10 +60,11 @@ def _sf_generate(prompt: str, model: str, size: str, seed: int | None = None) ->
     resp = httpx.post(SF_API_URL, json=payload, headers=headers, timeout=120)
     if resp.status_code >= 400:
         try:
-            err_msg = resp.json().get("message", "") or resp.text[:300]
-            raise ValueError(f"硅基流动错误（{resp.status_code}）：{err_msg}")
+            data = resp.json()
         except (ValueError, KeyError):
             resp.raise_for_status()
+        err_msg = data.get("message", "") or resp.text[:300]
+        raise ValueError(f"硅基流动错误（{resp.status_code}）：{err_msg}")
     data = resp.json()
 
     images = data.get("images", [])
@@ -97,10 +98,11 @@ def _ds_generate(prompt: str, model: str, size: str, seed: int | None = None) ->
     resp = httpx.post(DS_ASYNC_URL, json=payload, headers=headers, timeout=60)
     if resp.status_code >= 400:
         try:
-            err_msg = resp.json().get("message", "") or resp.text[:300]
-            raise ValueError(f"阿里云百炼错误（{resp.status_code}）：{err_msg}")
+            data = resp.json()
         except (ValueError, KeyError):
             resp.raise_for_status()
+        err_msg = data.get("message", "") or resp.text[:300]
+        raise ValueError(f"阿里云百炼错误（{resp.status_code}）：{err_msg}")
     data = resp.json()
 
     task_id = data.get("output", {}).get("task_id")
@@ -159,13 +161,12 @@ def _ark_generate(
         payload["output_format"] = output_format
     resp = httpx.post(ARK_IMAGE_URL, json=payload, headers=headers, timeout=180)
     if resp.status_code >= 400:
-        # 解析火山方舟的错误信息，展示给用户而非只显示 HTTP 状态码
         try:
             err_data = resp.json()
-            err_msg = err_data.get("error", {}).get("message", "") or resp.text[:300]
-            raise ValueError(f"火山方舟错误（{resp.status_code}）：{err_msg}")
         except (ValueError, KeyError):
             resp.raise_for_status()
+        err_msg = err_data.get("error", {}).get("message", "") or resp.text[:300]
+        raise ValueError(f"火山方舟错误（{resp.status_code}）：{err_msg}")
     data = resp.json()
     images = data.get("data", [])
     if not images or not images[0].get("url"):
