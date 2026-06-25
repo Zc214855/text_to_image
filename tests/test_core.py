@@ -67,7 +67,12 @@ class StoryParserTests(unittest.TestCase):
     def test_scene_count_merges_short_sentences(self):
         story = "。".join(f"第{i}句话" for i in range(1, 23)) + "。"
 
-        self.assertEqual(14, story_parser.estimate_scene_count(story))
+        self.assertEqual(10, story_parser.estimate_scene_count(story))
+
+    def test_scene_count_allows_more_images_for_long_story(self):
+        story = "。".join(f"第{i}句话，孩子走过一段新的旅程，看见新的风景和动作，遇到新的伙伴并完成一个清楚的画面节拍" for i in range(1, 90)) + "。"
+
+        self.assertEqual(24, story_parser.estimate_scene_count(story))
 
     def test_parse_story_builds_one_consistent_prompt(self):
         # 第一轮：大纲响应（无视觉细节字段）
@@ -77,6 +82,18 @@ class StoryParserTests(unittest.TestCase):
                 {
                     "name": "女孩",
                     "visual": "a six-year-old girl with black braids and a yellow coat",
+                }
+            ],
+            "recurring_objects": [
+                {
+                    "name": "木门",
+                    "visual": "a weathered wooden cottage door with a dark iron ring handle",
+                }
+            ],
+            "locations": [
+                {
+                    "name": "小屋门口",
+                    "visual": "an old cottage entrance with mossy stone steps",
                 }
             ],
             "style": "watercolor picture book, muted blue and gold palette",
@@ -95,6 +112,8 @@ class StoryParserTests(unittest.TestCase):
                     "scene_number": 1,
                     "story_text": "女孩推开木门。",
                     "characters_in_scene": ["女孩"],
+                    "location_in_scene": "小屋门口",
+                    "objects_in_scene": ["木门"],
                     "shot": "medium shot at eye level",
                     "visual_action": "the girl cautiously pushes open the wooden door",
                     "environment": "an old cottage entrance",
@@ -142,11 +161,339 @@ class StoryParserTests(unittest.TestCase):
         # 两轮共调用 LLM 两次
         self.assertEqual(2, client.chat.completions.create.call_count)
 
+    def test_parse_story_keeps_visual_anchors_after_first_scene(self):
+        outline_payload = {
+            "title": "测试故事",
+            "characters": [
+                {
+                    "name": "女孩",
+                    "visual": "a six-year-old girl with black braids, yellow coat, red scarf, and round curious eyes",
+                }
+            ],
+            "recurring_objects": [
+                {
+                    "name": "灯笼",
+                    "visual": "a small warm paper lantern with a bamboo handle",
+                }
+            ],
+            "locations": [
+                {
+                    "name": "庭院",
+                    "visual": "a quiet ancient Chinese courtyard with grey stone paving",
+                }
+            ],
+            "style": "watercolor picture book, muted blue and gold palette, ancient Chinese courtyard setting, best quality",
+            "scenes": [
+                {
+                    "scene_number": 1,
+                    "story_text": "女孩提起灯笼。",
+                    "characters_in_scene": ["女孩"],
+                },
+                {
+                    "scene_number": 2,
+                    "story_text": "女孩穿过庭院。",
+                    "characters_in_scene": ["女孩"],
+                },
+            ],
+        }
+        detail_payload = {
+            "scenes": [
+                {
+                    "scene_number": 1,
+                    "story_text": "女孩提起灯笼。",
+                    "characters_in_scene": ["女孩"],
+                    "location_in_scene": "庭院",
+                    "objects_in_scene": ["灯笼"],
+                    "shot": "medium shot at eye level",
+                    "visual_action": "the girl lifts the lantern with both hands",
+                    "environment": "the courtyard doorway and stone paving",
+                    "composition": "the girl is centered in the foreground",
+                    "lighting": "soft evening light",
+                    "state_tracking": "the lantern is now carried by the girl",
+                },
+                {
+                    "scene_number": 2,
+                    "story_text": "女孩穿过庭院。",
+                    "characters_in_scene": ["女孩"],
+                    "location_in_scene": "庭院",
+                    "objects_in_scene": ["灯笼"],
+                    "shot": "wide shot, slight high angle",
+                    "visual_action": "the girl walks across the courtyard holding the lantern",
+                    "environment": "the same courtyard with stone paving",
+                    "composition": "the girl moves through the middle ground",
+                    "lighting": "soft evening light continues",
+                    "state_tracking": "still carrying the lantern",
+                },
+            ],
+        }
+        client = Mock()
+        client.chat.completions.create.side_effect = [
+            SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=json.dumps(outline_payload)))]),
+            SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=json.dumps(detail_payload)))]),
+        ]
+
+        with (
+            patch.object(
+                story_parser,
+                "get_llm_client_config",
+                return_value=("https://example.test/v1", "test-key", "test-model"),
+            ),
+            patch.object(story_parser, "OpenAI", return_value=client),
+        ):
+            result = story_parser.parse_story("女孩提起灯笼。女孩穿过庭院。")
+
+        second_prompt = result["scenes"][1]["prompt"]
+        self.assertIn(outline_payload["characters"][0]["visual"], second_prompt)
+        self.assertIn(outline_payload["style"], second_prompt)
+        self.assertIn(outline_payload["recurring_objects"][0]["visual"], second_prompt)
+        self.assertIn(outline_payload["locations"][0]["visual"], second_prompt)
+
+    def test_parse_story_compacts_supporting_characters_in_crowded_scene(self):
+        outline_payload = {
+            "title": "测试故事",
+            "characters": [
+                {
+                    "name": "女孩",
+                    "visual": "a six-year-old girl with black braids, yellow coat, red scarf, round curious eyes, and tiny cloth shoes",
+                    "short_visual": "girl in yellow coat with red scarf",
+                    "importance": "main",
+                },
+                {
+                    "name": "奶奶",
+                    "visual": "an elderly grandmother with silver hair in a bun, brown cotton jacket, gentle wrinkles, and a jade bracelet",
+                    "short_visual": "elderly grandmother in brown jacket",
+                    "importance": "supporting",
+                },
+                {
+                    "name": "邻居",
+                    "visual": "a middle-aged neighbor with short black hair, blue cloth vest, square face, and a bamboo basket",
+                    "short_visual": "neighbor in blue vest with bamboo basket",
+                    "importance": "supporting",
+                },
+            ],
+            "recurring_objects": [],
+            "locations": [],
+            "style": "watercolor picture book, muted blue and gold palette",
+            "scenes": [
+                {
+                    "scene_number": 1,
+                    "story_text": "女孩、奶奶和邻居一起看灯笼。",
+                    "characters_in_scene": ["女孩", "奶奶", "邻居"],
+                }
+            ],
+        }
+        detail_payload = {
+            "scenes": [
+                {
+                    "scene_number": 1,
+                    "story_text": "女孩、奶奶和邻居一起看灯笼。",
+                    "characters_in_scene": ["女孩", "奶奶", "邻居"],
+                    "location_in_scene": "",
+                    "objects_in_scene": [],
+                    "shot": "wide shot at eye level",
+                    "visual_action": "the three characters gather around a warm lantern",
+                    "environment": "a quiet courtyard",
+                    "composition": "the girl is the focal point in the middle",
+                    "lighting": "warm evening lantern light",
+                    "state_tracking": "evening courtyard scene",
+                }
+            ],
+        }
+        client = Mock()
+        client.chat.completions.create.side_effect = [
+            SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=json.dumps(outline_payload)))]),
+            SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=json.dumps(detail_payload)))]),
+        ]
+
+        with (
+            patch.object(
+                story_parser,
+                "get_llm_client_config",
+                return_value=("https://example.test/v1", "test-key", "test-model"),
+            ),
+            patch.object(story_parser, "OpenAI", return_value=client),
+        ):
+            result = story_parser.parse_story("女孩、奶奶和邻居一起看灯笼。")
+
+        prompt = result["scenes"][0]["prompt"]
+        self.assertIn(outline_payload["characters"][0]["visual"], prompt)
+        self.assertIn(outline_payload["characters"][1]["short_visual"], prompt)
+        self.assertIn(outline_payload["characters"][2]["short_visual"], prompt)
+        self.assertNotIn(outline_payload["characters"][1]["visual"], prompt)
+        self.assertNotIn(outline_payload["characters"][2]["visual"], prompt)
+
+    def test_parse_story_fills_missing_detail_scene(self):
+        outline_payload = {
+            "title": "测试故事",
+            "characters": [
+                {
+                    "name": "女孩",
+                    "visual": "a six-year-old girl with black braids and a yellow coat",
+                }
+            ],
+            "recurring_objects": [],
+            "locations": [],
+            "style": "watercolor picture book, muted blue and gold palette",
+            "scenes": [
+                {
+                    "scene_number": 1,
+                    "story_text": "女孩走进院子。",
+                    "characters_in_scene": ["女孩"],
+                },
+                {
+                    "scene_number": 2,
+                    "story_text": "女孩抬头看月亮。",
+                    "characters_in_scene": ["女孩"],
+                },
+            ],
+        }
+        detail_payload = {
+            "scenes": [
+                {
+                    "scene_number": 1,
+                    "story_text": "女孩走进院子。",
+                    "characters_in_scene": ["女孩"],
+                    "location_in_scene": "",
+                    "objects_in_scene": [],
+                    "shot": "medium shot",
+                    "visual_action": "the girl walks into the courtyard",
+                    "environment": "a quiet courtyard",
+                    "composition": "the girl is centered",
+                    "lighting": "soft moonlight",
+                    "state_tracking": "night begins",
+                }
+            ],
+        }
+        client = Mock()
+        client.chat.completions.create.side_effect = [
+            SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=json.dumps(outline_payload)))]),
+            SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=json.dumps(detail_payload)))]),
+        ]
+
+        with (
+            patch.object(
+                story_parser,
+                "get_llm_client_config",
+                return_value=("https://example.test/v1", "test-key", "test-model"),
+            ),
+            patch.object(story_parser, "OpenAI", return_value=client),
+        ):
+            result = story_parser.parse_story("女孩走进院子。女孩抬头看月亮。")
+
+        self.assertEqual(2, len(result["scenes"]))
+        self.assertEqual("女孩抬头看月亮。", result["scenes"][1]["story_text"])
+        self.assertIn("clear storybook illustration", result["scenes"][1]["prompt"])
+        self.assertEqual([2], result["_sanitized_prompts"])
+
+    def test_parse_story_marks_empty_detail_response_as_sanitized(self):
+        outline_payload = {
+            "title": "测试故事",
+            "characters": [
+                {
+                    "name": "女孩",
+                    "visual": "a six-year-old girl with black braids and a yellow coat",
+                }
+            ],
+            "recurring_objects": [],
+            "locations": [],
+            "style": "watercolor picture book, muted blue and gold palette",
+            "scenes": [
+                {
+                    "scene_number": 1,
+                    "story_text": "女孩走进院子。",
+                    "characters_in_scene": ["女孩"],
+                },
+                {
+                    "scene_number": 2,
+                    "story_text": "女孩抬头看月亮。",
+                    "characters_in_scene": ["女孩"],
+                },
+            ],
+        }
+        detail_payload = {"scenes": []}
+        client = Mock()
+        client.chat.completions.create.side_effect = [
+            SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=json.dumps(outline_payload)))]),
+            SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=json.dumps(detail_payload)))]),
+        ]
+
+        with (
+            patch.object(
+                story_parser,
+                "get_llm_client_config",
+                return_value=("https://example.test/v1", "test-key", "test-model"),
+            ),
+            patch.object(story_parser, "OpenAI", return_value=client),
+        ):
+            result = story_parser.parse_story("女孩走进院子。女孩抬头看月亮。")
+
+        self.assertEqual([1, 2], result["_sanitized_prompts"])
+        self.assertTrue(all(scene.get("_fallback_detail") for scene in result["scenes"]))
+
+    def test_parse_story_sanitizes_detail_with_chinese_visual_text(self):
+        outline_payload = {
+            "title": "测试故事",
+            "characters": [
+                {
+                    "name": "女孩",
+                    "visual": "a six-year-old girl with black braids and a yellow coat",
+                }
+            ],
+            "recurring_objects": [],
+            "locations": [],
+            "style": "watercolor picture book, muted blue and gold palette",
+            "scenes": [
+                {
+                    "scene_number": 1,
+                    "story_text": "女孩举起伞。",
+                    "characters_in_scene": ["女孩"],
+                }
+            ],
+        }
+        invalid_detail_payload = {
+            "scenes": [
+                {
+                    "scene_number": 1,
+                    "story_text": "女孩举起伞。",
+                    "characters_in_scene": ["女孩"],
+                    "location_in_scene": "",
+                    "objects_in_scene": [],
+                    "shot": "medium shot",
+                    "visual_action": "the girl lifts the 伞面 carefully",
+                    "environment": "a rainy lane",
+                    "composition": "the girl is centered",
+                    "lighting": "soft rainy light",
+                    "state_tracking": "rain continues",
+                }
+            ],
+        }
+        client = Mock()
+        client.chat.completions.create.side_effect = [
+            SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=json.dumps(outline_payload)))]),
+            SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=json.dumps(invalid_detail_payload)))]),
+        ]
+
+        with (
+            patch.object(
+                story_parser,
+                "get_llm_client_config",
+                return_value=("https://example.test/v1", "test-key", "test-model"),
+            ),
+            patch.object(story_parser, "OpenAI", return_value=client),
+        ):
+            result = story_parser.parse_story("女孩举起伞。")
+
+        self.assertNotIn("伞面", result["scenes"][0]["prompt"])
+        self.assertEqual([1], result["_sanitized_prompts"])
+        self.assertEqual(2, client.chat.completions.create.call_count)
+
     def test_parse_story_skips_undefined_character(self):
         # 第一轮大纲：无角色定义
         outline_payload = {
             "title": "测试故事",
             "characters": [],
+            "recurring_objects": [],
+            "locations": [],
             "style": "watercolor",
             "scenes": [
                 {
@@ -163,6 +510,8 @@ class StoryParserTests(unittest.TestCase):
                     "scene_number": 1,
                     "story_text": "女孩挥手。",
                     "characters_in_scene": ["女孩"],
+                    "location_in_scene": "",
+                    "objects_in_scene": [],
                     "shot": "medium shot",
                     "visual_action": "a girl waves her hand",
                     "environment": "a garden",
@@ -202,9 +551,10 @@ class StoryParserTests(unittest.TestCase):
         ):
             result = story_parser.parse_story("女孩挥手。")
 
-        # 角色未定义时不应硬失败，场景正常生成但不含角色引用
-        prompt = result["scenes"][0]["prompt"]
-        self.assertNotIn("女孩", prompt.split("; ")[0] if "; " in prompt else "")
+        # 未定义角色会被移除并记录，避免单个漏定义角色中断整个任务。
+        self.assertEqual([], result["scenes"][0]["characters_in_scene"])
+        self.assertEqual([{"scene_number": 1, "name": "女孩"}], result["_dropped_characters"])
+        self.assertEqual(2, client.chat.completions.create.call_count)
 
 
 class ImageGeneratorTests(unittest.TestCase):
